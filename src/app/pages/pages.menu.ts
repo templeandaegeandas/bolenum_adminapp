@@ -6,11 +6,11 @@ export const PAGES_MENU = [
         path: 'dashboard',
         data: {
           menu: {
-            title: 'general.menu.dashboard',
+            title: 'Dashboard',
             icon: 'ion-android-home',
             selected: false,
             expanded: false,
-            order: 0
+            order: 0,
           }
         }
       },
@@ -22,7 +22,7 @@ export const PAGES_MENU = [
             icon: 'fa fa-user',
             selected: false,
             expanded: false,
-            order: 0
+            order: 0,
           }
         }
       },

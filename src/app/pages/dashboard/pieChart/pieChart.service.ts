@@ -20,7 +20,7 @@ export class PieChartService {
       }, {
         color: '#F1C40F  ',
         description: 'dashboard.purchases',
-        stats: '$ 89,745',
+        stats: '89,745',
         icon: 'money',
       }, {
         color: '#8E44AD',
