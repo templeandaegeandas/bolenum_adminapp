@@ -41,6 +41,12 @@
             <!--<div class="panel-heading">User information</div>-->
             <table class="table table-striped" [mfData]="data | tableFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
             <thead>
+                <tr>
+                  <th colspan="5">
+                      <h6 class="text-center"> Filter by name</h6>
+                     <input class="form-control" [(ngModel)]="filterQuery" />
+                  </th>
+               </tr>
                <tr>
                   <th style="width: 10%"></th>
                   <th style="width: 20%">
@@ -56,12 +62,7 @@
                      <mfDefaultSorter [by]="reply">Reply</mfDefaultSorter>
                   </th>
                </tr>
-               <tr>
-                  <th colspan="5">
-                     Filter by name:
-                     <input class="form-control" [(ngModel)]="filterQuery" />
-                  </th>
-               </tr>
+               
             </thead>
             <tbody>
                <tr *ngFor="let item of mf.data">

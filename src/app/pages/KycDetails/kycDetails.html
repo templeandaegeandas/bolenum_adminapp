@@ -26,14 +26,15 @@
                                          </div>
                                        <div class="form-group">
                                           <label for="inputMobileName">Name of Identity</label>
-                                          <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputMobileName" placeholder="Mobile Name" type="text" disabled>
+                                          <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputMobileName" placeholder="Name of Identity" type="text" disabled>
                                           <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" >
+                                       </div>
                                        </div>
                                      <div class="col-md-12 actionBtn text-right">
                                     <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Approve</button>
                                     <button class="btn btn-primary btn-with-icon" (click)="isEdit=false" type="button">DisApprove</button>
                                     </div>
-                                    </div>
+                                    
                                  </div>
                               </div>
                      </div>

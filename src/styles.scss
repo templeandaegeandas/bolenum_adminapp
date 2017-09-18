@@ -2,4 +2,13 @@
 
 ul.pagination {
   float: left;
+  padding: 10px;
+}
+.table{
+  border:1px solid #ccc;
+  margin-top: 20px;
+      border-collapse: inherit;
+}
+.pagination > li > a, .pagination > li > span{
+  border: 1px solid #ddd;
 }
