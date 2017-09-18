@@ -62,6 +62,10 @@
 }
 button.btn.btn-danger:active, button.btn.btn-danger.active {
     background: #f95372;
-    border-color: #e13b5a;
     font-size: 10px;
+}
+select.form-control {
+    padding-left: 8px;
+    padding: -3px;
+    margin: 5px;
 }

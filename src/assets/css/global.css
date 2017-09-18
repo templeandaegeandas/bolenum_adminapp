@@ -1,0 +1,5 @@
+button.btn.btn-danger:hover, button.btn.btn-danger:focus, button.btn.btn-danger.focus, button.btn.btn-danger:active, button.btn.btn-danger.active{
+   border-color: #f95372 !important;
+   background-color: #f95372 !important;
+   box-shadow: none;
+}

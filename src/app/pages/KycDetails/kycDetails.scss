@@ -25,9 +25,13 @@
 }
 
 
-button.btn.btn-primary.btn-with-icon:last-child{
-    margin-right: 96px;
+button.btn.btn-primary.btn-with-icons:last-child{
+    margin-right: 77px;
+    
 }
-button.btn.btn-primary.btn-with-icon {
-    margin-left: 10px;
+button.btn.btn-primary.btn-with-icons {
+    margin-left: 5px;
+}button.btn.btn-primary:hover, button.btn.btn-primary:focus, button.btn.btn-primary.focus, button.btn.btn-primary:active, button.btn.btn-primary.active {
+    background: #00abff;
+    
 }
