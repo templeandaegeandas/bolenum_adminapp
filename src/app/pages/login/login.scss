@@ -26,3 +26,24 @@ img.login {
     .glyphicon-user:before {
     content: "\e008";
 }
+span.text-danger {
+    margin-left: 102px;
+    margin-top: 1px;
+}
+button.btn.btn-default {
+    border-width: 1px;
+    color: #fff;
+    background: #c50808;
+    border-color: #c50808;
+    padding: 8px 80px;
+    border-radius: 5px;
+    box-shadow: none;
+    transform: scale(1);
+    margin-top: 4px;
+}
+
+@media only screen and (max-width: 767px) {
+  span.text-danger {
+    margin-left: 20px;
+}  
+} 

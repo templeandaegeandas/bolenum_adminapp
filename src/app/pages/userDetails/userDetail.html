@@ -34,12 +34,12 @@
                               <div class="col-sm-10">
                                  <div class="form-group">
                                     <label for="inputMobileName">Mobile Number</label>
-                                    <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputMobileName" placeholder="Mobile Name" type="text" disabled>
+                                    <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputMobileName" placeholder="Mobile Number" type="text" disabled>
                                     <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" >
                                  </div>
                                  <div class="form-group">
                                     <label for="inputFaxName">Fax Number</label>
-                                    <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputFaxName" placeholder="Fax Name" type="text" disabled>
+                                    <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputFaxName" placeholder="Fax Number" type="text" disabled>
                                     <input class="form-control" *ngIf="isEdit" id="inputFaxName" placeholder="Fax Name" type="text" >
                                  </div>
                               </div>
@@ -53,52 +53,36 @@
                      <div class="tab-inner1">
                         <div class="row">
                            <div class="col-md-12">
-                              <!--text data-->
-                              <!--<div class="col-sm-6 marg0">
-                                 <div class="notification">
-                                    <div class="col-md-12">
-                                       <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
-                                    </div>
-                                    <div class="col-md-12 msg-box">
-                                       <div class="form-group">
-                                          <textarea class="form-control" placeholder="Message"></textarea>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>-->
                               <div class="row">
                                  <div class="col-md-6">
                                     <div class="col-sm-10">
                                        <div class="col-md-12">
-                                       <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
+                                          <ba-picture-uploader [picture]="profile.picture" [defaultPicture]="defaultPicture" [uploaderOptions]="uploaderOptions"></ba-picture-uploader>
+                                       </div>
                                     </div>
-                                     </div>
                                  </div>
                                  <div class="col-md-6">
                                     <div class="col-sm-10">
-                                        <div class="form-group">
-                                        <label for="inputFirstName">First Name</label>  
-                                        <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputFirstName" placeholder="First Name" type="text" disabled>
-                                         <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" >
-                                         </div>
+                                       <div class="form-group">
+                                          <label for="inputFirstName">First Name</label>  
+                                          <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputFirstName" placeholder="First Name" type="text" disabled>
+                                          <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" >
+                                       </div>
                                        <div class="form-group">
                                           <label for="inputMobileName">Name of Identity</label>
                                           <input class="form-control" *ngIf="!isEdit" (keydown.enter)="isEdit=false" id="inputMobileName" placeholder=" Name of Identity" type="text" disabled>
                                           <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" >
                                        </div>
-                                     </div>
-                                 </div>
-                                 <div class="col-md-12 actionBtn text-right">
-                                         <div class="ss">
-                                    <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Approve</button>
-                                    <button class="btn btn-primary btn-with-icon" (click)="isEdit=false" type="button">DisApprove</button>
                                     </div>
-                                </div>
+                                    <div class="col-md-6 actionBtn text-right">
+                                       <button class="btn btn-primary btn-with-iconss"  (click)="isEdit=true" type="button">Approve</button>
+                                       <button class="btn btn-primary btn-with-iconss" (click)="isEdit=false" type="button">DisApprove</button>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                    </div>
                   </div>
                </p-tabPanel>
                <p-tabPanel header="Order Book">
@@ -106,44 +90,44 @@
                      <div class="tab-inner1">
                         <div class="row">
                            <div class="col-md-12 ">
-                               <div class="col-md-6">
-                              <div class="col-sm-10">
-                                  <div style="overflow-x: auto">
-                                  <table class="table table-bordered table table-hover">
-                              <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Price(BTC)</th>
-                                    <th>Amount(ETH)</th>
-                                    <th>Total(BTC)</th>
-                                    <th>Rate/Stop</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
-                               </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>Buy</td>
-                                    <td>0.287819</td>
-                                    <td>0.331211</td>
-                                    <td>0.331211</td>
-                                    <td>0.331211</td>
-                                    <td>05/1/2017</td>
-                                    <td>Cancel</td>
-                                 </tr>
-                                 <tr>
-                                    <td>Sell</td>
-                                    <td>0.287819</td>
-                                    <td>0.331211</td>
-                                    <td>0.331211</td>
-                                    <td>0.331211</td>
-                                    <td>05/1/2017</td>
-                                     <td>Cancel</td>
-                                 </tr>
-                                <tbody>
-                              </table>
+                              <div class="col-md-6">
+                                 <div class="col-sm-10">
+                                    <div class="tab-table">
+                                       <table class="table table-bordered table table-hover">
+                                          <thead>
+                                             <tr>
+                                                <th>Type</th>
+                                                <th>Price(BTC)</th>
+                                                <th>Amount(ETH)</th>
+                                                <th>Total(BTC)</th>
+                                                <th>Rate/Stop</th>
+                                                <th>Date</th>
+                                                <th>Action</th>
+                                          </thead>
+                                          <tbody>
+                                             <tr>
+                                                <td>Buy</td>
+                                                <td>0.287819</td>
+                                                <td>0.331211</td>
+                                                <td>0.331211</td>
+                                                <td>0.331211</td>
+                                                <td>05/1/2017</td>
+                                                <td>Cancel</td>
+                                             </tr>
+                                             <tr>
+                                                <td>Sell</td>
+                                                <td>0.287819</td>
+                                                <td>0.331211</td>
+                                                <td>0.331211</td>
+                                                <td>0.331211</td>
+                                                <td>05/1/2017</td>
+                                                <td>Cancel</td>
+                                             </tr>
+                                          <tbody>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
-                              </div>
-                             </div>
                            </div>
                         </div>
                      </div>

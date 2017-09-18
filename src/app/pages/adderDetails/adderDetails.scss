@@ -24,8 +24,11 @@
     padding-bottom: 20px;
 }
 button.btn.btn-primary.btn-with-icon:last-child{
-    margin-right: 96px;
+    margin-right: -152px;
 }
 button.btn.btn-primary.btn-with-icon {
     margin-left: 10px;
+}
+textarea.form-control {
+    margin: 2px;
 }

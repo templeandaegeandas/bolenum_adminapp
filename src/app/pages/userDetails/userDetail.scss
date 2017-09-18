@@ -31,3 +31,21 @@ button.btn.btn-primary.btn-with-icon:last-child{
 button.btn.btn-primary.btn-with-icon {
     margin-left: 10px;
 }
+button.btn.btn-primary.btn-with-iconss:last-child{
+    margin-right: -151px;
+}
+
+button.btn.btn-primary.btn-with-iconss {
+    margin-left: 5px;
+}button.btn.btn-primary:hover, button.btn.btn-primary:focus, button.btn.btn-primary.focus, button.btn.btn-primary:active, button.btn.btn-primary.active {
+    background: #00abff;
+    
+}
+
+
+@media screen and (max-width: 767px) {
+    .tab-table {
+    overflow-x: auto;
+}
+}
+    
