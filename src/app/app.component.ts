@@ -5,7 +5,7 @@ import { GlobalState } from './global.state';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { BaThemeConfig } from './theme/theme.config';
 import { layoutPaths } from './theme/theme.constants';
-
+import { RouterModule, Routes, Router } from '@angular/router';
 /*
  * App Component
  * Top Level Component
@@ -25,10 +25,11 @@ export class App {
   isMenuCollapsed: boolean = false;
 
   constructor(private _state: GlobalState,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner,
-              private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig) {
+    private _imageLoader: BaImageLoaderService,
+    private _spinner: BaThemeSpinner,
+    private viewContainerRef: ViewContainerRef,
+    private themeConfig: BaThemeConfig,
+    private router: Router) {
 
     themeConfig.config();
 
@@ -37,6 +38,7 @@ export class App {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+    this.isUserLoggedin();
   }
 
   public ngAfterViewInit(): void {
@@ -49,6 +51,14 @@ export class App {
   private _loadImages(): void {
     // register some loaders
     BaThemePreloader.registerLoader(this._imageLoader.load('assets/img/sky-bg.jpg'));
+  }
+
+  isUserLoggedin() {
+    if (localStorage.getItem("token") != null) {
+      this.router.navigate(['dashboard']);
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
 }

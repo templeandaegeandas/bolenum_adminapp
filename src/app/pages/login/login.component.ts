@@ -28,6 +28,10 @@ export class LoginComponent {
 
     this.email = this.form.controls['email'];
     this.password = this.form.controls['password'];
+
+    if (localStorage.getItem("token") != null) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   public onSubmit(values: Object): void {
@@ -39,7 +43,6 @@ export class LoginComponent {
   }
 
   loginUser(form) {
-    console.log(form);
     if (form.invalid) {
       return;
     }

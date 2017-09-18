@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                
+
 
                 <table class="table table-striped" [mfData]="data | tableFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
@@ -63,17 +63,17 @@
                                 <mfDefaultSorter [by]="sortByWordLength">City</mfDefaultSorter>
                             </th>
                         </tr>
-                        
+
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of mf.data">
                             <td>
                                 <button (click)="navigaeToUserDeatils()"    class="btn btn-danger">U-Detail</button>
                             </td>
-                            <td>{{item.name}}</td>
-                            <td>{{item.email}}</td>
-                            <td class="text-right">{{item.age}}</td>
-                            <td>{{item.city | uppercase}}</td>
+                            <td>{{item.firstName}} {{item.middleName}} {{item.lastName}}</td>
+                            <td>{{item.emailId}}</td>
+                            <td class="text-right">{{item.dob}}</td>
+                            <td>{{item.address | uppercase}}</td>
                         </tr>
                     </tbody>
                     <tfoot>
