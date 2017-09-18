@@ -3,3 +3,6 @@ button.btn.btn-danger:hover, button.btn.btn-danger:focus, button.btn.btn-danger.
    background-color: #f95372 !important;
    box-shadow: none;
 }
+h1.al-title {
+    margin-left: -15px;
+}
