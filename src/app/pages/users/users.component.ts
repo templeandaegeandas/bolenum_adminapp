@@ -17,9 +17,18 @@ export class Users {
     sortOrder = "asc";
 
     constructor(private service: UsersService, private router: Router) {
-    this.service.getDataTable().then((data) => {
-      this.data = data;
-    });
+      this.getUsersList();
+    // this.service.getDataTable().then((data) => {
+    //   this.data = data;
+    // });
+  }
+
+  getUsersList() {
+    this.service.getUsersList().subscribe(success => {
+      this.data = success.data.content;
+    },error => {
+      console.log(error);
+    })
   }
 
     toInt(num: string) {

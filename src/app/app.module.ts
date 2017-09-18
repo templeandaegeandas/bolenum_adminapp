@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrModule } from 'toastr-ng2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClient} from './app.client.interceptor';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,7 +24,8 @@ import { PagesModule } from './pages/pages.module';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  HttpClient
 ];
 
 export type StoreType = {
