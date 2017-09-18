@@ -10,7 +10,7 @@ export const routes: Routes = [
   {
     path: 'login',
     loadChildren: 'app/pages/login/login.module#LoginModule'
-    
+
   },
     { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
@@ -29,7 +29,7 @@ export const routes: Routes = [
       { path: 'pendingKyc', loadChildren: './pendingKyc/pendingKyc.module#PendingKycModule' },
       { path: 'addErc20', loadChildren: './addErc20/addErc20.module#AddErc20Module' },
       { path: 'kycDetails', loadChildren: './KycDetails/kycDetails.module#kycDetailsModule' },
-      { path: 'userdetails', loadChildren: './userDetails/userDetail.module#UserDetailModule' },
+      { path: 'userdetails/:userId', loadChildren: './userDetails/userDetail.module#UserDetailModule' },
       { path: 'orderdetails', loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule' },
       { path: 'reply', loadChildren: './reply/reply.module#ReplyModule' },
       { path: 'adderdetails', loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule' },
@@ -40,8 +40,8 @@ export const routes: Routes = [
     //   { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
     //   { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
     //   { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
-    // 
-    ]  
+    //
+    ]
   }
 ];
 

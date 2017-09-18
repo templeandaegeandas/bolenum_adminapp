@@ -38,8 +38,8 @@ export class Users {
     sortByWordLength = (a: any) => {
         return a.city.length;
     }
-  navigaeToUserDeatils()
+  userDeatils(userId)
   {
-    this.router.navigate(['/pages/userdetails'])
+    this.router.navigate(['/pages/userdetails/'+userId])
   }
 }
