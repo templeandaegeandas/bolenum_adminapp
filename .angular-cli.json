@@ -19,6 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/toastr-ng2/toastr.css",
         "../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface.scss",
         "../node_modules/normalize.css/normalize.css",
         "../node_modules/font-awesome/scss/font-awesome.scss",
@@ -29,7 +30,7 @@
         "../node_modules/fullcalendar/dist/fullcalendar.css",
         "../node_modules/handsontable/dist/handsontable.full.css",
         "../node_modules/ng2-slim-loading-bar/style.css",
-        "../node_modules/primeng/resources/themes/omega/theme.css",     
+        "../node_modules/primeng/resources/themes/omega/theme.css",
          "../node_modules/primeng/resources/primeng.min.css",
         "app/theme/theme.scss",
         "styles.scss"
