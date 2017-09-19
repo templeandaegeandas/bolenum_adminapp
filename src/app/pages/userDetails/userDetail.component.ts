@@ -4,13 +4,13 @@ import { Router, ActivatedRoute  } from '@angular/router';
 import { UserDetailsService } from './userDetail.service';
 import { UserDetailEntity } from './entity/user.detail';
 
-
 @Component({
   selector: 'userDetail',
   styleUrls: ['./userDetail.scss'],
   templateUrl: './userDetail.html',
   providers: [UserDetailsService]
 })
+
 export class UserDetail implements OnInit {
 userId: Number;
 user = new UserDetailEntity("","","",0);
