@@ -13,7 +13,7 @@ export class UserDetailsService {
   }
 
   approveKyc(userId: Number) {
-    return this.http.put('api/v1/user/kyc/approve/' + userId, '')
+    return this.http.put('api/v1/kyc/approve/' + userId, '')
       .map(res => res.json())
   }
 

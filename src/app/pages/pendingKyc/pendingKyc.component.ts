@@ -16,15 +16,20 @@ export class PendingKyc {
   totalElements;
   currentPage = 1;
   pageSize = 10;
-  sortBy = 'uploadedDate';
-  sortOrder = 'desc';
+  sortBy = "userKyc.uploadedDate";
+  sortOrder = "desc";
+  searchData = "";
 
     constructor(private service: PendingKycService, private router: Router) {
     this.getPendingKycList();
   }
 
   getPendingKycList() {
-    this.service.getPendingKycList(this.currentPage, this.pageSize).subscribe(success => {
+    this.service.getPendingKycList(this.currentPage,
+    this.pageSize,
+    this.sortBy,
+    this.sortOrder,
+    this.searchData).subscribe(success => {
       this.data = success.data.content;
       this.totalElements = success.data.totalElements;
       this.start = (this.currentPage - 1) * this.pageSize + 1;
@@ -32,6 +37,11 @@ export class PendingKyc {
     }, error => {
       console.log(error);
     })
+  }
+
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getPendingKycList();
   }
 
   navigaeToKycDeatils(userId) {

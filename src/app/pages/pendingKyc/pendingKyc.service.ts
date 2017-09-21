@@ -8,9 +8,12 @@ export class PendingKycService {
   constructor(private http: HttpClient) {
 
   }
-  getPendingKycList(currentPage: number, pageSize: number) {
+  getPendingKycList(currentPage: number, pageSize: number, sortBy: String, sortOrder: String, searchData: String) {
     this.pageNumber = currentPage - 1;
-    return this.http.get('api/v1/admin/list/kyc?pageNumber=' + this.pageNumber + '&pageSize=' + pageSize)
+    return this.http.get('api/v1/list/kyc?pageNumber='
+    + this.pageNumber + '&pageSize='
+    + pageSize + '&sortBy='
+    + sortBy + '&sortOrder=' + sortOrder + '&searchData=' + searchData)
       .map(res => res.json())
   }
 
