@@ -10,26 +10,31 @@ import { Router } from '@angular/router';
 })
 export class PendingKyc {
 
-   data;
-    filterQuery = '';
-    rowsOnPage = 10;
-    sortBy = 'email';
-    sortOrder = 'asc';
+  data;
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy = 'uploadedDate';
+  sortOrder = 'desc';
 
     constructor(private service: PendingKycService, private router: Router) {
-    this.service.getDataTable().then((data) => {
-      this.data = data;
-    });
+    this.getPendingKycList();
   }
 
-    toInt(num: string) {
-        return +num;
-    }
+  getPendingKycList() {
+    this.service.getPendingKycList(this.currentPage, this.pageSize).subscribe(success => {
+      this.data = success.data.content;
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    }, error => {
+      console.log(error);
+    })
+  }
 
-    sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-  navigaeToKycDeatils() {
-    this.router.navigate(['/pages/kycDetails']);
+  navigaeToKycDeatils(userId) {
+    this.router.navigate(['/pages/kycDetails/' + userId]);
   }
 }

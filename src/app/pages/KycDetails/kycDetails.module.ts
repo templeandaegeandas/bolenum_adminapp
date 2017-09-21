@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { KycDetails } from './kycDetails.component';
@@ -10,7 +11,7 @@ import { routing } from './kycDetails.routing';
     NgaModule,
     routing,
     TabViewModule,
-   
+    FormsModule
   ],
   declarations: [
  KycDetails,

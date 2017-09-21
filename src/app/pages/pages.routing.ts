@@ -27,7 +27,7 @@ export const routes: Routes = [
       { path: 'usersQueries', loadChildren: './usersQueries/usersQueries.module#UsersQueriesModule' },
       { path: 'pendingKyc', loadChildren: './pendingKyc/pendingKyc.module#PendingKycModule' },
       { path: 'addErc20', loadChildren: './addErc20/addErc20.module#AddErc20Module' },
-      { path: 'kycDetails', loadChildren: './KycDetails/kycDetails.module#kycDetailsModule' },
+      { path: 'kycDetails/:userId', loadChildren: './KycDetails/kycDetails.module#kycDetailsModule' },
       { path: 'userdetails/:userId', loadChildren: './userDetails/userDetail.module#UserDetailModule' },
       { path: 'orderdetails', loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule' },
       { path: 'reply', loadChildren: './reply/reply.module#ReplyModule' },

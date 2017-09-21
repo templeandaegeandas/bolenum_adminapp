@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
-import { Router, ActivatedRoute  } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserDetailsService } from './userDetail.service';
 import { UserDetailEntity } from './entity/user.detail';
 
@@ -12,45 +12,39 @@ import { UserDetailEntity } from './entity/user.detail';
 })
 
 export class UserDetail implements OnInit {
-userId: Number;
-user = new UserDetailEntity("","","",0);
-document: String;
-documentStatus: String;
-isVerified: Boolean;
-documentType: String;
-defaultPicture: String;
-profile: any= {
-  picture: null
-};
-  constructor(private router: ActivatedRoute, private userDetailsService: UserDetailsService) {
-
-  }
+  userId: Number;
+  user = new UserDetailEntity("", "", "", 0);
+  document: String;
+  documentStatus: String;
+  isVerified: Boolean;
+  documentType: String;
+  defaultPicture: String;
+  picture: String
+  constructor(private router: ActivatedRoute, private userDetailsService: UserDetailsService) { }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
-       this.userId = +params['userId'];
+      this.userId = +params['userId'];
     });
     this.getUserDetailsById();
   }
 
   getUserDetailsById() {
     this.userDetailsService.getUsersDetails(this.userId).subscribe(success => {
-      if(success.data.userKyc !== null) {
+      if (success.data.userKyc !== null) {
         this.document = success.data.userKyc.document;
         this.documentStatus = success.data.userKyc.documentStatus;
         this.isVerified = success.data.userKyc.isVerified;
         this.documentType = success.data.userKyc.documentType;
-        this.profile = {
-          picture: 'http://localhost:3050/static/'+this.document,
-        };
+        this.picture = 'http://localhost:3050/static/' + this.document;
       }
 
       this.user = new UserDetailEntity(success.data.firstName,
         success.data.lastName,
         success.data.emailId,
         success.data.mobileNumber
-        );
-        this.defaultPicture = 'assets/img/theme/no-photo.png';
+      );
+      this.defaultPicture = 'assets/img/theme/no-photo.png';
     }, error => {
       console.log(error)
     })
@@ -58,7 +52,7 @@ profile: any= {
 
   approveKyc() {
     this.userDetailsService.approveKyc(this.userId).subscribe(success => {
-      console.log(success)
+      this.ngOnInit();
     }, error => {
       console.log(error)
     })
