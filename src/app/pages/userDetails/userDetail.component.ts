@@ -14,6 +14,14 @@ import { UserDetailEntity } from './entity/user.detail';
 export class UserDetail implements OnInit {
 userId: Number;
 user = new UserDetailEntity("","","",0);
+document: String;
+documentStatus: String;
+isVerified: Boolean;
+documentType: String;
+defaultPicture: String;
+profile: any= {
+  picture: null
+};
   constructor(private router: ActivatedRoute, private userDetailsService: UserDetailsService) {
 
   }
@@ -27,23 +35,44 @@ user = new UserDetailEntity("","","",0);
 
   getUserDetailsById() {
     this.userDetailsService.getUsersDetails(this.userId).subscribe(success => {
-      this.user = new UserDetailEntity(success.data.firstName,success.data.lastName,success.data.emailId,success.data.mobileNumber);
-    },error => {
+      if(success.data.userKyc !== null) {
+        this.document = success.data.userKyc.document;
+        this.documentStatus = success.data.userKyc.documentStatus;
+        this.isVerified = success.data.userKyc.isVerified;
+        this.documentType = success.data.userKyc.documentType;
+        this.profile = {
+          picture: 'http://localhost:3050/static/'+this.document,
+        };
+      }
+
+      this.user = new UserDetailEntity(success.data.firstName,
+        success.data.lastName,
+        success.data.emailId,
+        success.data.mobileNumber
+        );
+        this.defaultPicture = 'assets/img/theme/no-photo.png';
+    }, error => {
       console.log(error)
     })
   }
 
-   public defaultPicture = 'assets/img/theme/no-photo.png';
-  public profile:any = {
-    picture: 'assets/img/app/profile/Nasta.png'
-  };
-  public uploaderOptions:NgUploaderOptions = {
-    // url: 'http://website.com/upload'
-    url: '',
-  };
+  approveKyc() {
+    this.userDetailsService.approveKyc(this.userId).subscribe(success => {
+      console.log(success)
+    }, error => {
+      console.log(error)
+    })
+  }
 
-  public fileUploaderOptions:NgUploaderOptions = {
-    // url: 'http://website.com/upload'
-    url: '',
-  };
+  //  public defaultPicture = 'assets/img/theme/no-photo.png';
+  // public
+  // public uploaderOptions:NgUploaderOptions = {
+  //   // url: 'http://website.com/upload'
+  //   url: '',
+  // };
+  //
+  // public fileUploaderOptions:NgUploaderOptions = {
+  //   // url: 'http://website.com/upload'
+  //   url: '',
+  // };
 }

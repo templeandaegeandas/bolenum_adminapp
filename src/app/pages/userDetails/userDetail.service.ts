@@ -7,8 +7,14 @@ export class UserDetailsService {
 
   constructor(private http: HttpClient) {}
 
-  getUsersDetails(userId) {
-    return this.http.get('api/v1/admin/user/'+userId)
+  getUsersDetails(userId: Number) {
+    return this.http.get('api/v1/admin/user/' + userId)
       .map(res => res.json())
   }
+
+  approveKyc(userId: Number) {
+    return this.http.put('api/v1/user/kyc/approve/' + userId, '')
+      .map(res => res.json())
+  }
+
 }

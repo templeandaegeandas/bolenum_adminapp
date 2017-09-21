@@ -11,11 +11,11 @@ import { Router } from '@angular/router';
 export class Users {
 
    data;
-   start = 1;
+   start;
    end;
    totalElements;
-   maxSize = 5;
    currentPage = 1;
+   pageSize = 10;
   //   filterQuery = "";
   //   rowsOnPage = 10;
   //   sortBy = "email";
@@ -29,13 +29,19 @@ export class Users {
   }
 
   getUsersList() {
-    this.service.getUsersList().subscribe(success => {
+    this.service.getUsersList(this.currentPage, this.pageSize).subscribe(success => {
       this.data = success.data.content;
       this.end = success.data.numberOfElements;
       this.totalElements = success.data.totalElements;
-    },error => {
+      this.start = (this.currentPage - 1) * 10 + 1;
+    }, error => {
       console.log(error);
     })
+  }
+
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getUsersList();
   }
 
     // toInt(num: string) {
@@ -45,8 +51,7 @@ export class Users {
     // sortByWordLength = (a: any) => {
     //     return a.city.length;
     // }
-  userDeatils(userId)
-  {
-    this.router.navigate(['/pages/userdetails/'+userId])
+  userDeatils(userId) {
+    this.router.navigate(['/pages/userdetails/' + userId])
   }
 }
