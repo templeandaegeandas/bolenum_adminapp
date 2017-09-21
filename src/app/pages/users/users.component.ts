@@ -10,21 +10,27 @@ import { Router } from '@angular/router';
 })
 export class Users {
 
-   data;
-   start;
-   end;
-   totalElements;
-   currentPage = 1;
-   pageSize = 10;
-    sortBy = "email";
-    sortOrder = "desc";
+  data;
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy = "createdOn";
+  sortOrder = "desc";
+  searchData = "";
 
-    constructor(private service: UsersService, private router: Router) {
-      this.getUsersList();
+  constructor(private service: UsersService, private router: Router) {
+    this.getUsersList();
   }
 
   getUsersList() {
-    this.service.getUsersList(this.currentPage, this.pageSize).subscribe(success => {
+    this.service.getUsersList(
+      this.currentPage,
+      this.pageSize,
+      this.sortBy,
+      this.sortOrder,
+      this.searchData).subscribe(success => {
       this.data = success.data.content;
       this.totalElements = success.data.totalElements;
       this.start = (this.currentPage - 1) * this.pageSize + 1;

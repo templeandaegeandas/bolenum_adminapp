@@ -7,9 +7,12 @@ export class UsersService {
   pageNumber: number;
   constructor(private http: HttpClient) { }
 
-  getUsersList(currentPage: number, pageSize: number) {
+  getUsersList(currentPage: number, pageSize: number, sortBy: String, sortOrder: String, searchData: String) {
     this.pageNumber = currentPage - 1;
-    return this.http.get('api/v1/admin/list/users?pageNumber=' + this.pageNumber + '&pageSize=' + pageSize)
+    return this.http.get('api/v1/admin/list/users?pageNumber='
+    + this.pageNumber + '&pageSize='
+    + pageSize + '&sortBy='
+    + sortBy + '&sortOrder=' + sortOrder + '&searchData=' + searchData)
       .map(res => res.json())
   }
 }

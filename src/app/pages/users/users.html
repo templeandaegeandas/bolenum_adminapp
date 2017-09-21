@@ -1,8 +1,5 @@
 <div class="widgets">
-  <ba-card title="Basic Example" *ngIf="totalElements==0" baCardClass="with-scroll" class="data-table-container">
-    No User
-  </ba-card>
-  <ba-card title="Basic Example" *ngIf="totalElements!=0" baCardClass="with-scroll" class="data-table-container">
+  <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
     <div class="row">
       <div class="col-sm-4">
         <div class="row">
@@ -11,17 +8,16 @@
         <div class="row">
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortBy">
-                            <option ngValue="name">Name</option>
-                            <option ngValue="email">Email</option>
-                            <option ngValue="dob">DOB</option>
-                            <option [ngValue]="sortByWordLength">City</option>
+              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getUsersList($event)">
+                            <option ngValue="firstName">Name</option>
+                            <option ngValue="emailId">Email</option>
+                            <option ngValue="createdOn">Created On</option>
                         </select>
             </div>
           </div>
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortOrder">
+              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getUsersList($event)">
                             <option ngValue="asc">Ascending</option>
                             <option ngValue="desc">Descending</option>
                         </select>
@@ -36,10 +32,11 @@
           <tr>
             <th colspan="5">
               <h6 class="text-center"> Filter By Name</h6>
-              <input class="form-control" [(ngModel)]="filterQuery" />
+              <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getUsersList($event)" />
             </th>
           </tr>
-          <tr>
+          <tr *ngIf="totalElements==0">No User!</tr>
+          <tr *ngIf="totalElements!=0">
             <th style="width: 10%"></th>
             <th style="width: 20%">Name</th>
             <th style="width: 40%">Email</th>
@@ -48,7 +45,7 @@
           </tr>
 
         </thead>
-        <tbody>
+        <tbody *ngIf="totalElements!=0">
           <tr *ngFor="let item of data | paginate: { itemsPerPage: pageSize,
                                                      currentPage: currentPage,
                                                      totalItems: totalElements }">
