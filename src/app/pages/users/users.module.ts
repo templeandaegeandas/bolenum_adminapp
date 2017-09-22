@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppTranslationModule } from '../../app.translation.module';
 import { NgaModule } from '../../theme/nga.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { Users } from './users.component';
 import { routing } from './users.routing';
@@ -21,6 +22,7 @@ import { DataTableModule } from "angular2-datatable";
     routing,
      Ng2SmartTableModule,
     DataTableModule,
+    NgxPaginationModule
   ],
   declarations: [
     Users,

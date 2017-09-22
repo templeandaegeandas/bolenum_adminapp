@@ -10,36 +10,42 @@ import { Router } from '@angular/router';
 })
 export class Users {
 
-   data;
-    filterQuery = "";
-    rowsOnPage = 10;
-    sortBy = "email";
-    sortOrder = "asc";
+  data;
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy = "createdOn";
+  sortOrder = "desc";
+  searchData = "";
 
-    constructor(private service: UsersService, private router: Router) {
-      this.getUsersList();
-    // this.service.getDataTable().then((data) => {
-    //   this.data = data;
-    // });
+  constructor(private service: UsersService, private router: Router) {
+    this.getUsersList();
   }
 
   getUsersList() {
-    this.service.getUsersList().subscribe(success => {
+    this.service.getUsersList(
+      this.currentPage,
+      this.pageSize,
+      this.sortBy,
+      this.sortOrder,
+      this.searchData).subscribe(success => {
       this.data = success.data.content;
-    },error => {
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    }, error => {
       console.log(error);
     })
   }
 
-    toInt(num: string) {
-        return +num;
-    }
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getUsersList();
+  }
 
-    sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-  navigaeToUserDeatils()
-  {
-    this.router.navigate(['/pages/userdetails'])
+  userDeatils(userId) {
+    this.router.navigate(['/pages/userdetails/' + userId])
   }
 }

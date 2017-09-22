@@ -7,7 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrModule } from 'toastr-ng2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClient} from './app.client.interceptor';
+import { HttpClient } from './app.client.interceptor';
+import { NgxPaginationModule } from 'ngx-pagination';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -53,6 +54,7 @@ export type StoreType = {
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     PagesModule,
+    NgxPaginationModule,
     routing
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

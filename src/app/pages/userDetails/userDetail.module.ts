@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { UserDetail } from './userDetail.component';
@@ -10,7 +11,8 @@ import { routing } from './userDetail.routing';
     NgaModule,
     routing,
     TabViewModule,
-   
+    FormsModule
+
   ],
   declarations: [
     UserDetail,
