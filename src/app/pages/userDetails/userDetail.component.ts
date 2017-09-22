@@ -5,13 +5,16 @@ import { NgUploaderOptions } from 'ngx-uploader';
 @Component({
   selector: 'userDetail',
   styleUrls: ['./userDetail.scss'],
-  templateUrl: './userDetail.html'
+  templateUrl: './userDetail.html',
 })
 export class UserDetail {
-  
+  isApprove= true;
+  isDisapprove= false;
+  isEdit= false;
+
   constructor() {}
    public defaultPicture = 'assets/img/theme/no-photo.png';
-  public profile:any = {
+  public profile: any = {
     picture: 'assets/img/app/profile/Nasta.png'
   };
   public uploaderOptions:NgUploaderOptions = {
