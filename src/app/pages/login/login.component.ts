@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'toastr-ng2';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
+import { Ng2DeviceService } from 'ng2-device-detector';
 
 import { LoginService } from './login.service';
 import { Login } from './entity/login';
@@ -14,42 +14,44 @@ import { Login } from './entity/login';
 })
 export class LoginComponent {
 
-  public form: FormGroup;
-  public email: AbstractControl;
-  public password: AbstractControl;
-  public submitted: boolean = false;
-  login = new Login("", "");
+  submitted: boolean = false;
+  login = new Login('', '');
+  returnUrl: String;
+  ip: String;
+  deviceInfo: any;
+  constructor(
+    private loginService: LoginService,
+    private toastrService: ToastrService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private deviceService: Ng2DeviceService) {
 
-  constructor(fb: FormBuilder, private loginService: LoginService, private toastrService: ToastrService, private router: Router) {
-    this.form = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+    this.activatedRoute
+      .queryParams
+      .subscribe(params => {
+        this.returnUrl = params['returnUrl'];
+      });
+    if (this.returnUrl == null || this.returnUrl == 'undefined' || this.returnUrl == '') {
+      this.returnUrl = '/pages/dashboard';
+    }
+    this.loginService.getUserIpAddress().subscribe(success => {
+      this.ip = success.ip;
     });
-
-    this.email = this.form.controls['email'];
-    this.password = this.form.controls['password'];
-
-    if (localStorage.getItem("token") != null) {
-      this.router.navigate(['dashboard']);
-    }
-  }
-
-  public onSubmit(values: Object): void {
-    this.submitted = true;
-    if (this.form.valid) {
-      // your code goes here
-      // console.log(values);
-    }
+    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/pages/dashboard';
   }
 
   loginUser(form) {
     if (form.invalid) {
       return;
     }
+    this.deviceInfo = this.deviceService.getDeviceInfo();
+    this.login.setIpAddress(this.ip);
+    this.login.setBrowserName(this.deviceInfo.browser);
+    this.login.setClientOsName(this.deviceInfo.os);
+    this.login.setRole('ROLE_ADMIN');
     this.loginService.logIn(this.login).subscribe(success => {
-      localStorage.setItem("token", success.data.token);
-      this.toastrService.success(success.message, 'Success!');
-      this.router.navigate(['dashboard']);
+      localStorage.setItem('token', success.data.token);
+      this.router.navigate([this.returnUrl]);
     }, error => {
       this.toastrService.error(error.json().message, 'Error!');
     })

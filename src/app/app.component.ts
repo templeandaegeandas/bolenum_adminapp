@@ -38,7 +38,7 @@ export class App {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
-    this.isUserLoggedin();
+    // this.isUserLoggedin();
   }
 
   public ngAfterViewInit(): void {
@@ -53,12 +53,12 @@ export class App {
     BaThemePreloader.registerLoader(this._imageLoader.load('assets/img/sky-bg.jpg'));
   }
 
-  isUserLoggedin() {
-    if (localStorage.getItem("token") != null) {
-      this.router.navigate(['dashboard']);
-    } else {
-      this.router.navigate(['login']);
-    }
-  }
+  // isUserLoggedin() {
+  //   if (localStorage.getItem("token") != null) {
+  //     this.router.navigate(['dashboard']);
+  //   } else {
+  //     this.router.navigate(['login']);
+  //   }
+  // }
 
 }
