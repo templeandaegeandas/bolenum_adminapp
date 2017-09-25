@@ -681,3 +681,8 @@ label.custom-checkbox {
     }
   }
 }
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #ddd;
+    color:  rgba(11, 10, 10, 0.57);
+    border-color: #ccc;
+}

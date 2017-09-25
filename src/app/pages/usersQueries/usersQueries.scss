@@ -33,6 +33,13 @@
 .dashboard .progress-bar{
   height: 6px;
 }
+.table{
+  border:1px solid #ccc;
+  margin-top: 20px;
+}
+.pagination > li > a, .pagination > li > span{
+  border: 1px solid #ddd;
+}
 .inventryIcon{
   border-radius: 50%;
   font-size: 16px;
@@ -53,10 +60,3 @@
   }
 }
 
-.table{
-  border:1px solid #ccc;
-  margin-top: 20px;
-}
-.pagination > li > a, .pagination > li > span{
-  border: 1px solid #ddd;
-}
