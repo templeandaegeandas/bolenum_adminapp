@@ -6,8 +6,10 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrModule } from 'toastr-ng2';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from './app.client.interceptor';
+
 import { NgxPaginationModule } from 'ngx-pagination';
 /*
  * Platform and Environment providers/directives/pipes
@@ -51,6 +53,7 @@ export type StoreType = {
     ReactiveFormsModule,
     NgaModule.forRoot(),
     NgbModule.forRoot(),
+    ModalModule.forRoot(),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     PagesModule,

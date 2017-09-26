@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserDetailsService } from './userDetail.service';
 import { UserDetailEntity } from './entity/user.detail';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+
+
 
 @Component({
   selector: 'userDetail',
@@ -20,6 +23,9 @@ export class UserDetail implements OnInit {
   documentType: String;
   defaultPicture: String;
   picture: String
+
+  @ViewChild('addPopup') public addPopup:ModalDirective;
+
   constructor(private router: ActivatedRoute, private userDetailsService: UserDetailsService) { }
 
   ngOnInit() {
@@ -51,12 +57,24 @@ export class UserDetail implements OnInit {
   }
 
   approveKyc() {
+    this.addPopupOpen();
     this.userDetailsService.approveKyc(this.userId).subscribe(success => {
       this.ngOnInit();
     }, error => {
       console.log(error)
     })
   }
+
+
+  addPopupOpen(){    
+    this.addPopup.show();  
+  } 
+   addPopupClose(){    
+     this.addPopup.hide();  
+    }
+  // ClickButton(){
+  //   this.popup.show();
+  // }
 
   //  public defaultPicture = 'assets/img/theme/no-photo.png';
   // public

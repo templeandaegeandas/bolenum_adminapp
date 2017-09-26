@@ -13,13 +13,15 @@ import { AppTranslationModule } from '../app.translation.module';
 import { Pages } from './pages.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     AppTranslationModule,
     NgaModule,
     routing,
-    Ng2DeviceDetectorModule.forRoot()
+    Ng2DeviceDetectorModule.forRoot(),
   ],
   declarations: [
     Pages,
