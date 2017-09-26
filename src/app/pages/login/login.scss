@@ -27,8 +27,15 @@ img.login {
     content: "\e008";
 }
 span.text-danger {
-    margin-left: 102px;
-    margin-top: 1px;
+    margin-left: 18px;
+    
+}
+.auth-block a {
+    text-decoration: none;
+    outline: none;
+    transition: all 0.2s ease;
+    color: #00abff;
+    margin-right: 87px;
 }
 button.btn.btn-default {
     border-width: 1px;
@@ -40,10 +47,27 @@ button.btn.btn-default {
     box-shadow: none;
     transform: scale(1);
     margin-top: 4px;
+    margin-left:-82px;
 }
+.form-control{
+    margin-bottom: 4px;
+}
+
 
 @media only screen and (max-width: 767px) {
   span.text-danger {
     margin-left: 20px;
 }  
+button.btn.btn-default {
+    border-width: 1px;
+    color: #fff;
+    background: #c50808;
+    border-color: #c50808;
+    padding: 8px 80px;
+    border-radius: 5px;
+    box-shadow: none;
+    transform: scale(1);
+    margin-top: 4px;
+    margin-left:-1px;
+}
 } 
