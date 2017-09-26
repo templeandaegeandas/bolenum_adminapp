@@ -6,6 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { UserDetail } from './userDetail.component';
 import { TabViewModule } from 'primeng/primeng';
 import { routing } from './userDetail.routing';
+import { ImageZoomModule } from 'angular2-image-zoom';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { routing } from './userDetail.routing';
     routing,
     TabViewModule,
     ModalModule,
-    FormsModule
+    FormsModule,
+    ImageZoomModule
       ],
   declarations: [
     UserDetail,

@@ -9,7 +9,6 @@ import { ToastrModule } from 'toastr-ng2';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from './app.client.interceptor';
-
 import { NgxPaginationModule } from 'ngx-pagination';
 /*
  * Platform and Environment providers/directives/pipes
@@ -58,7 +57,7 @@ export type StoreType = {
     BrowserAnimationsModule,
     PagesModule,
     NgxPaginationModule,
-    routing
+    routing,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS

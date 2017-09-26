@@ -17,4 +17,9 @@ export class UserDetailsService {
       .map(res => res.json())
   }
 
+  disApproveKyc(disApproveData) {
+    return this.http.put('api/v1/kyc/disapprove', disApproveData)
+      .map(res => res.json())
+  }
+
 }
