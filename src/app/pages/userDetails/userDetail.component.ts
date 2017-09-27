@@ -15,6 +15,7 @@ import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
 })
 
 export class UserDetail implements OnInit {
+  bankCustomerDetails:any;
   userId: Number;
   user = new UserDetailEntity("", "", "", 0);
   document: String;
@@ -36,6 +37,8 @@ export class UserDetail implements OnInit {
       this.userId = +params['userId'];
     });
     this.getUserDetailsById();
+    this.getBankDetails();
+    console.log("useriddddddddddddddd",this.userId);
   }
 
   getUserDetailsById() {
@@ -84,5 +87,21 @@ export class UserDetail implements OnInit {
   }
   addPopupClose() {
     this.addPopup.hide();
+  }
+
+  getBankDetails( ) {
+    this.userDetailsService.getBankDetails(this.userId).subscribe(successData => {
+      let userBankData = successData.data;
+      this.bankCustomerDetails = userBankData;
+      console.log("userdata >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.bankCustomerDetails);
+      
+   
+
+    }, errorData => {
+
+    })
+
+ 
+    
   }
 }
