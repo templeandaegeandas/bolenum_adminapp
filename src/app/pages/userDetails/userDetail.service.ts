@@ -22,4 +22,9 @@ export class UserDetailsService {
       .map(res => res.json())
   }
 
+  getBankDetails(userId ) {
+    return this.http.get('api/v1/user/admin/bankdetails?userId=' + userId )
+    .map(res => res.json())
+  }
+
 }
