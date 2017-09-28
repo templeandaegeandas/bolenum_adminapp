@@ -5,6 +5,7 @@ import { UserDetailsService } from '../userDetails/userDetail.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'toastr-ng2';
 import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class KycDetails implements OnInit {
   kycDisapprove = new KycDisapproveEntity();
   @ViewChild('addPopup') public addPopup: ModalDirective;
   constructor(
-    private router: ActivatedRoute, 
+    private router: ActivatedRoute,
     private userDetailsService: UserDetailsService,
     private toastrService: ToastrService) { }
 
@@ -41,7 +42,7 @@ export class KycDetails implements OnInit {
       this.documentStatus = success.data.userKyc.documentStatus;
       this.isVerified = success.data.userKyc.isVerified;
       this.documentType = success.data.userKyc.documentType;
-      this.picture = 'http://localhost:3050/static/' + this.document;
+      this.picture = environment.documentUrl + this.document;
       this.defaultPicture = 'assets/img/theme/no-photo.png';
     }, error => {
       console.log(error)
