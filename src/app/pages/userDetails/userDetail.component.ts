@@ -6,6 +6,7 @@ import { UserDetailEntity } from './entity/user.detail';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'toastr-ng2';
 import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'userDetail',
@@ -32,6 +33,7 @@ export class UserDetail implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
+    console.log(environment)
     this.router.params.subscribe(params => {
       this.userId = +params['userId'];
     });
@@ -46,7 +48,7 @@ export class UserDetail implements OnInit {
         this.isVerified = success.data.userKyc.isVerified;
         this.documentType = success.data.userKyc.documentType;
         if (this.document != null) {
-          this.picture = 'http://localhost:3050/static/documents/' + this.document;
+          this.picture = environment.documentUrl + this.document;
         }
       }
       this.user = new UserDetailEntity(success.data.firstName,
