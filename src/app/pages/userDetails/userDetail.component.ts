@@ -18,7 +18,7 @@ import { environment } from '../../../environments/environment';
 export class UserDetail implements OnInit {
   bankCustomerDetails:any;
   userId: Number;
-  user = new UserDetailEntity("", "", "", 0);
+  user = new UserDetailEntity("", "", "", 0,"","");
   document: String;
   documentStatus: String;
   isVerified: Boolean;
@@ -57,7 +57,9 @@ export class UserDetail implements OnInit {
       this.user = new UserDetailEntity(success.data.firstName,
         success.data.lastName,
         success.data.emailId,
-        success.data.mobileNumber
+        success.data.mobileNumber,
+        success.data.country,
+        success.data.state
       );
     }, error => {
       console.log(error)
@@ -96,14 +98,14 @@ export class UserDetail implements OnInit {
       let userBankData = successData.data;
       this.bankCustomerDetails = userBankData;
       console.log("userdata >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.bankCustomerDetails);
-      
-   
+
+
 
     }, errorData => {
 
     })
 
- 
-    
+
+
   }
 }

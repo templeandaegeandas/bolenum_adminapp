@@ -10,7 +10,7 @@ import { routing } from './reply.routing';
     NgaModule,
     routing,
     TabViewModule,
-   
+
   ],
   declarations: [
   Reply,

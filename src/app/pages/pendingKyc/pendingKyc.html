@@ -8,7 +8,7 @@
         <div class="row">
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getPendingKycList($event)">
+              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getPendingKycList()">
                             <option ngValue="firstName">Name</option>
                             <option ngValue="emailId">Email</option>
                             <option ngValue="userKyc.uploadedDate">Uploaded On</option>
@@ -17,7 +17,7 @@
           </div>
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getPendingKycList($event)">
+              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getPendingKycList()">
                             <option ngValue="asc">Ascending</option>
                             <option ngValue="desc">Descending</option>
                         </select>
@@ -34,7 +34,7 @@
           <tr>
             <th colspan="7">
               <h6 class="text-center"> Filter By Name</h6>
-              <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getPendingKycList($event)" />
+              <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getPendingKycList()" />
             </th>
           </tr>
           <tr *ngIf="totalElements==0">No New Pending Kyc!</tr>

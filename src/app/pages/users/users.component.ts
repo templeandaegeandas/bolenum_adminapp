@@ -16,9 +16,9 @@ export class Users {
   totalElements;
   currentPage = 1;
   pageSize = 10;
-  sortBy = "createdOn";
-  sortOrder = "desc";
-  searchData = "";
+  sortBy:String = "createdOn";
+  sortOrder:String = "desc";
+  searchData: String = "";
 
   constructor(private service: UsersService, private router: Router) {
     this.getUsersList();

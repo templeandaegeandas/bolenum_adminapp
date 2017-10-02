@@ -10,7 +10,7 @@ import { routing } from './orderDetails.routing';
     NgaModule,
     routing,
     TabViewModule,
-   
+
   ],
   declarations: [
   OrderDetails,
