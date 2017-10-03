@@ -10,6 +10,16 @@ import { routing } from './pages.routing';
 import { NgaModule } from '../theme/nga.module';
 import { AppTranslationModule } from '../app.translation.module';
 
+// import { AddErc20Module } from './addErc20/addErc20.module';
+// import { AdderDetailsModule } from './adderDetails/adderDetails.module';
+// import { DashboardModule } from './dashboard/dashboard.module';
+// import { HistoricalOrder } from './historicalOrderbook/historicalOrderbook.module';
+// import { kycDetailsModule } from './KycDetails/kycDetails.module';
+// import { OrderDetailsModule } from './orderDetails/orderDetails.module';
+// import { PendingKycModule } from './pendingKyc/pendingKyc.module';
+// import { ReplyModule } from './reply/reply.module';
+// import { UserDetailModule } from './userDetails/userDetail.module';
+
 import { Pages } from './pages.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 

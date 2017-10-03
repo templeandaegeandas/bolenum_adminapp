@@ -8,7 +8,7 @@ import { NgUploaderOptions } from 'ngx-uploader';
   templateUrl: './orderDetails.html'
 })
 export class OrderDetails {
-  
+  isEdit: any = false;
 constructor() {}
    public defaultPicture = 'assets/img/theme/no-photo.png';
    public profile:any = {

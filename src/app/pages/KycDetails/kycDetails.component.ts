@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserDetailsService } from '../userDetails/userDetail.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'toastr-ng2';
+import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -18,7 +22,12 @@ export class KycDetails implements OnInit {
   documentType: String;
   defaultPicture = 'assets/img/theme/no-photo.png';
   picture: String;
-  constructor(private router: ActivatedRoute, private userDetailsService: UserDetailsService) { }
+  kycDisapprove = new KycDisapproveEntity();
+  @ViewChild('addPopup') public addPopup: ModalDirective;
+  constructor(
+    private router: ActivatedRoute,
+    private userDetailsService: UserDetailsService,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
@@ -33,7 +42,7 @@ export class KycDetails implements OnInit {
       this.documentStatus = success.data.userKyc.documentStatus;
       this.isVerified = success.data.userKyc.isVerified;
       this.documentType = success.data.userKyc.documentType;
-      this.picture = 'http://localhost:3050/static/' + this.document;
+      this.picture = environment.documentUrl + this.document;
       this.defaultPicture = 'assets/img/theme/no-photo.png';
     }, error => {
       console.log(error)
@@ -46,6 +55,25 @@ export class KycDetails implements OnInit {
     }, error => {
       console.log(error)
     })
+  }
+
+  disApproveKyc(disApproveKycForm) {
+    if(disApproveKycForm.invalid) return;
+    this.kycDisapprove.setUserId(this.userId);
+    this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
+      this.addPopupClose();
+      this.ngOnInit();
+      this.toastrService.success("Kyc disapproved!","Success!");
+    }, error => {
+      this.toastrService.success("Kyc not disapproved! Try again!","Success!");
+    })
+  }
+
+  addPopupOpen() {
+    this.addPopup.show();
+  }
+  addPopupClose() {
+    this.addPopup.hide();
   }
 
 }

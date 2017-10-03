@@ -8,7 +8,7 @@ import { NgUploaderOptions } from 'ngx-uploader';
   templateUrl: './adderDetails.html',
 })
 export class AdderDetails {
-  
+  isEdit: any = false;
 constructor() {}
    public defaultPicture = 'assets/img/theme/no-photo.png';
    public profile: any = {

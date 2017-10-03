@@ -1,172 +1,209 @@
 <div class="widgets">
-   <div class="row">
-      <div class="col-md-12 UserDetail">
-         <ba-card cardTitle="User Details">
-            <p-tabView>
-               <p-tabPanel header="User Profile" style="padding:0px;">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                        <div class="row">
-                           <div class="col-md-12 actionBtn text-right">
-                              <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
+  <div class="row">
+    <div class="col-md-12 UserDetail">
+      <ba-card cardTitle="User Details">
+        <p-tabView>
+          <p-tabPanel header="User Profile" style="padding:0px;">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+                <div class="row">
+                  <div class="col-md-12 actionBtn text-right">
+                    <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
                               <button class="btn btn-primary btn-with-icon" (click)="isEdit=false" type="button">Close</button> -->
-                           </div>
-                           <div class="col-md-6">
-                              <div class="col-sm-10">
-                                 <div class="form-group">
-                                    <label for="inputFirstName">First Name</label>
-                                    <input class="form-control" id="inputFirstName" placeholder="First Name" type="text" [(ngModel)]="user.firstName" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="inputLastName">Last Name</label>
-                                    <input class="form-control" id="inputLastName" placeholder="Last Name" type="text" [(ngModel)]="user.lastName" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputLastName" placeholder="Last Name" type="text" > -->
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="inputEmailName">Email Address</label>
-                                    <input class="form-control" id="inputEmailName" placeholder="Email Address" type="text" [(ngModel)]="user.emailId" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputEmailName" placeholder="Email Address" type="text" > -->
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="col-sm-10">
-                                 <div class="form-group">
-                                    <label for="inputMobileName">Mobile Number</label>
-                                    <input class="form-control" id="inputMobileName" placeholder="Mobile Number" type="text" [(ngModel)]="user.mobileNo" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="inputFaxName">City</label>
-                                    <input class="form-control" id="inputFaxName" placeholder="City" type="text" [(ngModel)]="user.city" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputFaxName" placeholder="Fax Name" type="text" > -->
-                                 </div>
-                                 <div class="form-group">
-                                    <label for="inputFaxName">Country</label>
-                                    <input class="form-control" id="inputFaxName" placeholder="Country" type="text" [(ngModel)]="user.country" disabled>
-                                    <!-- <input class="form-control" *ngIf="isEdit" id="inputFaxName" placeholder="Fax Name" type="text" > -->
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
                   </div>
-               </p-tabPanel>
-               <p-tabPanel header="KYC">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="row">
-                                 <div class="col-md-6">
-                                    <div class="col-sm-10">
-                                       <div class="col-md-12">
-                                          <ba-picture-uploader [picture]="picture" [defaultPicture]="defaultPicture"></ba-picture-uploader>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-6">
-                                    <div class="col-sm-10">
-                                       <div class="form-group">
-                                          <label for="inputFirstName">Document Status</label>
-                                          <input class="form-control" id="inputFirstName" placeholder="First Name" type="text" [(ngModel)]="documentStatus" disabled>
-                                          <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
-                                       </div>
-                                       <div class="form-group">
-                                          <label for="inputMobileName">Document Type</label>
-                                          <input class="form-control" id="inputMobileName" placeholder=" Name of Identity" type="text" [(ngModel)]="documentType" disabled>
-                                          <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
-                                       </div>
-                                    </div>
-                                    <div class="col-md-6 actionBtn text-right">
-                                       
-                                       <button class="btn btn-primary btn-with-iconss" *ngIf="!isVerified || documentStatus=='SUBMITTED'" type="button" (click)="approveKyc()">Add</button>
-                                       <button class="btn btn-primary btn-with-iconss" *ngIf="!isVerified || documentStatus=='SUBMITTED'" type="button" (click)="approveKyc()">Approve</button>
-                                       <button class="btn btn-primary btn-with-iconss" *ngIf="isVerified || documentStatus=='SUBMITTED'" type="button">DisApprove</button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                  <div class="col-md-6">
+                    <div class="col-sm-10">
+                      <div class="form-group">
+                        <label for="inputFirstName">First Name</label>
+                        <input class="form-control" id="inputFirstName" placeholder="First Name" type="text" [(ngModel)]="user.firstName" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputLastName">Last Name</label>
+                        <input class="form-control" id="inputLastName" placeholder="Last Name" type="text" [(ngModel)]="user.lastName" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputLastName" placeholder="Last Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputEmailName">Email Address</label>
+                        <input class="form-control" id="inputEmailName" placeholder="Email Address" type="text" [(ngModel)]="user.emailId" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputEmailName" placeholder="Email Address" type="text" > -->
+                      </div>
+                    </div>
                   </div>
-               </p-tabPanel>
-               <p-tabPanel header="Order Book">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                        <div class="row">
-                           <div class="col-md-12 ">
-                              <div class="col-md-6">
-                                 <div class="col-sm-10">
-                                    <div class="tab-table">
-                                       <table class="table table-bordered table table-hover">
-                                          <thead>
-                                             <tr>
-                                                <th>Type</th>
-                                                <th>Price(BTC)</th>
-                                                <th>Amount(ETH)</th>
-                                                <th>Total(BTC)</th>
-                                                <th>Rate/Stop</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                          </thead>
-                                          <tbody>
-                                             <tr>
-                                                <td>Buy</td>
-                                                <td>0.287819</td>
-                                                <td>0.331211</td>
-                                                <td>0.331211</td>
-                                                <td>0.331211</td>
-                                                <td>05/1/2017</td>
-                                                <td>Cancel</td>
-                                             </tr>
-                                             <tr>
-                                                <td>Sell</td>
-                                                <td>0.287819</td>
-                                                <td>0.331211</td>
-                                                <td>0.331211</td>
-                                                <td>0.331211</td>
-                                                <td>05/1/2017</td>
-                                                <td>Cancel</td>
-                                             </tr>
-                                          <tbody>
-                                       </table>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                  <div class="col-md-6">
+                    <div class="col-sm-10">
+                      <div class="form-group">
+                        <label for="inputMobileName">Mobile Number</label>
+                        <input class="form-control" id="inputMobileName" placeholder="Mobile Number" type="text" [(ngModel)]="user.mobileNo" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputFaxName">Country</label>
+                        <input class="form-control" id="inputFaxName" placeholder="City" type="text" [(ngModel)]="user.country" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputFaxName" placeholder="Fax Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputFaxName">City</label>
+                        <input class="form-control" id="inputFaxName" placeholder="Country" type="text" [(ngModel)]="user.state" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputFaxName" placeholder="Fax Name" type="text" > -->
+                      </div>
+                    </div>
                   </div>
-               </p-tabPanel>
-            </p-tabView>
-         </ba-card>
-      </div>
-   </div>
-</div>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="KYC">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="col-sm-10">
+                          <div class="col-md-12" style="height: 300px;width: 300px;">
+                            <img [src]="picture" [imageZoom]="picture" [style.width.px]="300" [style.height.px]="300" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="col-sm-10">
+                          <div class="form-group">
+                            <label for="inputFirstName">Document Status</label>
+                            <input class="form-control" id="inputFirstName" placeholder="First Name" type="text" [(ngModel)]="documentStatus" disabled>
+                            <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                          </div>
+                          <div class="form-group">
+                            <label for="inputMobileName">Document Type</label>
+                            <input class="form-control" id="inputMobileName" placeholder=" Name of Identity" type="text" [(ngModel)]="documentType" disabled>
+                            <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
+                          </div>
+                        </div>
+                        <div class="col-md-6 actionBtn text-right">
 
-<!--<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>-->
- 
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="!isVerified || documentStatus=='SUBMITTED'" type="button" (click)="approveKyc()">Approve</button>
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="isVerified || documentStatus=='SUBMITTED'" type="button" (click)="addPopupOpen()">DisApprove</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="Order Book">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+                <div class="row">
+                  <div class="col-md-12 ">
+                    <div class="col-md-6">
+                      <div class="col-sm-10">
+                        <div class="tab-table">
+                          <table class="table table-bordered table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Type</th>
+                                <th>Price(BTC)</th>
+                                <th>Amount(ETH)</th>
+                                <th>Total(BTC)</th>
+                                <th>Rate/Stop</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Buy</td>
+                                <td>0.287819</td>
+                                <td>0.331211</td>
+                                <td>0.331211</td>
+                                <td>0.331211</td>
+                                <td>05/1/2017</td>
+                                <td>Cancel</td>
+                              </tr>
+                              <tr>
+                                <td>Sell</td>
+                                <td>0.287819</td>
+                                <td>0.331211</td>
+                                <td>0.331211</td>
+                                <td>0.331211</td>
+                                <td>05/1/2017</td>
+                                <td>Cancel</td>
+                              </tr>
+                              <tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="Bank Details" style="padding:0px;">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+                <div class="row">
+                  <div class="col-md-12 actionBtn text-right">
+                    <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
+                              <button class="btn btn-primary btn-with-icon" (click)="isEdit=false" type="button">Close</button> -->
+                  </div>
+                  <div class="col-md-6" *ngFor="let bankUser of bankCustomerDetails">
+                    <div class="col-sm-10">
+                       <div class="form-group">
+                        <label for="inputBankName">Bank Name</label>
+                        <input class="form-control" id="inputBankName" type="text" [(ngModel)]="bankUser.bankName" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputFirstName">Account Holder Name</label>
+                        <input class="form-control" id="inputFirstName" type="text" [(ngModel)]="bankUser.accountHolderName" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputLastName">Account Number</label>
+                        <input class="form-control" id="inputLastName" type="text" [(ngModel)]="bankUser.accountNumber" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputLastName" placeholder="Last Name" type="text" > -->
+                      </div>
+                      <div class="form-group">
+                        <label for="inputEmailName">BVN Code</label>
+                        <input class="form-control" id="inputEmailName" type="text" [(ngModel)]="bankUser.ifscCode" disabled>
+                        <!-- <input class="form-control" *ngIf="isEdit" id="inputEmailName" placeholder="Email Address" type="text" > -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+      </ba-card>
+    </div>
+  </div>
+</div>
 <div bsModal #addPopup="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Large modal</h4>
+        <h4 class="modal-title pull-left">Are you sure? You want to disapprove this kyc.</h4>
         <button type="button" class="close pull-right" (click)="addPopupClose()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-         <div class="form-group">
-    <label for="exampleTextarea">Example textarea</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-  </div>
-  <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        
-        </div>
+        <form #disApproveKycForm="ngForm" (submit)=disApproveKyc(disApproveKycForm)>
+          <div class="form-group">
+            <label for="exampleTextarea">Enter Rejection Message</label>
+            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel"
+              name="rejectionMessage" required></textarea>
+            <span *ngIf="rejectionMessage.invalid && disApproveKycForm.submitted">
+            <span class="text-danger" *ngIf="rejectionMessage.errors.required">Please enter rejection message</span>
+            </span>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" data-dismiss="modal">Disapprove</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="addPopupClose()">Cancel</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

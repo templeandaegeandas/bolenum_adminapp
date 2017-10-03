@@ -11,7 +11,7 @@ import { routing } from './adderDetails.routing';
     NgaModule,
     routing,
     TabViewModule,
-   
+
   ],
   declarations: [
   AdderDetails,
