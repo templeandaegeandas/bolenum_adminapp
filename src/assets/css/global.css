@@ -3,3 +3,7 @@ button.btn.btn-danger:hover, button.btn.btn-danger:focus, button.btn.btn-danger.
    background-color: #f95372 !important;
    box-shadow: none;
 }
+.ui-tabview .ui-tabview-nav li .ui-tabview-left-icon, .ui-tabview .ui-tabview-nav li .ui-tabview-right-icon, .ui-tabview .ui-tabview-nav li .ui-tabview-title {  
+      vertical-align: middle;   
+       color: black  !important;
+       cursor:pointer;}
