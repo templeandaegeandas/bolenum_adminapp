@@ -1,0 +1,57 @@
+<div class="widgets">
+  <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <button  class="btn btn-danger" (click)="addNewPair()">Add New</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <table class="table table-striped">
+        <thead>
+          <!-- <tr>
+            <th colspan="5">
+              <h6 class="text-center"> Filter By Name</h6>
+              <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getUsersList()" />
+            </th>
+          </tr> -->
+          <!-- <tr *ngIf="totalElements==0">No User!</tr> -->
+          <tr>
+            <th style="width: 10%"></th>
+            <th style="width: 20%">Pair Name</th>
+            <th style="width: 40%">To</th>
+            <th style="width: 10%">From</th>
+            <th style="width: 20%">Created On</th>
+          </tr>
+
+        </thead>
+        <tbody >
+          
+
+            <tr *ngFor="let pdata of pairData">                                         
+            <td>
+              <button  (click)="pairDetails()" class="btn btn-danger">Detail</button>
+            </td>
+            <td>{{pdata.pairName}}</td>
+            <td>{{pdata.to}}</td>
+            <td>{{pdata.from}}</td>
+            <td>{{pdata.createdOn}}</td>
+            </tr>
+          
+          
+         
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              <!-- <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls> -->
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </ba-card>
+</div>

@@ -74,6 +74,18 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        path: 'addPair',
+        data: {
+          menu: {
+            title: 'Add Pair',
+            icon: 'fa fa-cog ',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        }
+      },
       // {
       //   path: 'editors',
       //   data: {

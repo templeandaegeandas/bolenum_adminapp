@@ -69,12 +69,24 @@ export const routes: Routes = [
         loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule'
       },
       {
+        path: 'pairdetails',
+        loadChildren: './pairDetails/pairDetails.module#PairDetailsModule'
+      },
+      {
+        path: 'addnewpair',
+        loadChildren: './addNewPair/addNewPair.module#AddNewPairModule'
+      },
+      {
         path: 'reply',
         loadChildren: './reply/reply.module#ReplyModule'
       },
       {
         path: 'adderdetails',
         loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule'
+      },
+      {
+        path: 'addPair',
+        loadChildren: './addPair/addPair.module#AddPairModule'
       },
       //   { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
       //   { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
