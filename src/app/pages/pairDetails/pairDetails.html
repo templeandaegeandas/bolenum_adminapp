@@ -19,8 +19,8 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [disabled]="hasEdit">
-                        <option value="btc">BTC</option>
+                        <select class="drop-down-padding"  [disabled]="hasEdit">
+                        <option value="btc">{{pairData.to}}</option>
                         
                         </select>
                       </div>
@@ -37,8 +37,8 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [disabled]="hasEdit">
-                        <option value="bln">BLN</option>
+                        <select class="drop-down-padding"  [disabled]="hasEdit" >
+                        <option value="bln">{{pairData.from}}</option>
                         
                         </select>
                       </div>
@@ -54,7 +54,7 @@
                       <div class="col-md-7 text-left">
                       
 
-                         <input type="text" class="form-control drop-down-padding" id="usr" [disabled]="hasEdit">
+                         <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="pairData.pairname" [disabled]="hasEdit" name="pairname">
                       </div>
 
                     </div>

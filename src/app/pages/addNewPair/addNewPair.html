@@ -6,6 +6,7 @@
           <p-tabPanel header="Add New Pair" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
+                <form (click)="pairFormData(pairForm)"  #pairForm="ngForm">
                 <div class="row">
                   <div class="col-md-12 actionBtn allFormField">
                     <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
@@ -19,8 +20,8 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding">
-                        <option value="btc">BTC</option>
+                        <select class="drop-down-padding" [(ngModel)]="setPairTo" (ngModelChange)="setPairValue(setPairTo)" name="toPair">
+                        <option *ngFor="let toValue of currencyDataList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
                        
                         </select>
                       </div>
@@ -37,8 +38,8 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding">
-                        <option value="bln">BLN</option>
+                        <select class="drop-down-padding" [(ngModel)]="setPairFrom"  (ngModelChange)="setPairFromValue(setPairFrom)" name="fromPair">
+                        <option *ngFor="let fromValue of currencyDataList" [value]="fromValue.currencyId">{{fromValue.currencyName}}</option>
                        
                         </select>
                       </div>
@@ -59,7 +60,7 @@
                     </div>
                          <div class="row">
                       <div class="col-md-12 button-padding ">
-                      <button class="btn btn-primary btn-with-icon"   type="button">Create</button>
+                      <button class="btn btn-primary btn-with-icon"   type="submit">Create</button>
                       <!-- </div>
 
                       <div class="col-md-7 "> -->
@@ -68,37 +69,9 @@
                     
                     </div>
                   </div>
-                  <!-- <div class="col-md-6">
-                              <div class="col-sm-10">
-                                  <table class="table table-bordered table table-hover" style="overflow-x: auto;" >
-                              <thead>
-                                 <tr>
-                                    <th>User Name</th>
-                                    <th>Email</th>
-                                    <th>Phone No</th>
-                               </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>abc</td>
-                                    <td>123@</td>
-                                    <td>122333</td>
-                                 </tr>
-                                 <tr>
-                                    <td>abc</td>
-                                    <td>123@</td>
-                                    <td>12222</td>
-                                 </tr>
-                                 <tr>
-                                    <td>abc</td>
-                                    <td>123@</td>
-                                    <td>12222</td>
-                                    
-                                 </tr>
-                                <tbody>
-                           </table>
-                              </div>
-                           </div> -->
+                
                 </div>
+                </form>
               </div>
             </div>
           </p-tabPanel>

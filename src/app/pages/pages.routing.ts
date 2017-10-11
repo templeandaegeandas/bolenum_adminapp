@@ -52,7 +52,8 @@ export const routes: Routes = [
       },
       {
         path: 'addErc20',
-        loadChildren: './addErc20/addErc20.module#AddErc20Module'
+        loadChildren: './addErc20/addErc20.module#AddErc20Module',
+         canActivate: [PrivateRouteAuthGuard]
       },
       {
         path: 'kycDetails/:userId',
@@ -69,12 +70,14 @@ export const routes: Routes = [
         loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule'
       },
       {
-        path: 'pairdetails',
-        loadChildren: './pairDetails/pairDetails.module#PairDetailsModule'
+        path: 'pairdetails/:pairID',
+        loadChildren: './pairDetails/pairDetails.module#PairDetailsModule',
+         canActivate: [PrivateRouteAuthGuard]
       },
       {
         path: 'addnewpair',
-        loadChildren: './addNewPair/addNewPair.module#AddNewPairModule'
+        loadChildren: './addNewPair/addNewPair.module#AddNewPairModule',
+         canActivate: [PrivateRouteAuthGuard]
       },
       {
         path: 'reply',
@@ -86,7 +89,8 @@ export const routes: Routes = [
       },
       {
         path: 'addPair',
-        loadChildren: './addPair/addPair.module#AddPairModule'
+        loadChildren: './addPair/addPair.module#AddPairModule',
+         canActivate: [PrivateRouteAuthGuard]
       },
       //   { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
       //   { path: 'components', loadChildren: './components/components.module#ComponentsModule' },

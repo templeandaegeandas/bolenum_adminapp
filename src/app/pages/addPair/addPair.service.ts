@@ -7,12 +7,12 @@ export class AddPairService {
   pageNumber: number;
   constructor(private http: HttpClient) { }
 
-  getUsersList(currentPage: number, pageSize: number, sortBy: String, sortOrder: String, searchData: String) {
+  getPairList(currentPage: number, pageSize: number, sortBy: String, sortOrder: String) {
     this.pageNumber = currentPage - 1;
-    return this.http.get('api/v1/admin/list/users?pageNumber='
+    return this.http.get('api/v1/admin/currency-pair/list?pageNumber='
     + this.pageNumber + '&pageSize='
     + pageSize + '&sortBy='
-    + sortBy + '&sortOrder=' + sortOrder + '&searchData=' + searchData)
+    + sortBy + '&sortOrder=' + sortOrder)
       .map(res => res.json())
   }
 }
