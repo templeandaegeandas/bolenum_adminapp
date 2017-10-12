@@ -74,18 +74,18 @@ export const PAGES_MENU = [
           }
         }
       },
-       {
-        path: 'addNewErc20Token',
-        data: {
-          menu: {
-            title: 'Add New ERC 20',
-            icon: 'fa fa-plus-circle',
-            selected: false,
-            expanded: false,
-            order: 0
-          }
-        }
-      },
+      //  {
+      //   path: 'addNewErc20Token',
+      //   data: {
+      //     menu: {
+      //       title: 'Add New ERC 20',
+      //       icon: 'fa fa-plus-circle',
+      //       selected: false,
+      //       expanded: false,
+      //       order: 0
+      //     }
+      //   }
+      // },
       {
         path: 'addPair',
         data: {
