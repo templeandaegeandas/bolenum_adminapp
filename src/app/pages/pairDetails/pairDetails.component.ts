@@ -14,9 +14,9 @@ import { PairDetailsEntity } from './entity/pair.details';
 })
 export class PairDetails implements OnInit{
   public pairId:number;
-  public hasEdit:boolean = true;
-  public isEdit:boolean = true;
-  public isSave:boolean = false;
+  // public hasEdit:boolean = true;
+  // public isEdit:boolean = true;
+  // public isSave:boolean = false;
   public pairData = new PairDetailsEntity();
   
 constructor(private router: Router, private activeRoute: ActivatedRoute,private pairdetails: PairDetailsService ) {}
@@ -36,19 +36,19 @@ ngOnInit(){
 
 }
 
-editDetail(){
-  this.isEdit = false;
-   this.isSave = true;
-   this.hasEdit = false;
-}
+// editDetail(){
+//   this.isEdit = false;
+//    this.isSave = true;
+//    this.hasEdit = false;
+// }
 
-saveDetails(){
+// saveDetails(){
 
-  this.isSave = false;
-  this.isEdit = true;
-  this.hasEdit = true;
+//   this.isSave = false;
+//   this.isEdit = true;
+//   this.hasEdit = true;
   
-}
+// }
 
 getPairDetailsById(pairId){
 

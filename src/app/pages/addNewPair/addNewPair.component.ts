@@ -14,8 +14,8 @@ import { AddNewPairService } from './addNewPair.service';
 })
 export class AddNewPair implements OnInit{
   public currencyDataList:any;
-  public setPairTo:any;
-  public setPairFrom:any;
+  public setPairTo:any ='Choose To Currency';
+  public setPairFrom:any = 'Choose From Currency';
    
   pairedData = new pairEntityData();
 
@@ -30,6 +30,7 @@ constructor(private router:Router , private addnewpairservice: AddNewPairService
 
 ngOnInit(){
   this.showCurrencyList();
+  
   // this.setPairTo=,
   // this.setPairFrom ="BOLENUM"
   // this.setPairValue("BITCOIN");
@@ -41,20 +42,22 @@ isClose(){
 
 }
 
-setPairValue(setData){
+setToValue(setData){
 
   console.log("setData >>>>>>",setData);
 
-}
-
-setPairFromValue(setFromData){
-
-  console.log("from >>>>>>>>",setFromData);
 
 }
+
+// setPairFromValue(setFromData){
+
+//   console.log("from >>>>>>>>",setFromData);
+
+// }
 
 
 pairFormData(formData){
+
   console.log("form data",this.setPairFrom, this.setPairTo);
   let c = this.currencyDataList.find(x => x.currencyId == this.setPairTo);
   let c1 = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
@@ -64,7 +67,8 @@ pairFormData(formData){
 
   this.addnewpairservice.pairFormData(this.pairedData).subscribe( successData =>{
     console.log("data success",successData.data);
-
+    
+ this.router.navigate(['/pages/addPair/']);
   },errorData =>{
 
   })
@@ -76,6 +80,10 @@ showCurrencyList(){
   this.addnewpairservice.showCurrencyList().subscribe( successData =>{
     console.log("currency data  >>>>>>>>>>>>>>>>>",successData.data);
     this.currencyDataList = successData.data;
+     this.setPairTo = successData.data.currencyName;
+  
+      
+
 
 
   },errorData => {

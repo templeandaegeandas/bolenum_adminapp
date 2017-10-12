@@ -92,6 +92,10 @@ export const routes: Routes = [
         loadChildren: './addPair/addPair.module#AddPairModule',
          canActivate: [PrivateRouteAuthGuard]
       },
+      {
+        path: 'addNewErc20Token',
+        loadChildren: './addNewErc20Token/addNewErc.module#AddNewErcModule',
+      },
       //   { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
       //   { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
       //   { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },

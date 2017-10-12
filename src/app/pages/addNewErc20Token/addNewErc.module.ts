@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
-import { AddNewPair } from './addNewPair.component';
+import { AddNewErc20Token } from './addNewErc20Token.component';
 import { TabViewModule } from 'primeng/primeng';
 import { routing } from './addNewPair.routing';
 import { FormsModule } from '@angular/forms';
@@ -11,11 +11,11 @@ import { FormsModule } from '@angular/forms';
     NgaModule,
     routing,
     TabViewModule,
-    FormsModule,
+    FormsModule
 
   ],
   declarations: [
-  AddNewPair,
+  AddNewErc20Token,
   ],
 })
-export class AddNewPairModule {}
+export class AddNewErcModule {}
