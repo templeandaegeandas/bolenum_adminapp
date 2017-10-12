@@ -6,7 +6,8 @@
           <p-tabPanel header="Add New Pair" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
-                <form (click)="pairFormData(pairForm)"  #pairForm="ngForm">
+                <!--(click)="pairFormData(pairForm)"-->
+                <form  (ngSubmit)="pairFormData(pairForm)" #pairForm="ngForm">
                 <div class="row">
                   <div class="col-md-12 actionBtn allFormField">
                     <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
@@ -20,8 +21,8 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [(ngModel)]="setPairTo"  name="setPairTo" (ngModelChange)="setToValue()">
-                            <option [disabled]="true" [selected]="true" [value]='ChooseToCurrency'>Choose To Currency</option> 
+                        <select class="drop-down-padding" [(ngModel)]="setPairTo"  name="setPairTo">
+                            <option [disabled]="true" [selected]="true" value="">Choose To Currency</option> 
                         <option *ngFor="let toValue of currencyDataList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
                        </select>
                       </div>
@@ -38,9 +39,9 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [(ngModel)]="setPairFrom"   name="setPairFrom">
+                        <select class="drop-down-padding" [(ngModel)]="setPairFrom"   name="setPairFrom" >
                            <option [disabled]="true" [selected]="true" >Choose From Currency</option> 
-                        <option *ngFor="let fromValue of currencyDataList" [value]="fromValue.currencyId">{{fromValue.currencyName}}</option>
+                        <option *ngFor="let fromValue of currencyDataList" [value]="fromValue.currencyId" (click)="toCurrency(fromValue)">{{fromValue.currencyName}}</option>
                        
                         </select>
                       </div>
@@ -55,7 +56,7 @@
 
                       <div class="col-md-7 text-left">
                        
-                    <input type="text" class="form-control drop-down-padding" id="usr" placeholder="BTC/ETH" [disabled]="true" >
+                    <input type="text" class="form-control drop-down-padding" id="usr" name="pairName" placeholder="BTC/ETH" [disabled]="true">
                       </div>
                     
                     </div>

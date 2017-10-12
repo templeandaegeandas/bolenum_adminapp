@@ -54,6 +54,7 @@ export class AddPairComponent {
   }
 
   pairDetails(pairID){
+    console.log("pairid >>>>>>>>>>>>>>>>>>>>>>",pairID);
     
      this.router.navigate(['/pages/pairdetails/' + pairID ]);
   }

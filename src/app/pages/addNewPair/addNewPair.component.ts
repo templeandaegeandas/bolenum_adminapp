@@ -13,9 +13,9 @@ import { AddNewPairService } from './addNewPair.service';
   providers:[AddNewPairService]
 })
 export class AddNewPair implements OnInit{
-  public currencyDataList:any;
-  public setPairTo:any ='Choose To Currency';
-  public setPairFrom:any = 'Choose From Currency';
+  public currencyDataList: any;
+  public setPairTo: any = '';
+  public setPairFrom: any = 'Choose From Currency';
    
   pairedData = new pairEntityData();
 
@@ -80,17 +80,16 @@ showCurrencyList(){
   this.addnewpairservice.showCurrencyList().subscribe( successData =>{
     console.log("currency data  >>>>>>>>>>>>>>>>>",successData.data);
     this.currencyDataList = successData.data;
-     this.setPairTo = successData.data.currencyName;
-  
-      
-
-
-
+    //  this.setPairTo = successData.data.currencyName;
   },errorData => {
 
   })
 }
 
+toCurrency(fromValue) {
+  console.log(fromValue);
+  
+}
 }
 
 
