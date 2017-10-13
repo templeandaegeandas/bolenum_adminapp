@@ -42,25 +42,25 @@
 
                 <table class="table table-striped" [mfData]="data | tableFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
                     <thead>
-                         <tr>
+                         <!-- <tr>
                             <th colspan="7">
                                <h6 class="text-center"> Filter By Name</h6>
                                 <input class="form-control" [(ngModel)]="filterQuery" />
                             </th>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <th style="width: 10%"></th>
                             <th style="width: 10%">
                                 <mfDefaultSorter by="name">Name</mfDefaultSorter>
                             </th>
                             <th style="width: 20%">
-                                <mfDefaultSorter by="email">Email</mfDefaultSorter>
+                                <mfDefaultSorter by="email">Contact Address</mfDefaultSorter>
                             </th>
-                            <th style="width: 10%">
+                            <!-- <th style="width: 10%">
                                 <mfDefaultSorter by="price">Price</mfDefaultSorter>
-                            </th>
+                            </th> -->
                             <th style="width: 10%">
-                                <mfDefaultSorter by="amount">Amount</mfDefaultSorter>
+                                <mfDefaultSorter by="amount">Wallet Address</mfDefaultSorter>
                             </th>
 
                             <th style="width: 20%">
@@ -70,15 +70,15 @@
 
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of mf.data">
+                        <tr *ngFor="let ercList of ercTokenLists">
                             <td>
                              <button (click)="navigaeToAdderDetails()" class="btn btn-danger">Add</button>
                             </td>
-                            <td>{{item.name}}</td>
-                            <td>{{item.email}}</td>
-                            <td>{{item.price}}</td>
-                            <td>{{item.amount | uppercase}}</td>
-                             <td>{{item.date}}</td>
+                            <td>name</td>
+                            <td>{{ercList.contractAddress}}</td>
+                            <!-- <td>{{ercList.createdDate}}</td> -->
+                            <td>{{ercList.walletAddress}}</td>
+                             <td>{{ercList.createdDate | date}}</td>
                         </tr>
                     </tbody>
                     <tfoot>
