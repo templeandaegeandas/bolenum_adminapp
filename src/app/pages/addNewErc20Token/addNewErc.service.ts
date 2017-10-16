@@ -4,22 +4,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AddNewErcTokenService {
-  
+
   constructor(private http: HttpClient) { }
 
+  addNewToken(tokenData) {
+    return this.http.post('api/v1/admin/add/new/token', tokenData)
+      .map(res => res.json())
+  }
 
-//   showCurrencyList(){
-//       return this.http.get('api/v1/admin/currency/list')
-//       .map(res => res.json())
-//   }
-
-//   pairFormData(pairedCurrency){
-//        return this.http.post('api/v1/admin/currency/pair', pairedCurrency)
-//       .map(res => res.json())
-
-//   }
- 
 }
-
-
-
