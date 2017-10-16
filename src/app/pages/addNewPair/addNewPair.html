@@ -10,6 +10,11 @@
                 <form  (ngSubmit)="pairFormData(pairForm)" #pairForm="ngForm">
                 <div class="row">
                   <div class="col-md-12 actionBtn allFormField">
+                    <div class="row">
+                      <div class="col-md-12 text-center text-capitalize text-danger" *ngIf="hasError">
+                      <p >{{errorMessageShow}}</p>
+                      </div>
+                    </div>
                     <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>
                               <button class="btn btn-primary btn-with-icon" (click)="isEdit=false" type="button">Close</button> -->
                     <div class="row">

@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { pairEntityData } from './entity/addNewPair.details';
 import { AddNewPairService } from './addNewPair.service';
@@ -10,13 +10,15 @@ import { AddNewPairService } from './addNewPair.service';
   selector: 'addNewPairs',
   styleUrls: ['./addNewPair.scss'],
   templateUrl: './addNewPair.html',
-  providers:[AddNewPairService]
+  providers: [AddNewPairService]
 })
-export class AddNewPair implements OnInit{
+export class AddNewPair implements OnInit {
+  public hasError: boolean = false;
+  public errorMessageShow: any;
   public currencyDataList: any;
   public setPairTo: any = '';
   public setPairFrom: any = 'Choose From Currency';
-   
+
   pairedData = new pairEntityData();
 
   // public setPair:any=[
@@ -26,70 +28,70 @@ export class AddNewPair implements OnInit{
   //   {setPairValue:"BOLENUM"},
   // ]
 
-constructor(private router:Router , private addnewpairservice: AddNewPairService) {}
+  constructor(private router: Router, private addnewpairservice: AddNewPairService) { }
 
-ngOnInit(){
-  this.showCurrencyList();
-  
-  // this.setPairTo=,
-  // this.setPairFrom ="BOLENUM"
-  // this.setPairValue("BITCOIN");
-  // this.setPairFromValue("BOLENUM");
-}
+  ngOnInit() {
+    this.showCurrencyList();
 
-isClose(){
-     this.router.navigate(['/pages/addPair/']);
+    // this.setPairTo=,
+    // this.setPairFrom ="BOLENUM"
+    // this.setPairValue("BITCOIN");
+    // this.setPairFromValue("BOLENUM");
+  }
 
-}
+  isClose() {
+    this.router.navigate(['/pages/addPair/']);
 
-setToValue(setData){
+  }
 
-  console.log("setData >>>>>>",setData);
+  setToValue(setData) {
 
-
-}
-
-// setPairFromValue(setFromData){
-
-//   console.log("from >>>>>>>>",setFromData);
-
-// }
+    console.log("setData >>>>>>", setData);
 
 
-pairFormData(formData){
+  }
 
-  console.log("form data",this.setPairFrom, this.setPairTo);
-  let c = this.currencyDataList.find(x => x.currencyId == this.setPairTo);
-  let c1 = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
-  this.pairedData.toCurrency = c;
-  this.pairedData.pairedCurrency = c1;
-  console.log(this.pairedData);
+  // setPairFromValue(setFromData){
 
-  this.addnewpairservice.pairFormData(this.pairedData).subscribe( successData =>{
-    console.log("data success",successData.data);
-    
- this.router.navigate(['/pages/addPair/']);
-  },errorData =>{
+  //   console.log("from >>>>>>>>",setFromData);
 
-  })
-  
-  
-}
+  // }
 
-showCurrencyList(){
-  this.addnewpairservice.showCurrencyList().subscribe( successData =>{
-    console.log("currency data  >>>>>>>>>>>>>>>>>",successData.data);
+
+  pairFormData(formData) {
+
+    console.log("form data", this.setPairFrom, this.setPairTo);
+    let c = this.currencyDataList.find(x => x.currencyId == this.setPairTo);
+    let c1 = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
+    this.pairedData.toCurrency = c;
+    this.pairedData.pairedCurrency = c1;
+    console.log(this.pairedData);
+
+    this.addnewpairservice.pairFormData(this.pairedData).subscribe(successData => {
+
+      this.router.navigate(['/pages/addPair/']);
+    }, errorData => {
+      this.hasError = true;
+      let errorDATA = errorData.json();
+      this.errorMessageShow = errorDATA.message;
+      setTimeout(()=>{    //<<<---    using ()=> syntax
+      this.hasError = false;
+ },3000);
+    })
+ }
+
+  showCurrencyList() {
+    this.addnewpairservice.showCurrencyList().subscribe(successData => {
     this.currencyDataList = successData.data;
-    //  this.setPairTo = successData.data.currencyName;
-  },errorData => {
+    }, errorData => {
 
-  })
-}
+    })
+  }
 
-toCurrency(fromValue) {
-  console.log(fromValue);
-  
-}
+  toCurrency(fromValue) {
+
+
+  }
 }
 
 
