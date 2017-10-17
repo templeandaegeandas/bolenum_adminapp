@@ -6,7 +6,7 @@
           <p-tabPanel header="Add New Erc 20 Token" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
-                <form (ngSubmit)="addErcToken(newErcToken)" #newErcToken="ngForm" >
+                <form #newErcToken="ngForm" (submit)=addErcToken(newErcToken) >
                   <div class="row">
                     <div class="col-md-12 actionBtn allFormField">
 
@@ -17,7 +17,7 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyName" name="currenciesName" #tokenName="ngModel" required >
+                          <input type="text" class="form-control drop-down-padding" [(ngModel)]="currency.currencyName" name="tokenName" #tokenName="ngModel" required >
                         <div *ngIf="tokenName.invalid && (tokenName.dirty || tokenName.touched || newErcToken.submitted )" class="error-msg">
                                  <div *ngIf="tokenName.errors.required">
                                     <p class="ercTokenError" >Please Enter Token Name .</p>
@@ -32,7 +32,7 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyAbbreviation" name="currenciesAbbreviation" #tokenSymbol="ngModel" required>
+                          <input type="text" class="form-control drop-down-padding" [(ngModel)]="currency.currencyAbbreviation" name="tokenSymbol" #tokenSymbol="ngModel" required>
                            <div *ngIf="tokenSymbol.invalid && (tokenSymbol.dirty || tokenSymbol.touched || newErcToken.submitted )" class="error-msg">
                                  <div *ngIf="tokenSymbol.errors.required">
                                     <p  class="ercTokenError" >Please Enter Currency Symbol.</p>
@@ -47,7 +47,7 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr"  [(ngModel)]="ercToken.contractAddress" name="contractAddress" #contractAddress="ngModel" required>
+                          <input type="text" class="form-control drop-down-padding" [(ngModel)]="ercToken.contractAddress" name="contractAddress" #contractAddress="ngModel" required>
                           <div *ngIf="contractAddress.invalid && (contractAddress.dirty || contractAddress.touched || newErcToken.submitted )" class="error-msg">
                                  <div *ngIf="contractAddress.errors.required">
                                     <p class="ercTokenError" >Please Enter Contract Address.</p>
@@ -62,17 +62,12 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="ercToken.walletAddress" name="walletAddress" #walletAddress="ngModel" required>
-                          <div *ngIf="walletAddress.invalid && (walletAddress.dirty || walletAddress.touched || newErcToken.submitted )" class="error-msg">
-                                 <div *ngIf="walletAddress.errors.required">
-                                    <p  class="ercTokenError" >Please Enter Wallet Address.</p>
-                                 </div>
-                              </div>
+                          <input type="text" class="form-control drop-down-padding" placeholder="Optional" [(ngModel)]="ercToken.walletAddress" name="walletAddress" #walletAddress="ngModel">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12 button-padding ">
-                          <button class="btn btn-primary btn-with-icon" type="submit">Create</button>
+                          <button type="submit">Add</button>
                         </div>
                       </div>
                     </div>
