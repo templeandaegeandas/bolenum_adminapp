@@ -36,7 +36,8 @@ export class BaPageTop {
     this.baPageTopService.logOut().subscribe(success => {
       localStorage.clear();
       this.router.navigate(['login']);
-    },error => {
+    }, error => {
+      localStorage.clear();
       this.router.navigate(['login']);
     })
   }
