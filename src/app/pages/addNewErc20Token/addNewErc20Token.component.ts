@@ -21,7 +21,8 @@ export class AddNewErc20TokenComponent {
   constructor(private router: Router, private addNewErcTokenService: AddNewErcTokenService) { }
 
 
-  addErcToken() {
+  addErcToken(form) {
+    if(form.invalid) return;
     this.ercToken.currency.currencyName = this.currencyName;
     this.ercToken.currency.currencyAbbreviation = this.currencyAbbreviation;
     console.log("add new erc token>>>>>>>>>>>>>>>>>>>>>>");
