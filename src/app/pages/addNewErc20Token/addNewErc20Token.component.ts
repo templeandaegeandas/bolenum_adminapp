@@ -13,9 +13,9 @@ import { AddNewErcTokenService } from './addNewErc.service';
   providers: [AddNewErcTokenService],
 })
 export class AddNewErc20TokenComponent {
+   currencyName: any;
+  currencyAbbreviation: any;
 
-  currencyName: String;
-  currencyAbbreviation: String;
   ercToken = new AddNewErc20Token();
 
   constructor(private router: Router, private addNewErcTokenService: AddNewErcTokenService) { }

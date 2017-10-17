@@ -6,7 +6,7 @@
           <p-tabPanel header="Add New Erc 20 Token" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
-                <form (submit)="addErcToken(newErcToken)" #newErcToken=ngForm>
+                <form (ngSubmit)="addErcToken(newErcToken)" #newErcToken="ngForm" >
                   <div class="row">
                     <div class="col-md-12 actionBtn allFormField">
 
@@ -17,7 +17,7 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyName" name="currencyName" #tokenName="ngModel" required >
+                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyName" name="currenciesName" #tokenName="ngModel" required >
                         <div *ngIf="tokenName.invalid && (tokenName.dirty || tokenName.touched || newErcToken.submitted )" class="error-msg">
                                  <div *ngIf="tokenName.errors.required">
                                     <p class="ercTokenError" >Please Enter Token Name .</p>
@@ -32,7 +32,7 @@
                           </div>
                         </div>
                         <div class="col-md-7 text-left">
-                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyAbbreviation" name="currencyAbbreviation" #tokenSymbol="ngModel" required>
+                          <input type="text" class="form-control drop-down-padding" id="usr" [(ngModel)]="currencyAbbreviation" name="currenciesAbbreviation" #tokenSymbol="ngModel" required>
                            <div *ngIf="tokenSymbol.invalid && (tokenSymbol.dirty || tokenSymbol.touched || newErcToken.submitted )" class="error-msg">
                                  <div *ngIf="tokenSymbol.errors.required">
                                     <p  class="ercTokenError" >Please Enter Currency Symbol.</p>
