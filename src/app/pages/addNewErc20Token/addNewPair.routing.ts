@@ -1,15 +1,15 @@
 import { Routes, RouterModule }  from '@angular/router';
 
-import { AddNewErc20Token } from './addNewErc20Token.component';
+import { AddNewErc20TokenComponent } from './addNewErc20Token.component';
 import { ModuleWithProviders } from '@angular/core';
 
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
-    component: AddNewErc20Token,
+    component: AddNewErc20TokenComponent,
     children: [
-      //{ path: 'treeview', component: TreeViewComponent }
+      // { path: 'treeview', component: TreeViewComponent }
     ]
   }
 ];

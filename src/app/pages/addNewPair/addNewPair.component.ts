@@ -13,6 +13,11 @@ import { AddNewPairService } from './addNewPair.service';
   providers: [AddNewPairService]
 })
 export class AddNewPair implements OnInit {
+  public fullPairName:any;
+  public fromAbber:any
+  public toAbber:any;
+  public fromAbbreviation:any;
+  public showAbberivition:any;
   public hasError: boolean = false;
   public errorMessageShow: any;
   public currencyDataList: any;
@@ -92,6 +97,32 @@ export class AddNewPair implements OnInit {
 
 
   }
+
+  showTosymbol(setPairTo){
+    console.log("symbol>>>>>>>>>>>>>>",setPairTo);
+    this.showCurrencyList();
+       this.showAbberivition= this.currencyDataList.find(x => x.currencyId == this.setPairTo);
+      console.log("currency list abberiviation >>>",  this.showAbberivition);
+      // this.showAbberivition ==  this.showAbberivition.currencyAbbreviation;
+      console.log("abber>>>>>>>>>>>>>>>>>>>",this.showAbberivition.currencyAbbreviation);
+      this.toAbber = this.showAbberivition.currencyAbbreviation;
+        console.log("toabber>>>>>>>>",   this.toAbber);
+      
+      }
+
+      showFromsymbol(setPairFrom){
+        console.log("input data >>>>>",setPairFrom);
+        
+        this.fromAbbreviation = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
+        console.log("find data >>>>>>>>>>",   this.fromAbbreviation);
+        console.log("abberi>>>>>>>>",  this.fromAbbreviation.currencyAbbreviation);
+        this.fromAbber = this.fromAbbreviation.currencyAbbreviation;
+        this.fullPairName = this.toAbber + "/" + this.fromAbber; 
+        
+        
+
+
+      }
 }
 
 

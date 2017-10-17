@@ -26,7 +26,7 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [(ngModel)]="setPairTo"  name="setPairTo">
+                        <select class="drop-down-padding" [(ngModel)]="setPairTo"  name="setPairTo" (ngModelChange)="showTosymbol(setPairTo)">
                             <option [disabled]="true" [selected]="true" value="">Choose To Currency</option> 
                         <option *ngFor="let toValue of currencyDataList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
                        </select>
@@ -44,7 +44,7 @@
                       </div>
 
                       <div class="col-md-7 text-left">
-                        <select class="drop-down-padding" [(ngModel)]="setPairFrom"   name="setPairFrom" >
+                        <select class="drop-down-padding" [(ngModel)]="setPairFrom"   name="setPairFrom" (ngModelChange)="showFromsymbol(setPairFrom)">
                            <option [disabled]="true" [selected]="true" >Choose From Currency</option> 
                         <option *ngFor="let fromValue of currencyDataList" [value]="fromValue.currencyId" (click)="toCurrency(fromValue)">{{fromValue.currencyName}}</option>
                        
@@ -61,7 +61,7 @@
 
                       <div class="col-md-7 text-left">
                        
-                    <input type="text" class="form-control drop-down-padding" id="usr" name="pairName" placeholder="BTC/ETH" [disabled]="true">
+                    <input type="text" class="form-control drop-down-padding" id="usr" name="pairName"  [(ngModel)]="fullPairName" [disabled]="true">
                       </div>
                     
                     </div>

@@ -1,94 +1,65 @@
 <div class="widgets">
-        <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
+  <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div>
+          <button class="btn btn-danger pull-right" (click)="addNewToken()">Add New</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="row">
+          <label class="col-sm-12 label-control">Sort by</label>
+        </div>
+        <div class="row">
+          <div class="offset-sm-1 col-sm-5">
             <div class="row">
-                <div class="col-sm-2">
-                    <label class="label-control">Rows on page</label>
-                    <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="15">15</option>
-                </select>
-                </div>
-                <div class="col-sm-4">
-                    <div class="row">
-                        <label class="col-sm-12 label-control">Sort by</label>
-                    </div>
-                    <div class="row">
-                        <div class="offset-sm-1 col-sm-5">
-                            <div class="row">
-                                <select class="form-control input-sm" [(ngModel)]="sortBy">
-                            <option ngValue="name">Name</option>
-                            <option ngValue="email">Email</option>
-                            <option ngValue="age">Price</option>
-                             <option ngValue="age">Amount</option>
-                            <option [ngValue]="sortByWordLength">Date</option>
+              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getTokenList()">
+                            <option ngValue="currency.currencyName">Token Name</option>
+                            <option ngValue="createdDate">createdOn</option>
                         </select>
-                            </div>
-                        </div>
-                        <div class="offset-sm-1 col-sm-5">
-                            <div class="row">
-                                <select class="form-control input-sm" [(ngModel)]="sortOrder">
+            </div>
+          </div>
+          <div class="offset-sm-1 col-sm-5">
+            <div class="row">
+              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getTokenList()">
                             <option ngValue="asc">Ascending</option>
                             <option ngValue="desc">Descending</option>
-                            <option ngValue="badValue">Bad value</option>
                         </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="panel panel-default">
-                <!--<div class="panel-heading">User information</div>-->
-
-                <table class="table table-striped" [mfData]="data | tableFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-                    <thead>
-                         <!-- <tr>
-                            <th colspan="7">
-                               <h6 class="text-center"> Filter By Name</h6>
-                                <input class="form-control" [(ngModel)]="filterQuery" />
-                            </th>
-                        </tr> -->
-                        <tr>
-                            <th style="width: 10%"></th>
-                            <th style="width: 10%">
-                                <mfDefaultSorter by="name">Name</mfDefaultSorter>
-                            </th>
-                            <th style="width: 20%">
-                                <mfDefaultSorter by="email">Contact Address</mfDefaultSorter>
-                            </th>
-                            <!-- <th style="width: 10%">
-                                <mfDefaultSorter by="price">Price</mfDefaultSorter>
-                            </th> -->
-                            <th style="width: 10%">
-                                <mfDefaultSorter by="amount">Wallet Address</mfDefaultSorter>
-                            </th>
-
-                            <th style="width: 20%">
-                                <mfDefaultSorter >Date</mfDefaultSorter>
-                            </th>
-                        </tr>
-
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let ercList of ercTokenLists">
-                            <td>
-                             <button (click)="navigaeToAdderDetails()" class="btn btn-danger">Add</button>
-                            </td>
-                            <td>name</td>
-                            <td>{{ercList.contractAddress}}</td>
-                            <!-- <td>{{ercList.createdDate}}</td> -->
-                            <td>{{ercList.walletAddress}}</td>
-                             <td>{{ercList.createdDate | date}}</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </ba-card>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="panel panel-default">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 20%">Token Name</th>
+            <th style="width: 20%">Symbol</th>
+            <th style="width: 40%">Contract Address</th>
+            <th style="width: 20%">Created On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ercList of ercTokenLists">
+            <td>{{ercList.currency.currencyName}}</td>
+            <td>{{ercList.currency.currencyAbbreviation}}</td>
+            <td>{{ercList.contractAddress}}</td>
+            <td>{{ercList.createdDate | date}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </ba-card>
+</div>
