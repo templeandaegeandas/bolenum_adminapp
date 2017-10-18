@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddNewErc20Token } from './entity/erc20Token';
+import { AddNewErc20Token, Currency } from './entity/erc20Token';
 import { AddNewErcTokenService } from './addNewErc.service';
+
+import { ToastrService } from 'toastr-ng2';
 
 
 
@@ -13,23 +15,26 @@ import { AddNewErcTokenService } from './addNewErc.service';
   providers: [AddNewErcTokenService],
 })
 export class AddNewErc20TokenComponent {
-   currencyName: any;
-  currencyAbbreviation: any;
 
   ercToken = new AddNewErc20Token();
+  currency = new Currency();
 
-  constructor(private router: Router, private addNewErcTokenService: AddNewErcTokenService) { }
+  constructor(
+    private router: Router,
+    private toastrService: ToastrService,
+    private addNewErcTokenService: AddNewErcTokenService) { }
 
 
   addErcToken(form) {
-    if(form.invalid) return;
-    this.ercToken.currency.currencyName = this.currencyName;
-    this.ercToken.currency.currencyAbbreviation = this.currencyAbbreviation;
-    console.log("add new erc token>>>>>>>>>>>>>>>>>>>>>>");
+    if (form.invalid) {
+      return;
+    }
+    this.ercToken.currency = this.currency;
     this.addNewErcTokenService.addNewToken(this.ercToken).subscribe(success => {
-      console.log(success);
+      this.router.navigate(['/pages/addErc20']);
+      this.toastrService.success(success.message, 'Success!');
     }, error => {
-      console.log(error);
+      this.toastrService.error(error.json().message, 'Error!');
     })
 
   }
