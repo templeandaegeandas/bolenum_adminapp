@@ -107,6 +107,18 @@ export class AddNewPair implements OnInit {
       console.log("abber>>>>>>>>>>>>>>>>>>>",this.showAbberivition.currencyAbbreviation);
       this.toAbber = this.showAbberivition.currencyAbbreviation;
         console.log("toabber>>>>>>>>",   this.toAbber);
+         this.fullPairName = this.toAbber + "/" + this.fromAbber; 
+         if(this.fromAbber){
+
+            this.fullPairName = this.toAbber + "/" + this.fromAbber; 
+
+         }
+          else{
+
+             this.fullPairName = this.toAbber ; 
+
+
+          }
       
       }
 
@@ -117,9 +129,19 @@ export class AddNewPair implements OnInit {
         console.log("find data >>>>>>>>>>",   this.fromAbbreviation);
         console.log("abberi>>>>>>>>",  this.fromAbbreviation.currencyAbbreviation);
         this.fromAbber = this.fromAbbreviation.currencyAbbreviation;
-        this.fullPairName = this.toAbber + "/" + this.fromAbber; 
+        // this.fullPairName = this.toAbber + "/" + this.fromAbber; 
         
-        
+         if(this.toAbber){
+
+            this.fullPairName = this.toAbber + "/" + this.fromAbber; 
+
+         }
+          else{
+
+             this.fullPairName = this.fromAbber ; 
+
+
+          }
 
 
       }
