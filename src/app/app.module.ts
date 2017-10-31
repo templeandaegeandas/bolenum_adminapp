@@ -53,7 +53,7 @@ export type StoreType = {
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     ModalModule.forRoot(),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot( {preventDuplicates: true} ),
     BrowserAnimationsModule,
     PagesModule,
     NgxPaginationModule,
