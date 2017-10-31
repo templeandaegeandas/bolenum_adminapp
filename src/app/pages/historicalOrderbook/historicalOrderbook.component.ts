@@ -11,27 +11,40 @@ import { Router } from '@angular/router';
 })
 export class HistoricalOrderbook {
 
-   data;
-    filterQuery = '';
-    rowsOnPage = 10;
-    sortBy = 'email';
-    sortOrder = 'asc';
+  data;
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy:String = "createdOn";
+  sortOrder:String = "desc";
 
     constructor(private service: HistoricalOrderbookService, private router: Router) {
-    this.service.getDataTable().then((data) => {
-      this.data = data;
-    });
+    this.getTradedOrderList();
+  }
+  getTradedOrderList() {
+    this.service.getTradedOrderList(
+      this.currentPage,
+      this.pageSize,
+      this.sortBy,
+      this.sortOrder).subscribe(success => {
+      this.data = success.data.content;
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    }, error => {
+      console.log(error);
+    })
   }
 
-    toInt(num: string) {
-        return +num;
-    }
-
-    sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-  navigaeToOrderDetails()
-  {
-    this.router.navigate(['/pages/orderdetails'])
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getTradedOrderList();
   }
+
+  // navigaeToOrderDetails()
+  // {
+  //   this.router.navigate(['/pages/orderdetails'])
+  // }
 }
