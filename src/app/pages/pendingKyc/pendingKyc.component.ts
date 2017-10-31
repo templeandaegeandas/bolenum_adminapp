@@ -16,8 +16,8 @@ export class PendingKyc {
   totalElements;
   currentPage = 1;
   pageSize = 10;
-  sortBy = "userKyc.uploadedDate";
-  sortOrder = "desc";
+  sortBy = "uploadedDate";
+  sortOrder = "ASC";
   searchData = "";
 
     constructor(private service: PendingKycService, private router: Router) {

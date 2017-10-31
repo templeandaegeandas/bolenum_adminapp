@@ -16,10 +16,16 @@ import { environment } from '../../../environments/environment';
 })
 
 export class UserDetail implements OnInit {
-  bankCustomerDetails:any;
+  myid:any;
+  id:any;
+  userKycDoc:any;
+  uFName: string;
+  userListData: any;
+  bankCustomerDetails: any;
   userId: Number;
-  user = new UserDetailEntity("", "", "", 0,"","");
+  user = new UserDetailEntity("", "", "", 0, "", "");
   document: String;
+  docUrl: String;
   documentStatus: String;
   isVerified: Boolean;
   documentType: String;
@@ -40,11 +46,25 @@ export class UserDetail implements OnInit {
     });
     this.getUserDetailsById();
     this.getBankDetails();
-    console.log("useriddddddddddddddd",this.userId);
+    console.log("useriddddddddddddddd", this.userId);
+  
+  
   }
 
   getUserDetailsById() {
     this.userDetailsService.getUsersDetails(this.userId).subscribe(success => {
+      console.log("userdetails by id>>>>>>>>>>>>", success.data);
+      this.userListData = success.data;
+      this.uFName = this.userListData.firstName;
+      console.log("user details >>>>>>>", this.userListData, this.uFName);
+      this.user.firstName = this.userListData.firstName;
+      this.user.lastName = this.userListData.lastName;
+      this.user.emailId = this.userListData.emailId;
+      this.user.mobileNo = this.userListData.mobileNumber;
+      this.user.country = this.userListData.country;
+      this.user.state = this.userListData.state;
+
+
       if (success.data.userKyc !== null) {
         this.document = success.data.userKyc.document;
         this.documentStatus = success.data.userKyc.documentStatus;
@@ -52,8 +72,8 @@ export class UserDetail implements OnInit {
         this.documentType = success.data.userKyc.documentType;
         if (this.document != null) {
           this.picture = environment.documentUrl + this.document;
-          console.log("kyc document >>>>>>>",this.picture);
-          
+          console.log("kyc document >>>>>>>", this.picture);
+
         }
       }
       this.user = new UserDetailEntity(success.data.firstName,
@@ -61,14 +81,20 @@ export class UserDetail implements OnInit {
         success.data.emailId,
         success.data.mobileNumber,
         success.data.country,
-        success.data.state
+        success.data.state,
       );
     }, error => {
       console.log(error)
-    })
+    });
+
+    this.getKycByUserID(this.userId);
   }
 
-  approveKyc() {
+  approveKyc(data) {
+    this.myid = data;
+    this.id = this.myid;
+    console.log("id >>>>>>>>=== ", this.userId);
+    
     this.userDetailsService.approveKyc(this.userId).subscribe(success => {
       this.ngOnInit();
     }, error => {
@@ -77,14 +103,14 @@ export class UserDetail implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
-    if(disApproveKycForm.invalid) return;
+    if (disApproveKycForm.invalid) return;
     this.kycDisapprove.setUserId(this.userId);
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
-      this.toastrService.success("Kyc disapproved!","Success!");
+      this.toastrService.success("Kyc disapproved!", "Success!");
     }, error => {
-      this.toastrService.success("Kyc not disapproved! Try again!","Success!");
+      this.toastrService.success("Kyc not disapproved! Try again!", "Success!");
     })
   }
 
@@ -95,19 +121,45 @@ export class UserDetail implements OnInit {
     this.addPopup.hide();
   }
 
-  getBankDetails( ) {
+  getBankDetails() {
     this.userDetailsService.getBankDetails(this.userId).subscribe(successData => {
       let userBankData = successData.data;
       this.bankCustomerDetails = userBankData;
       console.log("userdata >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.bankCustomerDetails);
-
-
-
     }, errorData => {
+    });
+  }
 
-    })
+  getKycByUserID(userId){
+
+    this.userDetailsService.getKycByUserId(userId).subscribe( success => {
+    this.userKycDoc = success.data;
+    console.log("kyc document >>>>",this.userKycDoc);
+   
+   
+    
+    //   if ( this.userKycDoc.length !== 0) {
+    //     this.picture = environment.documentUrl;
+    //   }
+
+    //  this.user.firstName = this.userKycDoc.user.firstName;
+    //   this.user.lastName = this.userKycDoc.user.lastName;
+    //   this.user.emailId = this.userKycDoc.user.emailId;
+    //   this.user.mobileNo = this.userKycDoc.user.mobileNumber;
+    //   this.user.country = this.userKycDoc.user.country;
+    //   this.user.state = this.userKycDoc.user.state;
+    //   console.log("name >>>>>>>>>>>",this.user.firstName);
+
+  
+      
 
 
+
+
+      
+},error => {
+
+    });
 
   }
 }

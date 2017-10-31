@@ -27,4 +27,9 @@ export class UserDetailsService {
     .map(res => res.json())
   }
 
+getKycByUserId(userId){
+  return this.http.get('api/v1/kyc/by/userid?userId=' + userId)
+  .map(res => res.json())
+}
+
 }
