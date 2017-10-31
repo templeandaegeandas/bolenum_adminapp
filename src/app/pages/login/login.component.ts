@@ -54,7 +54,7 @@ export class LoginComponent {
       this.router.navigate([this.returnUrl]);
     }, error => {
       this.toastrService.error(error.json().message, 'Error!');
-    })
+    });
   }
 
 }

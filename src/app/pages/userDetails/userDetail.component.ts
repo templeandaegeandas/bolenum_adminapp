@@ -52,6 +52,8 @@ export class UserDetail implements OnInit {
         this.documentType = success.data.userKyc.documentType;
         if (this.document != null) {
           this.picture = environment.documentUrl + this.document;
+          console.log("kyc document >>>>>>>",this.picture);
+          
         }
       }
       this.user = new UserDetailEntity(success.data.firstName,
