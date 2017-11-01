@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providers: [PendingKycService]
 })
 export class PendingKyc {
-
+  user;
   data;
   start;
   end;
@@ -30,7 +30,13 @@ export class PendingKyc {
     this.sortBy,
     this.sortOrder,
     this.searchData).subscribe(success => {
+      console.log("pending kyc list >>>>",success.data);
+      
       this.data = success.data.content;
+
+      console.log(" data of pending kyc details >>>>>>>>", this.data , this.data[2].user.firstName);
+      console.log(" data for content >>>>>>>>", this.data );
+      
       this.totalElements = success.data.totalElements;
       this.start = (this.currentPage - 1) * this.pageSize + 1;
       this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
@@ -46,5 +52,6 @@ export class PendingKyc {
 
   navigaeToKycDeatils(userId) {
     this.router.navigate(['/pages/kycDetails/' + userId]);
+    this.getPendingKycList();
   }
 }

@@ -52,12 +52,13 @@
                                                      currentPage: currentPage,
                                                      totalItems: totalElements }">
             <td>
-              <button (click)="navigaeToKycDeatils(item.userId)" class="btn btn-danger">Kyc</button>
+              <button (click)="navigaeToKycDeatils(item.user.userId)" class="btn btn-danger">Kyc</button>
             </td>
-            <td>{{item.firstName}} {{item.middleName}} {{item.lastName}}</td>
-            <td>{{item.emailId}}</td>
-            <td>{{item.userKyc.documentStatus}}</td>
-            <td>{{item.userKyc.uploadedDate | date}}</td>
+    
+              <td>{{item.user.firstName}}{{item.user.middleName}}{{item.user.lastName}}</td>
+            <td>{{item.user.emailId}}</td>  
+            <td>{{item.documentStatus}}</td>
+            <td>{{item.uploadedDate | date}}</td>
           </tr>
         </tbody>
         <tfoot>
