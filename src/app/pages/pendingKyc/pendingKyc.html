@@ -9,9 +9,9 @@
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
               <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getPendingKycList()">
-                            <option ngValue="firstName">Name</option>
-                            <option ngValue="emailId">Email</option>
-                            <option ngValue="userKyc.uploadedDate">Uploaded On</option>
+                            <option ngValue="user.firstName">Name</option>
+                            <option ngValue="user.emailId">Email</option>
+                            <option ngValue="uploadedDate">Uploaded On</option>
                         </select>
             </div>
           </div>
@@ -41,8 +41,9 @@
           <tr *ngIf="totalElements!=0">
             <th style="width: 10%"></th>
             <th style="width: 20%">Name</th>
-            <th style="width: 40%">Email</th>
+            <th style="width: 30%">Email</th>
             <th style="width: 10%">Status</th>
+            <th style="width: 10%">Document Type</th>
             <th style="width: 20%">Uploaded On</th>
           </tr>
 
@@ -54,10 +55,11 @@
             <td>
               <button (click)="navigaeToKycDeatils(item.user.userId)" class="btn btn-danger">Kyc</button>
             </td>
-    
+
               <td>{{item.user.firstName}}{{item.user.middleName}}{{item.user.lastName}}</td>
-            <td>{{item.user.emailId}}</td>  
+            <td>{{item.user.emailId}}</td>
             <td>{{item.documentStatus}}</td>
+            <td>{{item.documentType}}</td>
             <td>{{item.uploadedDate | date}}</td>
           </tr>
         </tbody>

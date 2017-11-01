@@ -17,7 +17,7 @@ export class PendingKyc {
   currentPage = 1;
   pageSize = 10;
   sortBy = "uploadedDate";
-  sortOrder = "ASC";
+  sortOrder = "desc";
   searchData = "";
 
     constructor(private service: PendingKycService, private router: Router) {
@@ -31,12 +31,10 @@ export class PendingKyc {
     this.sortOrder,
     this.searchData).subscribe(success => {
       console.log("pending kyc list >>>>",success.data);
-      
-      this.data = success.data.content;
 
-      console.log(" data of pending kyc details >>>>>>>>", this.data , this.data[2].user.firstName);
+      this.data = success.data.content;
       console.log(" data for content >>>>>>>>", this.data );
-      
+
       this.totalElements = success.data.totalElements;
       this.start = (this.currentPage - 1) * this.pageSize + 1;
       this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;

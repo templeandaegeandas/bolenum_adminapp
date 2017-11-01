@@ -22,6 +22,8 @@ export class KycDetails implements OnInit {
   documentType: String;
   defaultPicture = 'assets/img/theme/no-photo.png';
   picture: String;
+  kycList: any;
+  docUrl: String;
   kycDisapprove = new KycDisapproveEntity();
   @ViewChild('addPopup') public addPopup: ModalDirective;
   constructor(
@@ -33,24 +35,22 @@ export class KycDetails implements OnInit {
     this.router.params.subscribe(params => {
       this.userId = +params['userId'];
     });
-    this.getUserDetailsById();
+    this.getKycByUserID(this.userId);
   }
 
-  getUserDetailsById() {
-    this.userDetailsService.getUsersDetails(this.userId).subscribe(success => {
-      this.document = success.data.userKyc.document;
-      this.documentStatus = success.data.userKyc.documentStatus;
-      this.isVerified = success.data.userKyc.isVerified;
-      this.documentType = success.data.userKyc.documentType;
-      this.picture = environment.documentUrl + this.document;
-      this.defaultPicture = 'assets/img/theme/no-photo.png';
+  getKycByUserID(userId) {
+    this.docUrl = environment.documentUrl;
+    this.userDetailsService.getKycByUserId(userId).subscribe(success => {
+      console.log(success.data);
+      this.kycList = success.data;
+      this.kycList[0].document = this.docUrl + success.data[0].document;
+      this.kycList[1].document = this.docUrl + success.data[1].document;
     }, error => {
-      console.log(error)
-    })
+    });
   }
 
-  approveKyc() {
-    this.userDetailsService.approveKyc(this.userId).subscribe(success => {
+  approveKyc(kycId) {
+    this.userDetailsService.approveKyc(kycId).subscribe(success => {
       this.ngOnInit();
     }, error => {
       console.log(error)
@@ -58,18 +58,18 @@ export class KycDetails implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
-    if(disApproveKycForm.invalid) return;
-    this.kycDisapprove.setUserId(this.userId);
+    if (disApproveKycForm.invalid) return;
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
-      this.toastrService.success("Kyc disapproved!","Success!");
+      this.toastrService.success("Kyc disapproved!", "Success!");
     }, error => {
-      this.toastrService.success("Kyc not disapproved! Try again!","Success!");
+      this.toastrService.success("Kyc not disapproved! Try again!", "Success!");
     })
   }
 
-  addPopupOpen() {
+  addPopupOpen(kycId) {
+    this.kycDisapprove.setId(kycId);
     this.addPopup.show();
   }
   addPopupClose() {

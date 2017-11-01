@@ -12,8 +12,8 @@ export class UserDetailsService {
       .map(res => res.json())
   }
 
-  approveKyc(userId: Number) {
-    return this.http.put('api/v1/kyc/approve/' + userId, '')
+  approveKyc(kycId: Number) {
+    return this.http.put('api/v1/kyc/approve?kycId=' + kycId, '')
       .map(res => res.json())
   }
 

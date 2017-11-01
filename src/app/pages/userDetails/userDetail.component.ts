@@ -16,15 +16,15 @@ import { environment } from '../../../environments/environment';
 })
 
 export class UserDetail implements OnInit {
-  myid:any;
-  id:any;
-  userKycDoc:any;
+  myid: any;
+  id: any;
+  userKycDoc: any;
   uFName: string;
   userListData: any;
   bankCustomerDetails: any;
   userId: Number;
   user = new UserDetailEntity("", "", "", 0, "", "");
-  document: String;
+  kycList: any;
   docUrl: String;
   documentStatus: String;
   isVerified: Boolean;
@@ -46,36 +46,10 @@ export class UserDetail implements OnInit {
     });
     this.getUserDetailsById();
     this.getBankDetails();
-    console.log("useriddddddddddddddd", this.userId);
-  
-  
   }
 
   getUserDetailsById() {
     this.userDetailsService.getUsersDetails(this.userId).subscribe(success => {
-      console.log("userdetails by id>>>>>>>>>>>>", success.data);
-      this.userListData = success.data;
-      this.uFName = this.userListData.firstName;
-      console.log("user details >>>>>>>", this.userListData, this.uFName);
-      this.user.firstName = this.userListData.firstName;
-      this.user.lastName = this.userListData.lastName;
-      this.user.emailId = this.userListData.emailId;
-      this.user.mobileNo = this.userListData.mobileNumber;
-      this.user.country = this.userListData.country;
-      this.user.state = this.userListData.state;
-
-
-      if (success.data.userKyc !== null) {
-        this.document = success.data.userKyc.document;
-        this.documentStatus = success.data.userKyc.documentStatus;
-        this.isVerified = success.data.userKyc.isVerified;
-        this.documentType = success.data.userKyc.documentType;
-        if (this.document != null) {
-          this.picture = environment.documentUrl + this.document;
-          console.log("kyc document >>>>>>>", this.picture);
-
-        }
-      }
       this.user = new UserDetailEntity(success.data.firstName,
         success.data.lastName,
         success.data.emailId,
@@ -90,12 +64,8 @@ export class UserDetail implements OnInit {
     this.getKycByUserID(this.userId);
   }
 
-  approveKyc(data) {
-    this.myid = data;
-    this.id = this.myid;
-    console.log("id >>>>>>>>=== ", this.userId);
-    
-    this.userDetailsService.approveKyc(this.userId).subscribe(success => {
+  approveKyc(kycId) {
+    this.userDetailsService.approveKyc(kycId).subscribe(success => {
       this.ngOnInit();
     }, error => {
       console.log(error)
@@ -104,7 +74,6 @@ export class UserDetail implements OnInit {
 
   disApproveKyc(disApproveKycForm) {
     if (disApproveKycForm.invalid) return;
-    this.kycDisapprove.setUserId(this.userId);
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
@@ -114,7 +83,8 @@ export class UserDetail implements OnInit {
     })
   }
 
-  addPopupOpen() {
+  addPopupOpen(kycId) {
+    this.kycDisapprove.setId(kycId);
     this.addPopup.show();
   }
   addPopupClose() {
@@ -125,41 +95,18 @@ export class UserDetail implements OnInit {
     this.userDetailsService.getBankDetails(this.userId).subscribe(successData => {
       let userBankData = successData.data;
       this.bankCustomerDetails = userBankData;
-      console.log("userdata >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", this.bankCustomerDetails);
     }, errorData => {
     });
   }
 
-  getKycByUserID(userId){
-
-    this.userDetailsService.getKycByUserId(userId).subscribe( success => {
-    this.userKycDoc = success.data;
-    console.log("kyc document >>>>",this.userKycDoc);
-   
-   
-    
-    //   if ( this.userKycDoc.length !== 0) {
-    //     this.picture = environment.documentUrl;
-    //   }
-
-    //  this.user.firstName = this.userKycDoc.user.firstName;
-    //   this.user.lastName = this.userKycDoc.user.lastName;
-    //   this.user.emailId = this.userKycDoc.user.emailId;
-    //   this.user.mobileNo = this.userKycDoc.user.mobileNumber;
-    //   this.user.country = this.userKycDoc.user.country;
-    //   this.user.state = this.userKycDoc.user.state;
-    //   console.log("name >>>>>>>>>>>",this.user.firstName);
-
-  
-      
-
-
-
-
-      
-},error => {
-
+  getKycByUserID(userId) {
+    this.docUrl = environment.documentUrl;
+    this.userDetailsService.getKycByUserId(userId).subscribe(success => {
+      console.log(success.data);
+      this.kycList = success.data;
+      this.kycList[0].document = this.docUrl + success.data[0].document;
+      this.kycList[1].document = this.docUrl + success.data[1].document;
+    }, error => {
     });
-
   }
 }
