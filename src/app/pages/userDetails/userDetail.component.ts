@@ -24,14 +24,21 @@ export class UserDetail implements OnInit {
   bankCustomerDetails: any;
   userId: Number;
   user = new UserDetailEntity("", "", "", 0, "", "");
-  kycList: any;
+  document0: any;
+  document1: any;
+  document0Status: String;
+  document0Type: String;
+  document1Status: String;
+  document1Type: String;
+  document0VerificationStatus: any;
+  document1VerificationStatus: any
   docUrl: String;
-  documentStatus: String;
-  isVerified: Boolean;
-  documentType: String;
-  defaultPicture: String;
-  picture: String = 'assets/img/theme/no-photo.png';
+  // defaultPicture: String;
+  // picture: String = 'assets/img/theme/no-photo.png';
   kycDisapprove = new KycDisapproveEntity();
+  kycListLength: any;
+  doc0Pdf: boolean = false;
+  doc1Pdf: boolean = false;
   @ViewChild('addPopup') public addPopup: ModalDirective;
 
   constructor(
@@ -40,7 +47,6 @@ export class UserDetail implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
-    console.log(environment)
     this.router.params.subscribe(params => {
       this.userId = +params['userId'];
     });
@@ -102,11 +108,39 @@ export class UserDetail implements OnInit {
   getKycByUserID(userId) {
     this.docUrl = environment.documentUrl;
     this.userDetailsService.getKycByUserId(userId).subscribe(success => {
-      console.log(success.data);
-      this.kycList = success.data;
-      this.kycList[0].document = this.docUrl + success.data[0].document;
-      this.kycList[1].document = this.docUrl + success.data[1].document;
+      // this.kycList = success.data;
+      this.kycListLength = success.data.length;
+      let dot1 = success.data[0].document.lastIndexOf(".")
+      let extension1 = (dot1 == -1) ? "" : success.data[0].document.substring(dot1 + 1);
+      let dot2 = success.data[1].document.lastIndexOf(".")
+      let extension2 = (dot2 == -1) ? "" : success.data[1].document.substring(dot2 + 1);
+      if (extension1 == "pdf") {
+        this.doc0Pdf = true;
+      }
+      // } else {
+        this.document0 = this.docUrl + success.data[0].document;
+      // }
+      this.document0Status = success.data[0].documentStatus;
+      this.document0Type = success.data[0].documentType;
+      this.document0VerificationStatus = success.data[0].isVerified;
+      if (extension2 == "pdf") {
+        this.doc1Pdf = true;
+      }
+      // } else {
+        this.document1 = this.docUrl + success.data[1].document;
+      // }
+      this.document1Status = success.data[1].documentStatus;
+      this.document1Type = success.data[1].documentType;
+      this.document1VerificationStatus = success.data[1].isVerified;
     }, error => {
     });
+  }
+
+  openPdf0() {
+    window.open(this.document0, "_blank");
+  }
+
+  openPdf1() {
+    window.open(this.document1, "_blank");
   }
 }
