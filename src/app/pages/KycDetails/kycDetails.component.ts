@@ -31,6 +31,8 @@ export class KycDetails implements OnInit {
   kycListLength: any;
   doc0Pdf: boolean = false;
   doc1Pdf: boolean = false;
+  document0Id: any;
+  document1Id: any;
   @ViewChild('addPopup') public addPopup: ModalDirective;
   constructor(
     private router: ActivatedRoute,
@@ -56,18 +58,16 @@ export class KycDetails implements OnInit {
       if (extension1 == "pdf") {
         this.doc0Pdf = true;
       }
-      // } else {
-        this.document0 = this.docUrl + success.data[0].document;
-      // }
+      this.document0Id = success.data[0].id;
+      this.document0 = this.docUrl + success.data[0].document;
       this.document0Status = success.data[0].documentStatus;
       this.document0Type = success.data[0].documentType;
       this.document0VerificationStatus = success.data[0].isVerified;
       if (extension2 == "pdf") {
         this.doc1Pdf = true;
       }
-      // } else {
-        this.document1 = this.docUrl + success.data[1].document;
-      // }
+      this.document1Id = success.data[1].id;
+      this.document1 = this.docUrl + success.data[1].document;
       this.document1Status = success.data[1].documentStatus;
       this.document1Type = success.data[1].documentType;
       this.document1VerificationStatus = success.data[1].isVerified;
@@ -75,8 +75,16 @@ export class KycDetails implements OnInit {
     });
   }
 
-  approveKyc(kycId) {
-    this.userDetailsService.approveKyc(kycId).subscribe(success => {
+  approve0Kyc() {
+    this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  approve1Kyc() {
+    this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
     }, error => {
       console.log(error)
@@ -94,8 +102,12 @@ export class KycDetails implements OnInit {
     })
   }
 
-  addPopupOpen(kycId) {
-    this.kycDisapprove.setId(kycId);
+  addPopupOpen(documentType) {
+    if (documentType == this.document0Type) {
+      this.kycDisapprove.setId(this.document0Id);
+    } else {
+      this.kycDisapprove.setId(this.document1Id);
+    }
     this.addPopup.show();
   }
   addPopupClose() {

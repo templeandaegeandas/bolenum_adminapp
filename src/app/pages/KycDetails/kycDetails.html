@@ -7,13 +7,6 @@
             <div class="tab-inner">
               <div class="tab-inner1">
                 <div class="row" *ngIf="kycListLength==0">Kyc not uploaded yet!</div>
-
-
-
-
-
-
-
                 <div class="row" *ngIf="kycListLength!=0">
                   <div class="col-md-12">
                     <div class="row">
@@ -39,8 +32,8 @@
                           </div>
                         </div>
                         <div class="col-md-6 actionBtn text-right">
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="approveKyc(kycList[0].id)">Approve</button>
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="addPopupOpen(kycList[0].id)">DisApprove</button>
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="approve0Kyc()">Approve</button>
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document0Type)">DisApprove</button>
                         </div>
                       </div>
                     </div>
@@ -72,20 +65,13 @@
                         </div>
                         <div class="col-md-6 actionBtn text-right">
 
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="approveKyc(kyc.id)">Approve</button>
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="addPopupOpen(kyc.id)">DisApprove</button>
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="approve1Kyc()">Approve</button>
+                          <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document1Type)">DisApprove</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
-
-
-
-
-
-
               </div>
             </div>
           </p-tabPanel>
