@@ -75,6 +75,7 @@ export class UserDetail implements OnInit {
   approve0Kyc() {
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
+      this.toastrService.success(success.message, "Success!");
     }, error => {
       console.log(error)
     })
@@ -83,6 +84,7 @@ export class UserDetail implements OnInit {
   approve1Kyc() {
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
+      this.toastrService.success(success.message, "Success!");
     }, error => {
       console.log(error)
     })
