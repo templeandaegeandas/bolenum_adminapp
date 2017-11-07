@@ -95,7 +95,7 @@ export class UserDetail implements OnInit {
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
-      this.toastrService.success("Kyc disapproved!", "Success!");
+      this.toastrService.success(success.message, "Success!");
     }, error => {
       this.toastrService.success("Kyc not disapproved! Try again!", "Success!");
     })
