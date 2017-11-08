@@ -6,13 +6,13 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'toastr-ng2';
 import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
 import { environment } from '../../../environments/environment';
-
+import { WebsocketService } from '../webSocket/web.socket.service';
 
 @Component({
   selector: 'KycDetails',
   styleUrls: ['./kycDetails.scss'],
   templateUrl: './kycDetails.html',
-  providers: [UserDetailsService]
+  providers: [UserDetailsService, WebsocketService]
 })
 export class KycDetails implements OnInit {
   userId: Number;
@@ -37,7 +37,8 @@ export class KycDetails implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private userDetailsService: UserDetailsService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private websocketService: WebsocketService) { }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
@@ -55,7 +56,7 @@ export class KycDetails implements OnInit {
       let extension1 = (dot1 == -1) ? "" : success.data[0].document.substring(dot1 + 1);
       let dot2 = success.data[1].document.lastIndexOf(".")
       let extension2 = (dot2 == -1) ? "" : success.data[1].document.substring(dot2 + 1);
-      if (extension1 == "pdf") {
+      if (extension1 == 'pdf') {
         this.doc0Pdf = true;
       }
       this.document0Id = success.data[0].id;
@@ -63,7 +64,7 @@ export class KycDetails implements OnInit {
       this.document0Status = success.data[0].documentStatus;
       this.document0Type = success.data[0].documentType;
       this.document0VerificationStatus = success.data[0].isVerified;
-      if (extension2 == "pdf") {
+      if (extension2 == 'pdf') {
         this.doc1Pdf = true;
       }
       this.document1Id = success.data[1].id;
@@ -78,7 +79,8 @@ export class KycDetails implements OnInit {
   approve0Kyc() {
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
-      this.toastrService.success(success.message, "Success!");
+      this.toastrService.success(success.message, 'Success!');
+      this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
       console.log(error)
     })
@@ -87,20 +89,24 @@ export class KycDetails implements OnInit {
   approve1Kyc() {
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
-      this.toastrService.success(success.message, "Success!");
+      this.toastrService.success(success.message, 'Success!');
+      this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
       console.log(error)
     })
   }
 
   disApproveKyc(disApproveKycForm) {
-    if (disApproveKycForm.invalid) return;
+    if (disApproveKycForm.invalid) {
+      return;
+    }
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
-      this.toastrService.success(success.message, "Success!");
+      this.toastrService.success(success.message, 'Success!');
+      this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
-      this.toastrService.success("Kyc not disapproved! Try again!", "Success!");
+      this.toastrService.success('Kyc not disapproved! Try again!', 'Success!');
     })
   }
 
@@ -116,11 +122,11 @@ export class KycDetails implements OnInit {
     this.addPopup.hide();
   }
   openPdf0() {
-    window.open(this.document0, "_blank");
+    window.open(this.document0, '_blank');
   }
 
   openPdf1() {
-    window.open(this.document1, "_blank");
+    window.open(this.document1, '_blank');
   }
 
 }

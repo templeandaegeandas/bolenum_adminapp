@@ -24,7 +24,6 @@ import { Pages } from './pages.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule,

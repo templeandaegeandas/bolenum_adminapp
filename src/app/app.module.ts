@@ -10,6 +10,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient } from './app.client.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { StompService } from 'ng2-stomp-service';
+import { WebsocketService } from './pages/webSocket/web.socket.service';
+import { AppEventEmiterService } from './app.event.emmiter.service';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -60,7 +63,10 @@ export type StoreType = {
     routing,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    StompService,
+    WebsocketService,
+    AppEventEmiterService
   ]
 })
 
