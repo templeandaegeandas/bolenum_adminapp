@@ -4,12 +4,12 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AddNewPairService {
-  
+
   constructor(private http: HttpClient) { }
 
 
   showCurrencyList(){
-      return this.http.get('api/v1/admin/currency/list')
+      return this.http.get('api/v1/admin/all/currency/list')
       .map(res => res.json())
   }
 
@@ -18,10 +18,5 @@ export class AddNewPairService {
       .map(res => res.json())
 
   }
- 
+
 }
-
-
-
-
-

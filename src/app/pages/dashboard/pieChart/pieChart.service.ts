@@ -1,22 +1,27 @@
-import {Injectable} from '@angular/core';
-import {BaThemeConfigProvider, colorHelper} from '../../../theme';
+import { Injectable } from '@angular/core';
+import { BaThemeConfigProvider, colorHelper } from '../../../theme';
+import { HttpClient } from '../../../app.client.interceptor';
 
 @Injectable()
 export class PieChartService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _baConfig: BaThemeConfigProvider, private http: HttpClient) {
   }
 
+  getUserCountOnDashBoard() {
+      return this.http.get('api/v1/admin/buyer/seller')
+      .map(res => res.json());
+  }
   getData() {
-    let pieColor = this._baConfig.get().colors.custom.dashboardPieChart;
+    const pieColor = this._baConfig.get().colors.custom.dashboardPieChart;
     return [
       {
         color: '#3498DB',
         description: 'dashboard.new_visits',
         stats: '57,820',
         icon: 'person',
-        
-        
+
+
       }, {
         color: '#F1C40F  ',
         description: 'dashboard.purchases',
@@ -32,7 +37,7 @@ export class PieChartService {
         description: 'dashboard.returned',
         stats: '32,592',
         icon: 'refresh',
-      }
+      },
     ];
   }
 }

@@ -1,13 +1,18 @@
-import {Component} from '@angular/core';
+import { Component , OnInit } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'dashboard',
-  styleUrls: ['./dashboard.scss'],
-  templateUrl: './dashboard.html'
+  templateUrl: './dashboard.html',
+  styleUrls: ['./dashboard.scss']
 })
-export class Dashboard {
 
-  constructor() {
+export class Dashboard implements OnInit {
+
+  constructor(private router: Router) {
   }
 
+  ngOnInit() {
+
+  }
 }
