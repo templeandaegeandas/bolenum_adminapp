@@ -56,80 +56,85 @@
           <p-tabPanel header="KYC">
             <div class="tab-inner">
               <div class="tab-inner1">
-                <div class="row" *ngIf="kycListLength==0">Kyc not uploaded yet!</div>
-
-
-
-
-                <div class="row" *ngIf="kycListLength!=0">
+                <div class="row" *ngIf="kycListLength==0">
                   <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="col-sm-10">
-                          <div class="col-md-12" style="height: 300px;width: 300px;">
-                            <img *ngIf="!doc0Pdf" [src]="document0" [imageZoom]="document0" [style.width.px]="300" [style.height.px]="300" />
-                            <img *ngIf="doc0Pdf" src="assets/images/pdf-icon.png" style="width: 300px;height: 300px;" (click)="openPdf0()" />
+                    Kyc not uploaded yet!
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="row" *ngIf="kycListLength!=0">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col-sm-10">
+                              <div class="col-md-12" style="height: 300px;width: 300px;">
+                                <img *ngIf="!doc0Pdf" [src]="document0" [imageZoom]="document0" [style.width.px]="327" [style.height.px]="300" />
+                                <img *ngIf="doc0Pdf" src="assets/images/pdf-icon.png" style="width: 327px;height: 300px;" (click)="openPdf0()" />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="col-sm-10 kyc-margin-top">
+                              <div class="form-group">
+                                <label for="inputFirstName">Document Status</label>
+                                <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document0Status" disabled>
+                                <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                              </div>
+                              <div class="form-group">
+                                <label for="inputMobileName">Document Type</label>
+                                <input class="form-control" id="inputMobileName" placeholder="Name of Identity" type="text" [(ngModel)]="document0Type" disabled>
+                                <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
+                              </div>
+                            </div>
+                            <div class="col-md-6 actionBtn text-center">
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
+                                (click)="approve0Kyc()">Approve</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
+                                (click)="addPopupOpen(document0Type)">DisApprove</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="col-sm-10">
-                          <div class="form-group">
-                            <label for="inputFirstName">Document Status</label>
-                            <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document0Status" disabled>
-                            <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="row" *ngIf="kycListLength!=0">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col-sm-10">
+                              <div class="col-md-12" style="height: 300px;width: 300px;">
+                                <img *ngIf="!doc1Pdf" [src]="document1" [imageZoom]="document1" [style.width.px]="327" [style.height.px]="300" />
+                                <img *ngIf="doc1Pdf" src="assets/images/pdf-icon.png" style="width: 327px;height: 300px;" (click)="openPdf1()" />
+                              </div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label for="inputMobileName">Document Type</label>
-                            <input class="form-control" id="inputMobileName" placeholder="Name of Identity" type="text" [(ngModel)]="document0Type" disabled>
-                            <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
+                          <div class="col-md-12">
+                            <div class="col-sm-10 kyc-margin-top">
+                              <div class="form-group">
+                                <label for="inputFirstName">Document Status</label>
+                                <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document1Status" disabled>
+                                <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
+                              </div>
+                              <div class="form-group">
+                                <label for="inputMobileName">Document Type</label>
+                                <input class="form-control" id="inputMobileName" placeholder="Name of Identity" type="text" [(ngModel)]="document1Type" disabled>
+                                <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
+                              </div>
+                            </div>
+                            <div class="col-md-6 actionBtn text-center">
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
+                                (click)="approve1Kyc()">Approve</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
+                                (click)="addPopupOpen(document1Type)">DisApprove</button>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-md-6 actionBtn text-right">
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="approve0Kyc()">Approve</button>
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document0Type)">DisApprove</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row" *ngIf="kycListLength!=0">
-                  <div class="col-md-12">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="col-sm-10">
-                          <div class="col-md-12" style="height: 300px;width: 300px;">
-                            <img *ngIf="!doc1Pdf" [src]="document1" [imageZoom]="document1" [style.width.px]="300" [style.height.px]="300" />
-                            <img *ngIf="doc1Pdf" src="assets/images/pdf-icon.png" style="width: 300px;height: 300px;" (click)="openPdf1()" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="col-sm-10">
-                          <div class="form-group">
-                            <label for="inputFirstName">Document Status</label>
-                            <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document1Status" disabled>
-                            <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
-                          </div>
-                          <div class="form-group">
-                            <label for="inputMobileName">Document Type</label>
-                            <input class="form-control" id="inputMobileName" placeholder="Name of Identity" type="text" [(ngModel)]="document1Type" disabled>
-                            <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
-                          </div>
-                        </div>
-                        <div class="col-md-6 actionBtn text-right">
-
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="approve1Kyc()">Approve</button>
-                          <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document1Type)">DisApprove</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-
-
-
               </div>
             </div>
           </p-tabPanel>
@@ -191,7 +196,7 @@
                   </div>
                   <div class="col-md-6" *ngFor="let bankUser of bankCustomerDetails">
                     <div class="col-sm-10">
-                       <div class="form-group">
+                      <div class="form-group">
                         <label for="inputBankName">Bank Name</label>
                         <input class="form-control" id="inputBankName" type="text" [(ngModel)]="bankUser.bankName" disabled>
                         <!-- <input class="form-control" *ngIf="isEdit" id="inputFirstName" placeholder="First Name" type="text" > -->
