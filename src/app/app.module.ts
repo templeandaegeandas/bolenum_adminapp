@@ -30,13 +30,13 @@ import { PagesModule } from './pages/pages.module';
 const APP_PROVIDERS = [
   AppState,
   GlobalState,
-  HttpClient
+  HttpClient,
 ];
 
 export type StoreType = {
   state: InternalStateType,
   restoreInputValues: () => void,
-  disposeOldHosts: () => void
+  disposeOldHosts: () => void,
 };
 
 /**
@@ -45,7 +45,7 @@ export type StoreType = {
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App
+    App,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -56,7 +56,7 @@ export type StoreType = {
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     ModalModule.forRoot(),
-    ToastrModule.forRoot( {preventDuplicates: true} ),
+    ToastrModule.forRoot( { preventDuplicates: true } ),
     BrowserAnimationsModule,
     PagesModule,
     NgxPaginationModule,
@@ -66,8 +66,8 @@ export type StoreType = {
     APP_PROVIDERS,
     StompService,
     WebsocketService,
-    AppEventEmiterService
-  ]
+    AppEventEmiterService,
+  ],
 })
 
 export class AppModule {
