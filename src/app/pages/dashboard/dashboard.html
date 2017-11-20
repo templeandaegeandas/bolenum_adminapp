@@ -19,102 +19,35 @@
          <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-12"
             cardTitle="dashboard.revenue" baCardClass="medium-card">
             <p-tabView>
-               <p-tabPanel header="BTC">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                        <div class="vertical-scroll">
                            <table class="table table-bordered table table-hover">
                               <thead>
                                  <tr>
                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Amount</th>
+                                    <th>Total</th>
+                                    <th>Pair</th>
                                     <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Order Standard</th>
+
+                                 </tr>
+
+                                 <tr *ngFor="let list of latestOrders" class="table-content-font">
+
+                                         <td>{{list.orderType}}</td>
+                                         <td>{{list.price}}</td>
+                                         <td>{{list.volume}}</td>
+                                         <td>{{list.totalVolume}}</td>
+                                         <td>{{list.pair}}</td>
+                                         <td>{{list.createdOn |date}}</td>
+                                         <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
+                                         <td>{{list.orderStandard}}</td>
+                                         <td>0</td>
                                  </tr>
                               </thead>
                               <tbody>
-                                 <tr>
-                                    <td>Buy</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                 <tr>
-                                     <td>Sell</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                <tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div>
-               </p-tabPanel>
-               <p-tabPanel header="ETH">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                        <div class="vertical-scroll">
-                           <table class="table table-bordered table table-hover">
-                              <thead>
-                                 <tr>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>Buy</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                 <tr>
-                                     <td>Sell</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                <tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div>
-               </p-tabPanel>
-               <p-tabPanel header="BLN">
-                  <div class="tab-inner">
-                     <div class="tab-inner1">
-                      <div class="vertical-scroll">
-                           <table class="table table-bordered table table-hover">
-                              <thead>
-                                 <tr>
-                                    <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr>
-                                    <td>Buy</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                 <tr>
-                                     <td>Sell</td>
-                                    <td>123</td>
-                                    <td>Thornton</td>
-                                    <td>10/9/2017</td>
-                                 </tr>
-                                <tbody>
-                           </table>
-                        </div>
-                     </div>
-                     </div>
-               </p-tabPanel>
+                             </table>
             </p-tabView>
          </ba-card>
          <!--<ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-12"
