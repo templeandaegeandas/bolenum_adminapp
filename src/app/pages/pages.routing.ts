@@ -11,12 +11,17 @@ export const routes: Routes = [
   {
     path: 'login',
     loadChildren: 'app/pages/login/login.module#LoginModule',
-    canActivate: [PublicRouteAuthGuard]
+    canActivate: [PublicRouteAuthGuard],
+  },
+    {
+    path: 'fPassword',
+    loadChildren: 'app/pages/forgotPassword/forgotPassword.module#forgotPassword',
+    canActivate: [PublicRouteAuthGuard],
   },
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   {
     path: 'register',
-    loadChildren: 'app/pages/register/register.module#RegisterModule'
+    loadChildren: 'app/pages/register/register.module#RegisterModule',
   },
   {
     path: 'pages',
@@ -25,17 +30,17 @@ export const routes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'users',
         loadChildren: './users/users.module#UserModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'HistoricalOrderBook',
@@ -48,22 +53,22 @@ export const routes: Routes = [
       {
         path: 'pendingKyc',
         loadChildren: './pendingKyc/pendingKyc.module#PendingKycModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'addErc20',
         loadChildren: './addErc20/addErc20.module#AddErc20Module',
-         canActivate: [PrivateRouteAuthGuard]
+         canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'kycDetails/:userId',
         loadChildren: './KycDetails/kycDetails.module#kycDetailsModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'userdetails/:userId',
         loadChildren: './userDetails/userDetail.module#UserDetailModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'orderdetails',
@@ -72,20 +77,20 @@ export const routes: Routes = [
       {
         path: 'pairdetails/:pairID',
         loadChildren: './pairDetails/pairDetails.module#PairDetailsModule',
-         canActivate: [PrivateRouteAuthGuard]
+         canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'addnewpair',
         loadChildren: './addNewPair/addNewPair.module#AddNewPairModule',
-         canActivate: [PrivateRouteAuthGuard]
+         canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'reply',
-        loadChildren: './reply/reply.module#ReplyModule'
+        loadChildren: './reply/reply.module#ReplyModule',
       },
       {
         path: 'adderdetails',
-        loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule'
+        loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule',
       },
       {
         path: 'addPair',
@@ -96,6 +101,10 @@ export const routes: Routes = [
         path: 'addNewErc20Token',
         loadChildren: './addNewErc20Token/addNewErc.module#AddNewErcModule',
       },
+      //   {
+      //   path: 'fPassword',
+      //   loadChildren: './forgotPassword/forgotPassword.module#forgotPassword',
+      // },
       //   { path: 'editors', loadChildren: './editors/editors.module#EditorsModule' },
       //   { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
       //   { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
@@ -104,8 +113,8 @@ export const routes: Routes = [
       //   { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
       //   { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
       //
-    ]
-  }
+    ],
+  },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
