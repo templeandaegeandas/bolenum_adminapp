@@ -1,45 +1,56 @@
-.UserDetail .ui-tabview.ui-tabview-top>.ui-tabview-nav{
+.UserDetail .ui-tabview.ui-tabview-top>.ui-tabview-nav {
     padding: 0px;
 }
-.UserDetail .tab-inner{
+
+.UserDetail .tab-inner {
     padding: 12px 12px;
     border: 1px solid #ccc;
     margin: -14px -12px;
     background: #f6f7f9;
 }
-.UserDetail .ui-tabview .ui-tabview-panel{
-    padding:0px;
+
+.UserDetail .ui-tabview .ui-tabview-panel {
+    padding: 0px;
 }
- .ui-tabview-panel{
+
+.ui-tabview-panel {
     display: block;
     border: 1px solid #ccc;
     margin: 0px 2px;
 }
-.tab-inner1{
+
+.tab-inner1 {
     border: 1px solid #ccc;
     padding: 26px 10px;
     background: #fff;
-   
 }
-.actionBtn{
+
+.actionBtn {
     padding-bottom: 20px;
 }
 
-button.btn.btn-primary.btn-with-icon:last-child{
+button.btn.btn-primary.btn-with-icon:last-child {
     margin-right: 96px;
 }
+
 button.btn.btn-primary.btn-with-icon {
     margin-left: 10px;
 }
-button.btn.btn-primary.btn-with-iconss:last-child{
+
+button.btn.btn-primary.btn-with-iconss:last-child {
     margin-right: -151px;
 }
 
 button.btn.btn-primary.btn-with-iconss {
     margin-left: 5px;
-}button.btn.btn-primary:hover, button.btn.btn-primary:focus, button.btn.btn-primary.focus, button.btn.btn-primary:active, button.btn.btn-primary.active {
+}
+
+button.btn.btn-primary:hover,
+button.btn.btn-primary:focus,
+button.btn.btn-primary.focus,
+button.btn.btn-primary:active,
+button.btn.btn-primary.active {
     background: #00abff;
-    
 }
 
 button.btn.btn-default {
@@ -50,14 +61,38 @@ button.btn.btn-default {
     /* background: red; */
 }
 
-
 @media screen and (max-width: 767px) {
     .tab-table {
-    overflow-x: auto;
-}
+        overflow-x: auto;
+    }
 }
 
-.kyc-margin-top{
-        margin-top: 5px;
+.kyc-margin-top {
+    margin-top: 5px;
 }
-    
+
+textarea.form-control {
+    margin: 0px;
+}
+
+.pdf-Open {
+    cursor: pointer;
+    width: 327px;
+    height: 300px;
+}
+
+.showImage {
+    cursor: pointer;
+}
+
+.disaprove {
+    background: #00abff;
+    color: white;
+    border: none;
+}
+
+.cancelButton {
+    background: #DB2828;
+    color: white;
+    border: none;
+}
