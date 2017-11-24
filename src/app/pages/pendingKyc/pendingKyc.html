@@ -37,7 +37,7 @@
               <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getPendingKycList()" />
             </th>
           </tr>
-        
+
           <tr *ngIf="totalElements!=0">
             <th style="width: 10%"></th>
             <th style="width: 20%">Name</th>
@@ -56,19 +56,20 @@
               <button (click)="navigaeToKycDeatils(item.user.userId)" class="btn btn-danger">Kyc</button>
             </td>
 
-              <td>{{item.user.firstName}}{{item.user.middleName}}{{item.user.lastName}}</td>
+            <td>{{item.user.firstName}}{{item.user.middleName}}{{item.user.lastName}}</td>
             <td>{{item.user.emailId}}</td>
             <td>{{item.documentStatus}}</td>
             <td>{{item.documentType}}</td>
             <td>{{item.uploadedDate | date}}</td>
           </tr>
-            <div class="no_kyc" *ngIf="totalElements==0"  >No New Pending Kyc!</div>
+          <div class="no_kyc" *ngIf="totalElements==0">No New Pending Kyc!</div>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="7">
               <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
-              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous"
+                nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
             </td>
           </tr>
         </tfoot>
