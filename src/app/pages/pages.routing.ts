@@ -13,11 +13,12 @@ export const routes: Routes = [
     loadChildren: 'app/pages/login/login.module#LoginModule',
     canActivate: [PublicRouteAuthGuard],
   },
-    {
+  {
     path: 'fPassword',
     loadChildren: 'app/pages/forgotPassword/forgotPassword.module#forgotPassword',
     canActivate: [PublicRouteAuthGuard],
   },
+
   { path: '', redirectTo: 'pages', pathMatch: 'full' },
   {
     path: 'register',
@@ -36,6 +37,11 @@ export const routes: Routes = [
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
         canActivate: [PrivateRouteAuthGuard],
+      },
+      {
+        path: 'withdraws',
+        loadChildren: './withdraw/withdrawal.module#WithdrawFess',
+
       },
       {
         path: 'users',
@@ -58,7 +64,7 @@ export const routes: Routes = [
       {
         path: 'addErc20',
         loadChildren: './addErc20/addErc20.module#AddErc20Module',
-         canActivate: [PrivateRouteAuthGuard],
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'kycDetails/:userId',
@@ -77,12 +83,12 @@ export const routes: Routes = [
       {
         path: 'pairdetails/:pairID',
         loadChildren: './pairDetails/pairDetails.module#PairDetailsModule',
-         canActivate: [PrivateRouteAuthGuard],
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'addnewpair',
         loadChildren: './addNewPair/addNewPair.module#AddNewPairModule',
-         canActivate: [PrivateRouteAuthGuard],
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'reply',
@@ -95,7 +101,7 @@ export const routes: Routes = [
       {
         path: 'addPair',
         loadChildren: './addPair/addPair.module#AddPairModule',
-         canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard]
       },
       {
         path: 'addNewErc20Token',

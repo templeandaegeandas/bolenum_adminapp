@@ -11,8 +11,8 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 0,
-          }
-        }
+          },
+        },
       },
       {
         path: 'users',
@@ -23,8 +23,8 @@ export const PAGES_MENU = [
             selected: false,
             expanded: false,
             order: 0,
-          }
-        }
+          },
+        },
       },
       {
         path: 'HistoricalOrderBook',
@@ -34,9 +34,9 @@ export const PAGES_MENU = [
             icon: 'fa fa-first-order',
             selected: false,
             expanded: false,
-            order: 0
-          }
-        }
+            order: 0,
+          },
+        },
       },
        {
         path: 'pendingKyc',
@@ -46,9 +46,9 @@ export const PAGES_MENU = [
             icon: 'fa fa-balance-scale',
             selected: false,
             expanded: false,
-            order: 0
-          }
-        }
+            order: 0,
+          },
+        },
       },
       {
         path: 'addErc20',
@@ -58,9 +58,9 @@ export const PAGES_MENU = [
             icon: 'fa fa-plus-circle',
             selected: false,
             expanded: false,
-            order: 0
-          }
-        }
+            order: 0,
+          },
+        },
       },
       {
         path: 'usersQueries',
@@ -70,9 +70,9 @@ export const PAGES_MENU = [
             icon: 'fa fa-user',
             selected: false,
             expanded: false,
-            order: 0
-          }
-        }
+            order: 0,
+          },
+        },
       },
       //  {
       //   path: 'addNewErc20Token',
@@ -94,9 +94,40 @@ export const PAGES_MENU = [
             icon: 'fa fa-cog ',
             selected: false,
             expanded: false,
-            order: 0
-          }
-        }
+            order: 0,
+          },
+        },
+      },
+
+      {
+        path: ' ',
+        data: {
+          menu: {
+            title: 'Fees',
+            icon: 'fa fa-cog ',
+            selected: false,
+            expanded: false,
+            order: 0,
+          },
+        },
+        children: [
+          {
+            path: ['./withdraws'],
+            data: {
+              menu: {
+                title: 'withdraw',
+              },
+            },
+          },
+           {
+            path: '',
+            data: {
+              menu: {
+                title: 'Trading',
+              },
+            },
+          },
+        ],
       },
       // {
       //   path: 'editors',
@@ -404,6 +435,6 @@ export const PAGES_MENU = [
       //     }
       //   }
       // }
-    ]
-  }
+    ],
+  },
 ];
