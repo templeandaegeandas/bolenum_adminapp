@@ -1,27 +1,22 @@
 <div class="container">
   <div class="row">
-    
-    <div class="col-sm-3 text-right text-uppercase">
-      <label for="bitcoin">Bitcoin</label>
-    </div>
-    <div class="col-sm-9 margin-input">
-      <input type="text" class="form-control input-text" id="bitCoin">
-    </div>
-    <div class="col-sm-3 text-right text-uppercase">
-      <label for="boleno">Boleno</label>
-    </div>
-    <div class="col-sm-9">
-      <input type="text" class="form-control input-text margin-input" id="boleno">
-    </div>
-    <div class="col-sm-3 text-right text-uppercase">
-      <label for="eth">Ethereum</label>
-    </div>
-    <div class="col-sm-9">
-      <input type="text" class="form-control input-text margin-input" id="ethereum">
-    </div>
-    <div class="col-sm-12 text-center">
-      <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">set fees</button>
-    </div>
-    
+    <form #withdrawForm=ngForm (submit)="setMinWithdrawLimit(withdrawForm)">
+      <div class="col-sm-9 margin-input">
+        <select [(ngModel)]="currency" name="setPairTo" (ngModelChange)="changeCurrency(currency)">
+      <option *ngFor="let toValue of currencyList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
+     </select>
+      </div>
+      <div class="col-sm-9 margin-input">
+        <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
+      </div>
+      <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
+        <div *ngIf="minWithDrawAmount.errors.required">
+          <p>Please Enter Min Withdraw Limit.</p>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center">
+        <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">Set min withdraw amount</button>
+      </div>
+    </form>
   </div>
 </div>
