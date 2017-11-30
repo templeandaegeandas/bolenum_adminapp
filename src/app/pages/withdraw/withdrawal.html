@@ -7,6 +7,7 @@
      </select>
       </div>
       <div class="col-sm-9 margin-input">
+        Min withdraw Amount: 
         <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
       </div>
       <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
@@ -14,8 +15,17 @@
           <p>Please Enter Min Withdraw Limit.</p>
         </div>
       </div>
+      <div class="col-sm-9 margin-input">
+        Transaction fee:
+        <input type="text" name="fee" #fee="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.fee" required>
+      </div>
+      <div *ngIf="fee.invalid && withdrawForm.submitted">
+        <div *ngIf="fee.errors.required">
+          <p>Please Enter Transaction Fee.</p>
+        </div>
+      </div>
       <div class="col-sm-12 text-center">
-        <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">Set min withdraw amount</button>
+        <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">Save</button>
       </div>
     </form>
   </div>

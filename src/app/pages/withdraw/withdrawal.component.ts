@@ -50,8 +50,14 @@ export class WithdrawalFees {
     const c = this.currencyList.find(x => x.currencyId == this.currencyId);
     this.withdrawService.getMinWithdrawLimit(c.currencyId).subscribe(success => {
       this.withdraw.minWithDrawAmount = 0;
+      this.withdraw.fee = 0;
       if (success.data != null) {
-        this.withdraw.minWithDrawAmount = success.data.minWithDrawAmount;
+        if (success.data.minWithDrawAmount != null) {
+          this.withdraw.minWithDrawAmount = success.data.minWithDrawAmount;
+        }
+        if (success.data.fee != null) {
+          this.withdraw.fee = success.data.fee;
+        }
       }
     });
   }
