@@ -120,14 +120,26 @@ export const PAGES_MENU = [
             },
           },
            {
-            path: '',
-            data: {
+            path: ['./trading'],
+              data: {
               menu: {
-                title: 'Trading',
+                title: 'trading',
               },
             },
           },
         ],
+      },
+      {
+        path: 'dispute',
+        data: {
+          menu: {
+            title: 'Dispute',
+            icon: 'fa fa-user',
+            selected: false,
+            expanded: false,
+            order: 0,
+          },
+        },
       },
       // {
       //   path: 'editors',

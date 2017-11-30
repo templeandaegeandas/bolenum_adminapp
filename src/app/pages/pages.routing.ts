@@ -44,17 +44,22 @@ export const routes: Routes = [
 
       },
       {
+        path: 'trading',
+        loadChildren: './trading/trading.module#TradingsFees',
+
+      },
+      {
         path: 'users',
         loadChildren: './users/users.module#UserModule',
         canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'HistoricalOrderBook',
-        loadChildren: './historicalOrderbook/historicalOrderbook.module#HistoricalOrder'
+        loadChildren: './historicalOrderbook/historicalOrderbook.module#HistoricalOrder',
       },
       {
         path: 'usersQueries',
-        loadChildren: './usersQueries/usersQueries.module#UsersQueriesModule'
+        loadChildren: './usersQueries/usersQueries.module#UsersQueriesModule',
       },
       {
         path: 'pendingKyc',
@@ -94,6 +99,10 @@ export const routes: Routes = [
         path: 'reply',
         loadChildren: './reply/reply.module#ReplyModule',
       },
+       {
+        path: 'dispute',
+        loadChildren: './dispute/dispute.module#DisputeModule',
+      },
       {
         path: 'adderdetails',
         loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule',
@@ -101,7 +110,7 @@ export const routes: Routes = [
       {
         path: 'addPair',
         loadChildren: './addPair/addPair.module#AddPairModule',
-        canActivate: [PrivateRouteAuthGuard]
+        canActivate: [PrivateRouteAuthGuard],
       },
       {
         path: 'addNewErc20Token',
