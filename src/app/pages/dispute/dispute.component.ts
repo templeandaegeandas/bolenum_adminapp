@@ -17,17 +17,22 @@ export class Dispute {
     sortBy = "email";
     sortOrder = "asc";
 
-    constructor(private service: DisputeService) {
+    constructor(private service: DisputeService, private router: Router) {
     this.service.getData().then((data) => {
       this.data = data;
     });
   }
-
-    toInt(num: string) {
+  
+     toInt(num: string) {
         return +num;
     }
 
     sortByWordLength = (a: any) => {
         return a.city.length;
     }
+    navigaeToDisputedetails()
+{
+    this.router.navigate(['/pages/dispute/details'])
+}
+ 
 }

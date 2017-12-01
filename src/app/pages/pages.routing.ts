@@ -83,7 +83,7 @@ export const routes: Routes = [
       },
       {
         path: 'orderdetails',
-        loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule'
+        loadChildren: './orderDetails/orderDetails.module#OrderDetailsModule',
       },
       {
         path: 'pairdetails/:pairID',
@@ -102,6 +102,10 @@ export const routes: Routes = [
        {
         path: 'dispute',
         loadChildren: './dispute/dispute.module#DisputeModule',
+      },
+      {
+        path: 'dispute/details',
+        loadChildren: './disputedetails/disputedetails.module#DisputedetailsModule',
       },
       {
         path: 'adderdetails',

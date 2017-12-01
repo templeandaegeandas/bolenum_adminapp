@@ -23,7 +23,7 @@
                             <option ngValue="againstuser">Against User</option>
                               <option ngValue="createddate">Created Date</option>
                                  <option ngValue="status">Status</option>
-                            <option [ngValue]="sortByWordLength">City</option>
+                           
                         </select>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                     <tbody>
                         <tr *ngFor="let item of mf.data">
                              <td>
-                                <button (click)="remove(item)" class="btn btn-danger">x</button>
+                                <button (click)="navigaeToDisputedetails()" class="btn btn-danger">Details</button>
                             </td>
                             <td>{{item.name}}</td>
                             <td>{{item.email}}</td>
