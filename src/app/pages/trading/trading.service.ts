@@ -22,4 +22,14 @@ export class TradingService {
   //     .map(res => res.json())
   // }
 
+  setTradingFees(trading) {
+    return this.http.post('api/v1/admin/trade/fees', trading)
+      .map(res => res.json())
+  }
+
+  getTradingFees() {
+    return this.http.get('api/v1/admin/trade/fees')
+      .map(res => res.json())
+  }
+
 }
