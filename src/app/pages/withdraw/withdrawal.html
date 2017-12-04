@@ -7,7 +7,7 @@
      </select>
       </div>
       <div class="col-sm-9 margin-input">
-        Min withdraw Amount: 
+        Min withdraw Amount:
         <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
       </div>
       <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">

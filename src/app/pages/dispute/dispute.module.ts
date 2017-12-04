@@ -9,7 +9,7 @@ import { Dispute } from './dispute.component';
 import { routing } from './dispute.routing';
 import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DataTableModule } from "angular2-datatable";
+import { DataTableModule } from 'angular2-datatable';
 
 @NgModule({
   imports: [
