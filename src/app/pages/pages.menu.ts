@@ -115,7 +115,7 @@ export const PAGES_MENU = [
             path: ['./withdraws'],
             data: {
               menu: {
-                title: 'withdraw',
+                title: 'Withdrawal',
               },
             },
           },

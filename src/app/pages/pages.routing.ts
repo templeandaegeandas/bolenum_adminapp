@@ -62,6 +62,11 @@ export const routes: Routes = [
         canActivate: [PrivateRouteAuthGuard],
       },
       {
+        path: 'balanceTotal',
+        loadChildren: './availableBalance/availableBalance.module#AvailableBalanceModule',
+        canActivate: [PrivateRouteAuthGuard],
+      },
+      {
         path: 'addErc20',
         loadChildren: './addErc20/addErc20.module#AddErc20Module',
         canActivate: [PrivateRouteAuthGuard],
