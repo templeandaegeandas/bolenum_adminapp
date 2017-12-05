@@ -109,7 +109,7 @@ export const routes: Routes = [
         loadChildren: './dispute/dispute.module#DisputeModule',
       },
       {
-        path: 'dispute/details',
+        path: 'dispute/details/:disputeId',
         loadChildren: './disputedetails/disputedetails.module#DisputedetailsModule',
       },
       {
