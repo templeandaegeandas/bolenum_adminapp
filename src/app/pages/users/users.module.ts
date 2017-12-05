@@ -9,7 +9,7 @@ import { Users } from './users.component';
 import { routing } from './users.routing';
 import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DataTableModule } from "angular2-datatable";
+import { DataTableModule } from 'angular2-datatable';
 
 
 
@@ -22,7 +22,7 @@ import { DataTableModule } from "angular2-datatable";
     routing,
      Ng2SmartTableModule,
     DataTableModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   declarations: [
     Users,
