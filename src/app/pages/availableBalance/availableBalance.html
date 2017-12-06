@@ -7,96 +7,56 @@
             <div class="tab-inner">
               <div class="tab-inner1">
                 <section>
-                <div class="row">
-                  <div class="col-sm-12 text-center ">
-
-                     <p>Available Balance ( BTC ):  <input class="input-pro" type="text"  name="totalBtc" [disabled]='true'></p>
-                     <p>Available Balance ( ETH ):  <input class="input-pro" type="text" name="totalEth" [disabled]='true'></p>
-                     </div>
-                 </div>
-                </section>
-
-
-                <section>  
-                  <!-- for withdraw btc   -->
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="col-sm-12">
-                        <div class="row">
-                          <div class="col-sm-6 text-right">
-                            <button class="btn btn-danger" type="submit" name="withDrawBtc" (click)="btcWithdraw()">Withdraw BTC</button>
-                          </div>
-                           <div class="col-sm-6 text-left">
-                            <button class="btn btn-danger" type="submit" name="withDrawBtc" (click)="ethWithdraw()">Withdraw ETH</button>
-                          </div>
-                        </div>
-                      </div>
+                  <div class="row">
+                    <div class="col-sm-12 text-center margin-dropdown-buttom">
+                      <select class="drop-down" name="currencies" [(ngModel)]="setItemValue" (ngModelChange)="getBalance(setItemValue)">
+                      <option *ngFor="let setCoin of currencyData" [value]="setCoin.currencyAbbreviation" class="option-box text-uppercase drop-down-font">{{setCoin.currencyName}} ({{setCoin.currencyAbbreviation}})</option>
+                     </select>
                     </div>
-                </div>
-
-             <section *ngIf="hasBTC">
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 text-center margin-form">
+                      Available Balance : <span>{{balance}} {{coinAbbreviation}}</span>
+                    </div>
+                  </div>
+                </section>
+                  <section>
                     <!-- for withdraw btc  -->
-                    <div class="row">
-                      <div class="col-sm-12 margin-top">
-                     <div class="row input_margin">
-                        <div class="col-sm-6 text-right">
-                          BTC Address : 
+                    <div class="margin-form">
+                      <form #withdrawForm=ngForm (submit)="withdraw(withdrawForm)">
+                        
+                          <div class="row input_margin">
+                            <div class="col-sm-6 text-right padding-level">
+                              Wallet Address :
+                            </div>
+                            <div class="col-sm-6 text-left">
+                              <input type="text" class="input-padding" name="address" #address="ngModel" [(ngModel)]="toAddress" required>
+                            <div *ngIf="address.invalid && withdrawForm.submitted">
+                                <p class="red-text-color error-message-font" *ngIf="address.errors.required">Please enter address</p>
+                            </div>
+                            </div>
+                           
                           </div>
-                        <div class="col-sm-6 text-left">
-                          <input type="text" name="btcAddress" class="input-sm" >
+                          <div class="row input_margin">
+                            <div class="col-sm-6 text-right padding-level">
+                              Amount :
+                            </div>
+                            <div class="col-sm-6 text-left">
+                              <input type="text" class="input-padding" name="amount" #amount="ngModel" [(ngModel)]="withdrawAmount" required>
+                            <div class="" *ngIf="amount.invalid && withdrawForm.submitted">
+                                <p class="red-text-color error-message-font" *ngIf="amount.errors.required">Please enter amount</p>
+                            </div>
+                            </div>
+                           
+                            <div class="col-sm-12 text-center marginButton">
+                              <button class="btn btn-danger" type="submit">Withdraw</button>
+                            </div>
                           </div>
-                        </div>
-                         <div class="row input_margin">
-                        <div class="col-sm-6 text-right">
-                          Amount : 
-                          </div>
-                        <div class="col-sm-6 text-left">
-                         <input type="text" name="btcAddress" class="input-sm">
-                          </div>
-                        <div class="col-sm-12 text-center marginButton">
-                          <button class="btn btn-danger" type="submit" name="withdraw" >Withdraw</button>
-                        </div>
-                      </div>
+                      
+                      </form>
                     </div>
-                    </div>
-                  </section>
-
-                             <section *ngIf="hasETH">
-                    <!-- for withdraw  eth -->
-                    <div class="row">
-                      <div class="col-sm-12 margin-top">
-                     <div class="row input_margin">
-                        <div class="col-sm-6 text-right">
-                          ETH Address : 
-                          </div>
-                        <div class="col-sm-6 text-left">
-                          <input type="text" name="ethAddress" class="input-sm" >
-                          </div>
-                        </div>
-                         <div class="row input_margin">
-                        <div class="col-sm-6 text-right">
-                          Amount : 
-                          </div>
-                        <div class="col-sm-6 text-left">
-                         <input type="text" name="ethAddress" class="input-sm" >
-                          </div>
-                        <div class="col-sm-12 text-center marginButton">
-                          <button class="btn btn-danger" type="submit" name="withdraw" >Withdraw</button>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </section>
                   
-
-
-
-
-
-            
-                </section>
-
-               
+                  </section>
               </div>
             </div>
           </p-tabPanel>
