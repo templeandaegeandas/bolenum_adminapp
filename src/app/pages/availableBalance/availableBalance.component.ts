@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'toastr-ng2';
 import { AvailableBalanceService } from './availableBalance.service'
-import { WithdrawForm } from './entity/withdraw.entity';
 
 
 @Component({
