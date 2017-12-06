@@ -1,13 +1,99 @@
-.margin-input{
-      margin-bottom: 13px;
+
+.UserDetail .ui-tabview.ui-tabview-top>.ui-tabview-nav{
+    padding: 0px;
+}
+.UserDetail .tab-inner{
+    padding: 12px 12px;
+    border: 1px solid #ccc;
+    margin: -14px -12px;
+    background: #f6f7f9;
+}
+.UserDetail .ui-tabview .ui-tabview-panel{
+    padding:0px;
+}
+ .ui-tabview-panel{
+    display: block;
+    border: 1px solid #ccc;
+    margin: 0px 2px;
+}
+.tab-inner1{
+    border: 1px solid #ccc;
+    padding: 26px 10px;
+    background: #fff;
+    
 }
 
-.input-text{
-        width: 51%;
+.balance-details-dropdown{
+    margin-bottom: 20px;
 }
 
-.setFees-buton{
-   background-color: #d44761;
-   color: white;
-
+.margin-top{
+    margin-top: 30px;
 }
+
+.marginButton{
+    margin-top: 20px;
+}
+
+.input_margin {
+    margin-top: 5px;
+}
+
+.drop-down-margin{
+      text-align: center;
+    margin-bottom: 18px;
+}
+
+.select-box{
+      width: 28%;
+    padding: 7px;
+    outline: 0;
+}
+
+.leval-property{
+      text-align: right;
+    padding-top: 9px;
+}
+
+.input-width{
+      width: 250px;
+}
+
+.padding-input{
+      padding-top: 9px;
+}
+
+.button-margin{
+margin-top: 9px;
+}
+
+.error-msg{
+      color: red;
+    margin-top: 5px;
+}
+.button-property{
+          background: #f95372;
+    border-color: #f95372;
+    color: #fff;
+}
+
+.input-padding{
+    padding-left: 39px;
+}
+
+
+
+
+// .margin-input{
+//       margin-bottom: 13px;
+// }
+
+// .input-text{
+//         width: 51%;
+// }
+
+// .setFees-buton{
+//    background-color: #d44761;
+//    color: white;
+
+// }

@@ -1,20 +1,7 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <form #tradingForm=ngForm (submit)="setTradingFees(tradingForm)">
-      <!-- <div class="col-sm-9 margin-input">
-        <select >
-      <option ></option>
-     </select>
-      </div>
-      <div class="col-sm-9 margin-input">
-        Min withdraw Amount:
-        <input type="text" >
-      </div>
-      <div >
-        <div>
-          <p>Please Enter Min Withdraw Limit.</p>
-        </div>
-      </div> -->
+     
       <div class="col-sm-9 margin-input">
         Transaction fee:
         <input type="text" name="fee" #fee="ngModel" class="form-control input-text" [(ngModel)]="trading.fee" required>
@@ -34,4 +21,161 @@
       </div>
     </form>
   </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <form #withdrawForm=ngForm (submit)="setMinWithdrawLimit(withdrawForm)">
+      <div class="col-sm-9 margin-input">
+        <select [(ngModel)]="currency" name="setPairTo" (ngModelChange)="changeCurrency(currency)">
+      <option *ngFor="let toValue of currencyList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
+     </select>
+      </div>
+      <div class="col-sm-9 margin-input">
+        Min withdraw Amount:
+        <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
+      </div>
+      <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
+        <div *ngIf="minWithDrawAmount.errors.required">
+          <p>Please Enter Min Withdraw Limit.</p>
+        </div>
+      </div>
+      <div class="col-sm-9 margin-input">
+        Transaction fee:
+        <input type="text" name="fee" #fee="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.fee" required>
+      </div>
+      <div *ngIf="fee.invalid && withdrawForm.submitted">
+        <div *ngIf="fee.errors.required">
+          <p>Please Enter Transaction Fee.</p>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center">
+        <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">Save</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12 UserDetail">
+      <ba-card cardTitle="Trading">
+        <p-tabView>
+          <p-tabPanel header="Trading" style="padding:0px;">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+             <div>
+               <form #tradingForm=ngForm (submit)="setTradingFees(tradingForm)">
+             
+            <div class="row">
+              <div class="col-sm-4 leval-property">
+               Transaction Fee:
+              </div>
+               <div class="col-sm-8 input-padding">
+                <input type="text" name="fee" #fee="ngModel" class="form-control input-text input-width" [(ngModel)]="trading.fee" required>
+        <div *ngIf="fee.invalid && tradingForm.submitted">
+        <div *ngIf="fee.errors.required">
+          <p class="error-msg">Please Enter Trading Fee.</p>
+        </div>
+      </div>
+                </div>
+            </div>
+            
+             <div class="row">
+              <div class="col-sm-12 text-center button-margin">
+              <button class="btn text-uppercase setFees-buton button-property" type="submit" >Save</button>
+             
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+               </form>
+  </div>  
+               
+            </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+      </ba-card>
+    </div>
+  </div>
 </div>
+
+

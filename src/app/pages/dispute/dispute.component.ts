@@ -12,27 +12,40 @@ import { Router } from '@angular/router';
 export class Dispute {
 
   data;
-    filterQuery = "";
-    rowsOnPage = 10;
-    sortBy = "email";
-    sortOrder = "asc";
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy: String = "createdOn";
+  sortOrder: String = "desc";
 
-    constructor(private service: DisputeService, private router: Router) {
-    this.service.getData().then((data) => {
-      this.data = data;
-    });
+  constructor(private service: DisputeService, private router: Router) {
+    this.getDisputeList();
   }
-  
-     toInt(num: string) {
-        return +num;
-    }
 
-    sortByWordLength = (a: any) => {
-        return a.city.length;
-    }
-    navigaeToDisputedetails()
-{
-    this.router.navigate(['/pages/dispute/details'])
-}
- 
+  navigaeToDisputedetails(disputeId) {
+    this.router.navigate(['/pages/dispute/details/' + disputeId])
+  }
+
+  getDisputeList() {
+    this.service.getDisputeList(
+      this.currentPage,
+      this.pageSize,
+      this.sortBy,
+      this.sortOrder).subscribe(success => {
+        this.data = success.data.content;
+        this.totalElements = success.data.totalElements;
+        this.start = (this.currentPage - 1) * this.pageSize + 1;
+        this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+      }, error => {
+        console.log(error);
+      })
+  }
+
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getDisputeList();
+  }
+
 }

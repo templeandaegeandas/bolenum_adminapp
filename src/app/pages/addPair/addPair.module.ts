@@ -9,7 +9,7 @@ import { AddPairComponent } from './addPair.component';
 import { routing } from './addPair.routing';
 import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DataTableModule } from "angular2-datatable";
+import { DataTableModule } from 'angular2-datatable';
 
 
 
@@ -20,9 +20,9 @@ import { DataTableModule } from "angular2-datatable";
     AppTranslationModule,
     NgaModule,
     routing,
-     Ng2SmartTableModule,
+    Ng2SmartTableModule,
     DataTableModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   declarations: [
     AddPairComponent,
