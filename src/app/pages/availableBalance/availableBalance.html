@@ -10,8 +10,8 @@
                 <div class="row">
                   <div class="col-sm-12 text-center ">
 
-                     <p>Available Balance ( BTC ): <input  type="text"  name="totalBtc" [disabled]></p>
-                     <p>Available Balance ( ETH ): <input  type="text" name="totalEth" [disabled]></p>
+                     <p>Available Balance ( BTC ):  <input class="input-pro" type="text"  name="totalBtc" [disabled]='true'></p>
+                     <p>Available Balance ( ETH ):  <input class="input-pro" type="text" name="totalEth" [disabled]='true'></p>
                      </div>
                  </div>
                 </section>
@@ -24,10 +24,10 @@
                     <div class="col-sm-12">
                         <div class="row">
                           <div class="col-sm-6 text-right">
-                            <button class="" type="submit" name="withDrawBtc" (click)="btcWithdraw()">Withdraw BTC</button>
+                            <button class="btn btn-danger" type="submit" name="withDrawBtc" (click)="btcWithdraw()">Withdraw BTC</button>
                           </div>
                            <div class="col-sm-6 text-left">
-                            <button class="" type="submit" name="withDrawBtc" (click)="ethWithdraw()">Withdraw ETH</button>
+                            <button class="btn btn-danger" type="submit" name="withDrawBtc" (click)="ethWithdraw()">Withdraw ETH</button>
                           </div>
                         </div>
                       </div>
@@ -54,7 +54,7 @@
                          <input type="text" name="btcAddress" class="input-sm">
                           </div>
                         <div class="col-sm-12 text-center marginButton">
-                          <button type="submit" name="withdraw" >Withdraw</button>
+                          <button class="btn btn-danger" type="submit" name="withdraw" >Withdraw</button>
                         </div>
                       </div>
                     </div>
@@ -81,7 +81,7 @@
                          <input type="text" name="ethAddress" class="input-sm" >
                           </div>
                         <div class="col-sm-12 text-center marginButton">
-                          <button type="submit" name="withdraw" >Withdraw</button>
+                          <button class="btn btn-danger" type="submit" name="withdraw" >Withdraw</button>
                         </div>
                       </div>
                     </div>
