@@ -101,10 +101,10 @@
                <form #tradingForm=ngForm (submit)="setTradingFees(tradingForm)">
              
             <div class="row">
-              <div class="col-sm-6 leval-property">
-               Transaction fee:
+              <div class="col-sm-4 leval-property">
+               Transaction Fee:
               </div>
-               <div class="col-sm-6">
+               <div class="col-sm-8 input-padding">
                 <input type="text" name="fee" #fee="ngModel" class="form-control input-text input-width" [(ngModel)]="trading.fee" required>
         <div *ngIf="fee.invalid && tradingForm.submitted">
         <div *ngIf="fee.errors.required">
