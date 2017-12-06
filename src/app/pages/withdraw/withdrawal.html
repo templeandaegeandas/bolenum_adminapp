@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
     <form #withdrawForm=ngForm (submit)="setMinWithdrawLimit(withdrawForm)">
       <div class="col-sm-9 margin-input">
@@ -29,4 +29,95 @@
       </div>
     </form>
   </div>
+</div> -->
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12 UserDetail">
+      <ba-card cardTitle="Withdraw">
+        <p-tabView>
+          <p-tabPanel header="Withdraw" style="padding:0px;">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+             <div>
+               <form #withdrawForm=ngForm (submit)="setMinWithdrawLimit(withdrawForm)">
+              <div class="row">
+              <div class="col-sm-12 drop-down-margin">
+                 <select class="select-box" [(ngModel)]="currency" name="setPairTo" (ngModelChange)="changeCurrency(currency)">
+      <option *ngFor="let toValue of currencyList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
+     </select>
+              </div>
+              </div>
+            <div class="row">
+              <div class="col-sm-6 leval-property">
+               Min withdraw Amount:
+              </div>
+               <div class="col-sm-6">
+                 <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text input-width" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
+               <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
+        <div *ngIf="minWithDrawAmount.errors.required">
+          <p class="error-msg">Please Enter Min Withdraw Limit.</p>
+        </div>
+      </div>
+                </div>
+            </div>
+             <div class="row">
+               
+              <div class="col-sm-6 leval-property">
+                Transaction fee:
+              </div>
+               <div class="col-sm-6 padding-input">
+                   <input  type="text" name="fee" #fee="ngModel" class="form-control input-text input-width" id="bitCoin" [(ngModel)]="withdraw.fee" required>
+             <div *ngIf="fee.invalid && withdrawForm.submitted">
+        <div *ngIf="fee.errors.required">
+          <p class="error-msg">Please Enter Transaction Fee.</p>
+        </div>
+      </div>
+                  </div>
+    
+            </div>
+             <div class="row">
+              <div class="col-sm-12 text-center button-margin">
+                <button class="btn text-uppercase setFees-buton button-property" type="submit" name="setFees">Save</button>
+             
+              </div>
+            </div>
+<!-- <form #withdrawForm=ngForm (submit)="setMinWithdrawLimit(withdrawForm)">
+      <div class="col-sm-9 margin-input">
+        <select [(ngModel)]="currency" name="setPairTo" (ngModelChange)="changeCurrency(currency)">
+      <option *ngFor="let toValue of currencyList" [value]="toValue.currencyId">{{toValue.currencyName}}</option>
+     </select>
+      </div>
+      <div class="col-sm-9 margin-input">
+        Min withdraw Amount:
+        <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
+      </div>
+      <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
+        <div *ngIf="minWithDrawAmount.errors.required">
+          <p>Please Enter Min Withdraw Limit.</p>
+        </div>
+      </div>
+      <div class="col-sm-9 margin-input">
+        Transaction fee:
+        <input type="text" name="fee" #fee="ngModel" class="form-control input-text" id="bitCoin" [(ngModel)]="withdraw.fee" required>
+      </div>
+      <div *ngIf="fee.invalid && withdrawForm.submitted">
+        <div *ngIf="fee.errors.required">
+          <p>Please Enter Transaction Fee.</p>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center">
+        <button class="btn text-uppercase setFees-buton" type="submit" name="setFees">Save</button>
+      </div>
+    </form> -->
+
+   </form>
+  </div>  
+      </div>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
+      </ba-card>
+    </div>
+  </div>
 </div>
+

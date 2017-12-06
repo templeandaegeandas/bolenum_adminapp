@@ -53,6 +53,10 @@ export const routes: Routes = [
         loadChildren: './users/users.module#UserModule',
         canActivate: [PrivateRouteAuthGuard],
       },
+      //  {
+      //   path: 'fee',
+      //   loadChildren: './fees/fees.module#FeesModule',
+      // },
       {
         path: 'HistoricalOrderBook',
         loadChildren: './historicalOrderbook/historicalOrderbook.module#HistoricalOrder',

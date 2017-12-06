@@ -123,7 +123,7 @@ export const PAGES_MENU = [
             path: ['./trading'],
               data: {
               menu: {
-                title: 'trading',
+                title: 'Trading',
               },
             },
           },
