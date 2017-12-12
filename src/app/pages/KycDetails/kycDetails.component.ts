@@ -7,6 +7,7 @@ import { ToastrService } from 'toastr-ng2';
 import { KycDisapproveEntity } from './entity/kyc.disapprove.entity';
 import { environment } from '../../../environments/environment';
 import { WebsocketService } from '../webSocket/web.socket.service';
+import { AppEventEmiterService } from '../../app.event.emmiter.service';
 
 @Component({
   selector: 'KycDetails',
@@ -38,7 +39,14 @@ export class KycDetails implements OnInit {
     private router: ActivatedRoute,
     private userDetailsService: UserDetailsService,
     private toastrService: ToastrService,
-    private websocketService: WebsocketService) { }
+    private websocketService: WebsocketService,
+    private appEventEmiterService: AppEventEmiterService) {
+      appEventEmiterService.currentMessage.subscribe(message => {
+        if (message == 'DOCUMENT_VERIFICATION') {
+          this.ngOnInit();
+        }
+      })
+    }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
