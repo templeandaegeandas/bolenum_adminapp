@@ -8,54 +8,55 @@
               <div class="tab-inner1">
                 <section>
                   <div class="row">
-                    <div class="col-sm-12 text-center ">
-                      <select name="currencies" [(ngModel)]="setItemValue" (ngModelChange)="getBalance(setItemValue)">
+                    <div class="col-sm-12 text-center margin-dropdown-buttom">
+                      <select class="drop-down" name="currencies" [(ngModel)]="setItemValue" (ngModelChange)="getBalance(setItemValue)">
                       <option *ngFor="let setCoin of currencyData" [value]="setCoin.currencyAbbreviation" class="option-box text-uppercase drop-down-font">{{setCoin.currencyName}} ({{setCoin.currencyAbbreviation}})</option>
                      </select>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-12 text-center ">
-                      Available Balance : <span>{{balance}} {{coinAbbreviation}}</span>
+                    <div class="col-sm-12 text-center margin-form">
+                     <span class="total-balance"> Available Balance :</span> <span>{{balance}} {{coinAbbreviation}}</span>
                     </div>
                   </div>
                 </section>
-                <section>
                   <section>
                     <!-- for withdraw btc  -->
-                    <div class="row">
+                    <div class="margin-form">
                       <form #withdrawForm=ngForm (submit)="withdraw(withdrawForm)">
-                        <div class="col-sm-12 margin-top">
+                        
                           <div class="row input_margin">
-                            <div class="col-sm-6 text-right">
+                            <div class="col-sm-4 text-right padding-level">
                               Wallet Address :
                             </div>
-                            <div class="col-sm-6 text-left">
-                              <input type="text" class="input-sm" name="address" #address="ngModel" [(ngModel)]="toAddress" required>
+                            <div class="col-sm-8  input-div-padding">
+                              <input type="text" class="input-padding" name="address" #address="ngModel" [(ngModel)]="toAddress" required>
+                            <div *ngIf="address.invalid && withdrawForm.submitted">
+                                <p class="red-text-color error-message-font" *ngIf="address.errors.required">Please enter address</p>
                             </div>
-                            <span *ngIf="address.invalid && withdrawForm.submitted">
-                                <span class="red-text-color error-message-font" *ngIf="address.errors.required">Please enter address</span>
-                            </span>
+                            </div>
+                           
                           </div>
                           <div class="row input_margin">
-                            <div class="col-sm-6 text-right">
+                            <div class="col-sm-4 text-right padding-level">
                               Amount :
                             </div>
-                            <div class="col-sm-6 text-left">
-                              <input type="text" class="input-sm" name="amount" #amount="ngModel" [(ngModel)]="withdrawAmount" required>
+                            <div class="col-sm-8 input-div-padding">
+                              <input type="text" class="input-padding" name="amount" #amount="ngModel" [(ngModel)]="withdrawAmount" required>
+                            <div class="" *ngIf="amount.invalid && withdrawForm.submitted">
+                                <p class="red-text-color error-message-font" *ngIf="amount.errors.required">Please enter amount</p>
                             </div>
-                            <span class="col-sm-6 text-left" *ngIf="amount.invalid && withdrawForm.submitted">
-                                <span class="red-text-color error-message-font" *ngIf="amount.errors.required">Please enter amount</span>
-                            </span>
+                            </div>
+                           
                             <div class="col-sm-12 text-center marginButton">
-                              <button type="submit">Withdraw</button>
+                              <button class="btn btn-danger" type="submit">Withdraw</button>
                             </div>
                           </div>
-                        </div>
+                      
                       </form>
                     </div>
+                  
                   </section>
-                </section>
               </div>
             </div>
           </p-tabPanel>

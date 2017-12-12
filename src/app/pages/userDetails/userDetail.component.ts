@@ -18,6 +18,7 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
 })
 
 export class UserDetail implements OnInit {
+  bankUserLength: any;
   myid: any;
   id: any;
   userKycDoc: any;
@@ -132,6 +133,9 @@ export class UserDetail implements OnInit {
     this.userDetailsService.getBankDetails(this.userId).subscribe(successData => {
       let userBankData = successData.data;
       this.bankCustomerDetails = userBankData;
+       this.bankUserLength = userBankData.length;
+       console.log('bank details length >>>>>', this.bankUserLength);
+        
     }, errorData => {
     });
   }

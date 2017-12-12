@@ -58,7 +58,7 @@
               <div class="tab-inner1">
                 <div class="row" *ngIf="kycListLength==0">
                   <div class="col-md-12">
-                    Kyc not uploaded yet!
+                  <p>  Kyc not uploaded yet!</p>
                   </div>
                 </div>
                 <div class="row">
@@ -189,6 +189,11 @@
           <p-tabPanel header="Bank Details" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
+                <div class="row" *ngIf="bankUserLength==0">
+                  <div class="col-md-12">
+                  <p>  Bank details not found !</p>
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col-md-12 actionBtn text-right">
                     <!-- <button class="btn btn-primary btn-with-icon"  (click)="isEdit=true" type="button">Edit</button>

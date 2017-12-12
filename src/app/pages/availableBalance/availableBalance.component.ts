@@ -8,7 +8,7 @@ import { AvailableBalanceService } from './availableBalance.service'
   selector: 'availableBalance',
   styleUrls: ['./availableBalance.scss'],
   templateUrl: './availableBalance.html',
-  providers: [AvailableBalanceService]
+  providers: [AvailableBalanceService],
 })
 export class AvailableBalanceComponent {
   currencyData: any;

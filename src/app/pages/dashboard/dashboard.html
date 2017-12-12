@@ -14,18 +14,18 @@
    </ba-card> -->
 </div>
 <div class="row">
-   <div class="col-xlg-9 col-xl-6 col-lg-6  col-md-12 col-sm-12 col-12">
+   <div class=" col-sm-12">
       <div class="row">
-         <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-12"
-            cardTitle="dashboard.revenue" baCardClass="medium-card">
-            <p-tabView>
+         <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-12 card-body-height"
+            cardTitle="dashboard.revenue" baCardClass="medium-card ">
+            <p-tabView>  
                            <table class="table table-bordered table table-hover">
                               <thead>
                                  <tr>
                                     <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Amount</th>
-                                    <th>Total</th>
+                                    <th style="width: 15%" >Price</th>
+                                    <th style="width: 15%" >Amount</th>
+                                    <th style="width: 15%" >Total</th>
                                     <th>Pair</th>
                                     <th>Date</th>
                                     <th>Time</th>
@@ -39,11 +39,10 @@
                                          <td>{{list.price}}</td>
                                          <td>{{list.volume}}</td>
                                          <td>{{list.totalVolume}}</td>
-                                         <td>{{list.pair}}</td>
+                                         <td>{{list.pair.pairName}}</td>
                                          <td>{{list.createdOn |date}}</td>
                                          <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
                                          <td>{{list.orderStandard}}</td>
-                                         <td>0</td>
                                  </tr>
                               </thead>
                               <tbody>
@@ -56,7 +55,9 @@
          </ba-card>-->
       </div>
    </div>
-   <div class="col-xlg-3 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+</div>
+<div class="row">
+   <div class=" col-sm-12 table-margin-top ">
       <ba-card cardTitle="dashboard.feed"
          baCardClass="large-card with-scroll feed-panel">
          <feed></feed>

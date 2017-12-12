@@ -48,10 +48,10 @@
               </div>
               </div>
             <div class="row">
-              <div class="col-sm-6 leval-property">
+              <div class="col-sm-4 leval-property">
                Min withdraw Amount:
               </div>
-               <div class="col-sm-6">
+               <div class="col-sm-8 level-padding">
                  <input type="text" name="minWithDrawAmount" #minWithDrawAmount="ngModel" class="form-control input-text input-width" id="bitCoin" [(ngModel)]="withdraw.minWithDrawAmount" required>
                <div *ngIf="minWithDrawAmount.invalid && withdrawForm.submitted">
         <div *ngIf="minWithDrawAmount.errors.required">
@@ -62,10 +62,10 @@
             </div>
              <div class="row">
                
-              <div class="col-sm-6 leval-property">
+              <div class="col-sm-4 leval-property">
                 Transaction fee:
               </div>
-               <div class="col-sm-6 padding-input">
+               <div class="col-sm-8 padding-input level-padding">
                    <input  type="text" name="fee" #fee="ngModel" class="form-control input-text input-width" id="bitCoin" [(ngModel)]="withdraw.fee" required>
              <div *ngIf="fee.invalid && withdrawForm.submitted">
         <div *ngIf="fee.errors.required">
