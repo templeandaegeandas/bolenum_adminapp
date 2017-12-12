@@ -112,6 +112,11 @@ export const routes: Routes = [
         path: 'dispute',
         loadChildren: './dispute/dispute.module#DisputeModule',
       },
+
+        {
+        path: 'setValue',
+        loadChildren: './setValue/setValue.module#SetValueModule',
+      },
       {
         path: 'dispute/details/:disputeId',
         loadChildren: './disputedetails/disputedetails.module#DisputedetailsModule',
