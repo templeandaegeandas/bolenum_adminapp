@@ -9,25 +9,27 @@
                 <section>
                   <!-- for setValue  -->
                   <div class="margin-form">
-                    <form>
+                    <form #setNGNForm=ngForm (submit)="setBLNNGN(setNGNForm)">
 
                       <div class="row input_margin">
                         <div class="col-sm-4 text-right padding-level">
-                           USD :
+                           BLN ~ USD :
                         </div>
                         <div class="col-sm-8  input-div-padding">
-                          <input type="text" class="input-padding" name="usdAmount" required>
+                          <input type="text" class="input-padding" name="usdAmount" [ngModel]="priceBLNUSD" [disabled]=true>
 
                         </div>
 
                       </div>
                       <div class="row input_margin">
                         <div class="col-sm-4 text-right padding-level">
-                          NGN :
+                        BLN ~ NGN :
                         </div>
                         <div class="col-sm-8 input-div-padding">
-                          <input type="text" class="input-padding" name="ngnAmount" required>
-
+                          <input type="text" class="input-padding" name="ngnAmount" [(ngModel)]="priceBLNNGN" #ngnAmount="ngModel" required>
+                          <span *ngIf="ngnAmount.invalid && setNGNForm.submitted">
+                              <span class="red-text-color error-message-font" *ngIf="ngnAmount.errors.required">Please enter address</span>
+                          </span>
                         </div>
 
                         <div class="col-sm-12 text-center marginButton">
