@@ -135,7 +135,7 @@ export class UserDetail implements OnInit {
       this.bankCustomerDetails = userBankData;
        this.bankUserLength = userBankData.length;
        console.log('bank details length >>>>>', this.bankUserLength);
-        
+
     }, errorData => {
     });
   }
@@ -153,7 +153,7 @@ export class UserDetail implements OnInit {
         this.doc0Pdf = true;
       }
       this.document0Id = success.data[0].id;
-      this.document0 = this.docUrl + success.data[0].document;
+      this.document0 = this.docUrl + success.data[0].document + "?decache=" + Math.random();
       this.document0Status = success.data[0].documentStatus;
       this.document0Type = success.data[0].documentType;
       this.document0VerificationStatus = success.data[0].isVerified;
@@ -161,7 +161,7 @@ export class UserDetail implements OnInit {
         this.doc1Pdf = true;
       }
       this.document1Id = success.data[1].id;
-      this.document1 = this.docUrl + success.data[1].document;
+      this.document1 = this.docUrl + success.data[1].document + "?decache=" + Math.random();
       this.document1Status = success.data[1].documentStatus;
       this.document1Type = success.data[1].documentType;
       this.document1VerificationStatus = success.data[1].isVerified;
