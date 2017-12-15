@@ -16,7 +16,7 @@ export class SetValueComponent {
   priceBLNUSD: any;
   priceUSDNGN: any;
   priceBLNNGN: any;
-  constructor(private setValueService: SetValueService) {
+  constructor(private setValueService: SetValueService, private toastrService: ToastrService) {
     this.getBLNUSD()
   }
 
@@ -54,7 +54,9 @@ export class SetValueComponent {
       return;
     }
     this.setValueService.setBLNNGN(this.priceBLNNGN).subscribe(success => {
-      console.log(success)
+      this.toastrService.success(success.message, 'Success!')
+    }, error => {
+      this.toastrService.error(error.json().message, 'Error!')
     })
   }
 

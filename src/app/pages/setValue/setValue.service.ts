@@ -10,7 +10,7 @@ export class SetValueService {
   }
 
   setBLNNGN(BLNNGN) {
-    return this.http.put('/api/v1/admin/set/bln_ngn', BLNNGN)
+    return this.http.put('/api/v1/admin/set/bln_ngn?priceNGN=' + BLNNGN, '')
       .map(res => res.json())
   }
 }
