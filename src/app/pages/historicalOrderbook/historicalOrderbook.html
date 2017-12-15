@@ -1,80 +1,78 @@
 <div class="widgets">
-  <ba-card title="Historical Orders" baCardClass="with-scroll" class="data-table-container">
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="row">
-          <label class="col-sm-12 label-control">Sort by</label>
-        </div>
-        <div class="row">
-          <div class="offset-sm-1 col-sm-5">
+   <ba-card title="Historical Orders" baCardClass="with-scroll" class="data-table-container">
+      <div class="row">
+         <div class="col-sm-4">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getTradedOrderList()">
-                <option ngValue="volume">Amount</option>
-                <option ngValue="price">Price</option>
-                <option ngValue="orderStandard">Order Standard</option>
-                <option ngValue="createdOn">Created On</option>
-              </select>
+               <label class="col-sm-12 label-control">Sort by</label>
             </div>
-          </div>
-          <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getTradedOrderList()">
-                             <option ngValue="asc">Ascending</option>
-                             <option ngValue="desc">Descending</option>
-                             </select>
+               <div class="offset-sm-1 col-sm-5">
+                  <div class="row">
+                     <select class="form-control input-sm box" [(ngModel)]="sortBy" (ngModelChange)="getTradedOrderList()">
+                     <option ngValue="volume">Amount</option>
+                     <option ngValue="price">Price</option>
+                     <option ngValue="orderStandard">Order Standard</option>
+                     <option ngValue="createdOn">Created On</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="offset-sm-1 col-sm-5">
+                  <div class="row">
+                     <select class="form-control input-sm box" [(ngModel)]="sortOrder" (ngModelChange)="getTradedOrderList()">
+                     <option ngValue="asc">Ascending</option>
+                     <option ngValue="desc">Descending</option>
+                     </select>
+                  </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-    <div class="panel panel-default">
-      <!--<div class="panel-heading">User information</div>-->
-
-      <table class="table table-striped">
-        <thead>
-          <!-- <tr>
-            <th colspan="5">
-              <h6 class="text-center"> Filter By Name</h6>
-              <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getTradedOrderList()" />
-            </th>
-          </tr> -->
-          <tr>
-            <!-- <th style="width: 10%"></th> -->
-            <th style="width: 20%">Buyer</th>
-            <th style="width: 20%">Seller</th>
-            <th style="width: 20%">Price (1 Unit)</th>
-            <th style="width: 20%">Amount</th>
-            <th style="width: 20%">Total Price</th>
-            <th style="width: 3%">Order Standard</th>
-            <th style="width: 10%">Created On</th>
-          </tr>
-
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of data | paginate: { itemsPerPage: pageSize,
-                         currentPage: currentPage,
-                         totalItems: totalElements }">
-            <!-- <td>
-              <button (click)="userDeatils(item.userId)" class="btn btn-danger">U-Detail</button>
-            </td> -->
-            <td>{{item.buyer.firstName}} {{item.buyer.middleName}} {{item.buyer.lastName}}</td>
-            <td>{{item.seller.firstName}} {{item.seller.middleName}} {{item.seller.lastName}}</td>
-            <td>{{item.price}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
-            <td>{{item.volume}} {{item.pair.toCurrency[0].currencyAbbreviation}}</td>
-            <td>{{item.price * item.volume}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
-            <td>{{item.orderStandard}}</td>
-            <td>{{item.createdOn | date}}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="7">
-              <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
-              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </ba-card>
+      <div class="panel panel-default">
+         <!--<div class="panel-heading">User information</div>-->
+         <table class="table table-striped">
+            <thead>
+               <tr>
+                  <th colspan="7">
+                     <h6 class="text-center"> Filter By Name</h6>
+                     <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getTradedOrderList()" />
+                  </th>
+               </tr>
+               <tr>
+                  <!-- <th style="width: 10%"></th> -->
+                  <th style="width: 20%">Buyer</th>
+                  <th style="width: 20%">Seller</th>
+                  <th style="width: 10%">Price (1 Unit)</th>
+                  <th style="width: 10%">Amount</th>
+                  <th style="width: 20%">Total Price</th>
+                  <th style="width: 5%">Order Standard</th>
+                  <th style="width: 20%">Created On</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let item of data | paginate: { itemsPerPage: pageSize,
+                  currentPage: currentPage,
+                  totalItems: totalElements }">
+                  <!-- <td>
+                     <button (click)="userDeatils(item.userId)" class="btn btn-danger">U-Detail</button>
+                     </td> -->
+                  <td>{{item.buyer.firstName}} {{item.buyer.middleName}} {{item.buyer.lastName}}</td>
+                  <td>{{item.seller.firstName}} {{item.seller.middleName}} {{item.seller.lastName}}</td>
+                  <td>{{item.price}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
+                  <td>{{item.volume}} {{item.pair.toCurrency[0].currencyAbbreviation}}</td>
+                  <td>{{item.price * item.volume}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
+                  <td>{{item.orderStandard}}</td>
+                  <td>{{item.createdOn | date}}</td>
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <td colspan="7">
+                     <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+                     <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+      </div>
+   </ba-card>
 </div>
