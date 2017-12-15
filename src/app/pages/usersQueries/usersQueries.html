@@ -1,5 +1,5 @@
 <div class="widgets">
-      <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
+      <ba-card title="Userqueries" baCardClass="with-scroll" class="data-table-container">
          <div class="row">
             <div class="col-sm-2">
                <label class="label-control">Rows on page</label>
@@ -16,7 +16,7 @@
                <div class="row">
                   <div class="offset-sm-1 col-sm-5">
                      <div class="row">
-                        <select class="form-control input-sm" [(ngModel)]="sortBy">
+                        <select class="form-control input-sm box" [(ngModel)]="sortBy">
                         <option ngValue="name">Name</option>
                         <option ngValue="email">Email</option>
                         <option ngValue="date">Date</option>
@@ -26,7 +26,7 @@
                   </div>
                   <div class="offset-sm-1 col-sm-5">
                      <div class="row">
-                        <select class="form-control input-sm" [(ngModel)]="sortOrder">
+                        <select class="form-control input-sm box" [(ngModel)]="sortOrder">
                         <option ngValue="asc">Ascending</option>
                         <option ngValue="desc">Descending</option>
                         <option ngValue="badValue">Bad value</option>
