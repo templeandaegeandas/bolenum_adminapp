@@ -152,6 +152,18 @@ export const PAGES_MENU = [
             order: 0,
           },
         },
+      },
+      {
+        path: 'setValue',
+        data: {
+          menu: {
+            title: '1 BLN to NGN',
+            icon: 'fa fa-money',
+            selected: false,
+            expanded: false,
+            order: 0,
+          },
+        },
       }
     ],
   },
