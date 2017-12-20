@@ -14,12 +14,12 @@ export class AvailableBalanceService {
   }
 
   getCoin(currencyType, code) {
-    return this.http.get("/api/v1/user/deposit?currencyType=" + currencyType + "&code=" + code)
+    return this.http.get("/api/v1/admin/deposit?currencyType=" + currencyType + "&code=" + code)
       .map(res => res.json());
   }
 
   withdrawFromWallet(currencyType, code, withdrawBalanceForm) {
-    return this.http.post("/api/v1/user/withdraw?currencyType=" + currencyType + "&code=" + code, withdrawBalanceForm)
+    return this.http.post("/api/v1/admin/withdraw?currencyType=" + currencyType + "&code=" + code, withdrawBalanceForm)
       .map(res => res.json());
   }
 }
