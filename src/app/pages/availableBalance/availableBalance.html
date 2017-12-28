@@ -15,48 +15,55 @@
                     </div>
                   </div>
                   <div class="row">
+                     <div class="col-sm-12 text-center margin-form" *ngIf="(setItemValue == 'BTC') ">
+                      <span class="total-balance" > Available Balance :</span> <span>{{balance}} {{coinAbbreviation}}</span>
+                    </div>
+                    <div class="col-sm-12 text-center margin-form" *ngIf="(setItemValue == 'BLN' || setItemValue == 'ETH') ">
+                      <span class="total-balance" > Available Trade Balance :</span> <span>{{balance}} {{coinAbbreviation}}</span>
+                    </div>
                     <div class="col-sm-12 text-center margin-form">
-                     <span class="total-balance"> Available Balance :</span> <span>{{balance}} {{coinAbbreviation}}</span>
+    
+                     <span class="total-balance" *ngIf="(setItemValue == 'BLN' || setItemValue == 'ETH') "> Available  Fee Balance :</span>
                     </div>
                   </div>
                 </section>
-                  <section>
-                    <!-- for withdraw btc  -->
-                    <div class="margin-form">
-                      <form #withdrawForm=ngForm (submit)="withdraw(withdrawForm)">
-                        
-                          <div class="row input_margin">
-                            <div class="col-sm-4 text-right padding-level">
-                              Wallet Address :
-                            </div>
-                            <div class="col-sm-8  input-div-padding">
-                              <input type="text" class="input-padding" name="address" #address="ngModel" [(ngModel)]="toAddress" required>
-                            <div *ngIf="address.invalid && withdrawForm.submitted">
-                                <p class="red-text-color error-message-font" *ngIf="address.errors.required">Please enter address</p>
-                            </div>
-                            </div>
-                           
+                <section>
+                  <!-- for withdraw btc  -->
+                  <div class="margin-form">
+                    <form #withdrawForm=ngForm (submit)="withdraw(withdrawForm)">
+
+                      <div class="row input_margin">
+                        <div class="col-sm-4 text-right padding-level">
+                          Wallet Address :
+                        </div>
+                        <div class="col-sm-8  input-div-padding">
+                          <input type="text" class="input-padding" name="address" #address="ngModel" [(ngModel)]="toAddress" required>
+                          <div *ngIf="address.invalid && withdrawForm.submitted">
+                            <p class="red-text-color error-message-font" *ngIf="address.errors.required">Please enter address</p>
                           </div>
-                          <div class="row input_margin">
-                            <div class="col-sm-4 text-right padding-level">
-                              Amount :
-                            </div>
-                            <div class="col-sm-8 input-div-padding">
-                              <input type="text" class="input-padding" name="amount" #amount="ngModel" [(ngModel)]="withdrawAmount" required>
-                            <div class="" *ngIf="amount.invalid && withdrawForm.submitted">
-                                <p class="red-text-color error-message-font" *ngIf="amount.errors.required">Please enter amount</p>
-                            </div>
-                            </div>
-                           
-                            <div class="col-sm-12 text-center marginButton">
-                              <button class="btn btn-danger" type="submit">Withdraw</button>
-                            </div>
+                        </div>
+
+                      </div>
+                      <div class="row input_margin">
+                        <div class="col-sm-4 text-right padding-level">
+                          Amount :
+                        </div>
+                        <div class="col-sm-8 input-div-padding">
+                          <input type="text" class="input-padding" name="amount" #amount="ngModel" [(ngModel)]="withdrawAmount" required>
+                          <div class="" *ngIf="amount.invalid && withdrawForm.submitted">
+                            <p class="red-text-color error-message-font" *ngIf="amount.errors.required">Please enter amount</p>
                           </div>
-                      
-                      </form>
-                    </div>
-                  
-                  </section>
+                        </div>
+
+                        <div class="col-sm-12 text-center marginButton">
+                          <button class="btn btn-danger" type="submit">Withdraw</button>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+
+                </section>
               </div>
             </div>
           </p-tabPanel>

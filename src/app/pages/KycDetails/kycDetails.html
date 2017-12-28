@@ -19,13 +19,13 @@
                           <div class="col-md-12">
                             <div class="col-sm-10">
                               <div class="col-md-12" style="height: 300px;width: 300px;">
-                                <img *ngIf="!doc0Pdf" class="img_cursor" title="Click to open" [src]="document0" [imageZoom]="document0" [style.width.px]="300" [style.height.px]="300" />
+                                <img *ngIf="!doc0Pdf" class="img_cursor"  [src]="document0" [imageZoom]="document0" style="height: 300px;width: 300px;" />
                                 <img *ngIf="doc0Pdf" class="pdfDetails" title="Click to open " src="assets/images/pdf-icon.png"  (click)="openPdf0()" />
                               </div>
                             </div>
                           </div>
                           <div class="col-md-12">
-                            <div class="col-sm-10">
+                            <div class="col-sm-10 document-col">
                               <div class="form-group">
                                 <label for="inputFirstName">Document Status</label>
                                 <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document0Status" disabled>
@@ -55,13 +55,13 @@
                           <div class="col-md-12">
                             <div class="col-sm-10">
                               <div class="col-md-12" style="height: 300px;width: 300px;">
-                                <img *ngIf="!doc1Pdf" class="img_cursor" title="Click to open" [src]="document1" [imageZoom]="document1" [style.width.px]="300" [style.height.px]="300" />
+                                <img *ngIf="!doc1Pdf" class="img_cursor"  [src]="document1" [imageZoom]="document1" style="height: 300px;width: 300px;" />
                                 <img *ngIf="doc1Pdf" class="pdfDetails" src="assets/images/pdf-icon.png"  (click)="openPdf1()" />
                               </div>
                             </div>
                           </div>
                           <div class="col-md-12">
-                            <div class="col-sm-10">
+                            <div class="col-sm-10 document-col">
                               <div class="form-group">
                                 <label for="inputFirstName">Document Status</label>
                                 <input class="form-control" id="inputFirstName" placeholder="Document Status" type="text" [(ngModel)]="document1Status" disabled>

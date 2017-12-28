@@ -24,8 +24,7 @@ export class WebsocketService {
       this.stomp.done('init');
 
       //subscribe
-      this.subscription = this.stomp.subscribe('/websocket/broker/listner/user/' + userId, this.response);
-      this.openSubscription = this.stomp.subscribe('/websocket/broker/listner/order', this.response);
+      this.subscription = this.stomp.subscribe('/websocket/broker/listner/admin', this.response);
     })
   }
 
@@ -34,15 +33,6 @@ export class WebsocketService {
       receiver: receiver,
       messageType: messageType
     });
-  }
-
-  connectForNonLoggedInUser() {
-    this.stomp.startConnect().then(() => {
-      this.stomp.done('init');
-
-      //subscribe
-      this.subscription = this.stomp.subscribe('/websocket/broker/listner/order', this.response);
-    })
   }
 
   disconnect() {

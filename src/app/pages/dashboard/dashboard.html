@@ -3,50 +3,47 @@
       <pie-chart></pie-chart>
    </div>
 </div>
-
 <div class="row">
-   <div class=" col-sm-12">
-      <div class="row">
-         <ba-card class="col-xlg-8 col-xl-12 col-lg-12 col-md-7 col-sm-12 col-12 card-body-height"
-            cardTitle="dashboard.revenue" baCardClass="medium-card ">
-            <p-tabView>  
-                           <table class="table table-bordered table table-hover">
-                              <thead>
-                                 <tr>
-                                    <th>Type</th>
-                                    <th style="width: 15%" >Price</th>
-                                    <th style="width: 15%" >Amount</th>
-                                    <th style="width: 15%" >Total</th>
-                                    <th>Pair</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Order Standard</th>
-
-                                 </tr>
-                              </thead>
-                                <tbody>
-
-                                 <tr *ngFor="let list of latestOrders" class="table-content-font">
-
-                                         <td>{{list.orderType}}</td>
-                                         <td>{{list.price}}</td>
-                                         <td>{{list.volume}}</td>
-                                         <td>{{list.totalVolume}}</td>
-                                         <td>{{list.pair.pairName}}</td>
-                                         <td>{{list.createdOn |date}}</td>
-                                         <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
-                                         <td>{{list.orderStandard}}</td>
-                                 </tr>
-                              <tbody>
-                             </table>
-            </p-tabView>
-         </ba-card>
-         <!--<ba-card class="col-xlg-4 col-xl-12 col-lg-12 col-md-5 col-sm-12 col-12"
-            baCardClass="popular-app medium-card">
-            <popular-app></popular-app>
-         </ba-card>-->
+   <!-- <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-12"
+      cardTitle="dashboard.revenue" baCardClass="medium-card">
+      <line-chart></line-chart>
+      </ba-card> -->
+   <!-- <ba-card class="col-xlg-6 col-xl-6 col-lg-12 col-sm-12 col-12"
+      cardTitle="dashboard.users_by_country" baCardClass="medium-card">
+      <users-map></users-map>
+      </ba-card> -->
+</div>
+<div class="row shift-up">
+   <ba-card class="col-xlg-3 col-lg-12 col-md-12 col-sm-12 col-12" cardTitle="Latest Order">
+       <div class="table-responsive"> 
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th style="width: 8%">Type</th>
+               <th style="width: 8%" >Price</th>
+               <th style="width: 10%" >Amount</th>
+               <th style="width: 10%" >Total</th>
+               <th >Pair</th>
+               <th >Date</th>
+               <th>Time</th>
+               <th style="width: 10%">Order Standard</th>
+            </tr>
+            <tr *ngFor="let list of latestOrders" class="table-content-font">
+               <td>{{list.orderType}}</td>
+               <td>{{list.price}}</td>
+               <td>{{list.volume}}</td>
+               <td>{{list.totalVolume}}</td>
+               <td>{{list.pair.pairName}}</td>
+               <td>{{list.createdOn |date}}</td>
+               <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
+               <td>{{list.orderStandard}}</td>
+            </tr>
+         </thead>
+         <tbody>
+      </table>
       </div>
-   </div>
+   </ba-card>
+   
 </div>
 <div class="row">
    <div class=" col-sm-12 table-margin-top ">
@@ -56,13 +53,3 @@
       </ba-card>
    </div>
 </div>
-<!--<div class="row shift-up">
-   <ba-card class="col-xlg-3 col-lg-6 col-md-12 col-sm-12 col-12" cardTitle="dashboard.todo_list"
-            baCardClass="xmedium-card feed-comply-panel with-scroll todo-panel">
-     <todo></todo>
-   </ba-card>
-   <ba-card class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 col-12" cardTitle="dashboard.calendar"
-            baCardClass="xmedium-card feed-comply-panel with-scroll calendar-panel">
-     <calendar></calendar>
-   </ba-card>
-   </div>-->

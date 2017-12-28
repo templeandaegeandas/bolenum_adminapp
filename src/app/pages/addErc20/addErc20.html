@@ -1,5 +1,5 @@
 <div class="widgets">
-  <ba-card title="Basic Example" baCardClass="with-scroll" class="data-table-container">
+  <ba-card title="Adderc20" baCardClass="with-scroll" class="data-table-container">
     <div class="row">
       <div class="col-sm-12">
         <div>
@@ -15,7 +15,7 @@
         <div class="row">
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortBy" (ngModelChange)="getTokenList()">
+              <select class="form-control input-sm box " [(ngModel)]="sortBy" (ngModelChange)="getTokenList()">
                             <option ngValue="currency.currencyName">Token Name</option>
                             <option ngValue="createdDate">createdOn</option>
                         </select>
@@ -23,7 +23,7 @@
           </div>
           <div class="offset-sm-1 col-sm-5">
             <div class="row">
-              <select class="form-control input-sm" [(ngModel)]="sortOrder" (ngModelChange)="getTokenList()">
+              <select class="form-control input-sm box" [(ngModel)]="sortOrder" (ngModelChange)="getTokenList()">
                             <option ngValue="asc">Ascending</option>
                             <option ngValue="desc">Descending</option>
                         </select>

@@ -5,5 +5,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SetValueService {
 
- 
+  constructor(private http: HttpClient) {
+
+  }
+
+  setBLNNGN(BLNNGN) {
+    return this.http.put('/api/v1/admin/set/bln_ngn?priceNGN=' + BLNNGN, '')
+      .map(res => res.json())
+  }
 }
