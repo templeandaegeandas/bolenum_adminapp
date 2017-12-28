@@ -34,7 +34,7 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
   ],
   declarations: [
     Pages,
-    UserprofileComponent
+    UserprofileComponent,
   ],
   providers: [
     PrivateRouteAuthGuard,

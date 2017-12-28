@@ -216,6 +216,14 @@
   padding: 10px 0;
 }
 
-.mail_padding{
-  padding-top: 36px;
+
+ .feed-messages-container .feed-message .message-icon {
+    cursor: pointer;
+    width: 60px;
+    height: 21px;
+    float: left;
+    position: relative;
+    margin-left: 20px;
 }
+
+
