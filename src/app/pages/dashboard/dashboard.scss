@@ -73,3 +73,7 @@
   height: 550px;
   padding: 30px;
 }
+
+.table > thead > tr > th:first-child {
+    text-align: left;
+}
