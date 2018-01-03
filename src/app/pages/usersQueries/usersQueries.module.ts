@@ -8,8 +8,7 @@ import { UsersQueries } from './usersQueries.component';
 import { routing } from './usersQueries.routing';
 import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { DataTableModule } from "angular2-datatable";
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
     imports: [
     CommonModule,
@@ -18,7 +17,7 @@ import { DataTableModule } from "angular2-datatable";
     NgaModule,
     routing,
     Ng2SmartTableModule,
-    DataTableModule,
+    NgxPaginationModule,
   ],
   declarations: [
    UsersQueries,

@@ -1,84 +1,74 @@
 <div class="widgets">
-    <ba-card title="Userqueries" baCardClass="with-scroll" class="data-table-container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div>
-                    <button class="btn btn-danger pull-right" disabled>Send News Letter</button>
-                </div>
+   <ba-card title="Userqueries" baCardClass="with-scroll" class="data-table-container">
+      <div class="row">
+         <div class="col-sm-12">
+            <div>
+               <button class="btn btn-danger pull-right" disabled>Send News Letter</button>
             </div>
-        </div>
-        <div class="row">
-
-            <div class="col-sm-4">
-                <div class="row">
-                    <label class="col-sm-12 label-control">Sort by</label>
-                </div>
-                <div class="row">
-                    <div class="offset-sm-1 col-sm-5">
-                        <div class="row">
-                            <select class="form-control input-sm box" [(ngModel)]="sortBy" >
-                        <option ngValue="email">Email</option>
-                        <option ngValue="date">Created On</option>
-                       
-                        </select>
-                        </div>
-                    </div>
-                    <div class="offset-sm-1 col-sm-5">
-                        <div class="row">
-                            <select class="form-control input-sm box" [(ngModel)]="sortOrder">
-                        <option ngValue="asc">Ascending</option>
-                        <option ngValue="desc">Descending</option>
-                    </select>
-                        </div>
-                    </div>
-                </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-sm-4">
+            <div class="row">
+               <label class="col-sm-12 label-control">Sort by</label>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <!--<div class="panel-heading">User information</div>-->
-            <table class="table table-striped" [mfData]="data | tableFilter : filterQuery" #mf="mfDataTable" [mfRowsOnPage]="rowsOnPage"
-                [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-                <thead>
-                    <tr>
-                        <th colspan="2">
-                            <h6 class="text-center"> Filter By Name</h6>
-                            <input class="form-control" [(ngModel)]="filterQuery" />
-                        </th>
-                    </tr>
-                    <tr>
-                        <!--<th style="width: 20%"></th>-->
-                        <!--<th style="width: 20%">
-                     <mfDefaultSorter by="name">Name</mfDefaultSorter>
-                  </th>-->
-                        <th style="width: 5%;">
-                            <mfDefaultSorter by="email">Email</mfDefaultSorter>
-                        </th>
-                        <th style="width: 10%">
-                            <mfDefaultSorter by="date">Created On</mfDefaultSorter>
-                        </th>
-                       
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <tr *ngFor="let message of usersQueries" (click)="getListOfSubscribedUser(message)">
-                        <!--<td>
-                            <button (click)="navigaeToReply()" class="btn btn-danger">Reply</button>
-                        </td>-->
-                        <!--<td>{{item.name}}</td>-->
-                        <td>{{message.email}}</td>
-                        <td>{{message.createdOn| date:'mediumDate'}}</td>
-                        <!--<td></td>-->
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </ba-card>
+            <div class="row">
+               <div class="offset-sm-1 col-sm-5">
+                  <div class="row">
+                     <select class="form-control input-sm box" [(ngModel)]="sortBy" (ngModelChange)="getListOfSubscribedUser()" >
+                     <option ngValue="email">Email</option>
+                     <option ngValue="date">Created On</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="offset-sm-1 col-sm-5">
+                  <div class="row">
+                     <select class="form-control input-sm box" [(ngModel)]="sortOrder" (ngModelChange)="getListOfSubscribedUser()">
+                     <option ngValue="asc">Ascending</option>
+                     <option ngValue="desc">Descending</option>
+                     </select>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="panel panel-default">
+         <!--<div class="panel-heading">User information</div>-->
+         <table class="table table-striped">
+            <thead>
+               <tr>
+                  <th colspan="2">
+                     <h6 class="text-center"> Filter By Name</h6>
+                     <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getListOfSubscribedUser()" />
+                  </th>
+               </tr>
+               <tr>
+                  <th style="width: 5%"> Email  </th>
+                  <th style="width: 10%">Created On </th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let message of data | paginate: { messagePerPage: pageSize,
+               currentPage: currentPage,
+               totalItems: totalElements}" (click)="getListOfSubscribedUser(message)">
+               <!--<td>
+                  <button (click)="navigaeToReply()" class="btn btn-danger">Reply</button>
+                  </td>-->
+               <!--<td>{{item.name}}</td>-->
+               <td>{{message.email}}</td>
+               <td>{{message.createdOn| date:'mediumDate'}}</td>
+               <!--<td></td>-->
+               </tr>
+            </tbody>
+            <tfoot>
+               <tr>
+                  <td colspan="5">
+                     <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+                     <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+                  </td>
+               </tr>
+            </tfoot>
+         </table>
+      </div>
+   </ba-card>
 </div>
