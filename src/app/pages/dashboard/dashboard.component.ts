@@ -7,7 +7,7 @@ import { DashBoardService } from './dashboard.service';
   selector: 'dashboard',
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
-  providers: [DashBoardService]
+  providers: [DashBoardService],
 })
 
 export class Dashboard implements OnInit {

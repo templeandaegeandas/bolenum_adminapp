@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppTranslationModule } from '../../app.translation.module';
 import { NgaModule } from '../../theme/nga.module';
 
-import { UsersQueries} from './usersQueries.component';
+import { UsersQueries } from './usersQueries.component';
 import { routing } from './usersQueries.routing';
 import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -24,6 +24,6 @@ import { DataTableModule } from "angular2-datatable";
    UsersQueries,
     TableFilterPipe,
   ],
-  providers: []
+  providers: [],
 })
 export class UsersQueriesModule {}

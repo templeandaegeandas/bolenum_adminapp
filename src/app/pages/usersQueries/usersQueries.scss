@@ -10,6 +10,9 @@
 .blurCalendar {
   height: 475px;
 }
+.table > tbody > tr > td:first-child {
+   float:left;
+}
 
 .animated-inventoryCard{
   height: 100px;
