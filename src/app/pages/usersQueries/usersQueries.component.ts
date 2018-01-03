@@ -11,32 +11,45 @@ import { Router } from '@angular/router';
 })
 export class UsersQueries  {
 
-  subscribedUserlist: any;
-  isLoading: any;
-  hasBlur: any;
-  listLength: any;
+  // subscribedUserlist: any;
+  // isLoading: any;
+  // hasBlur: any;
+  // listLength: any;
    usersQueries: any;
-
-  constructor(private usersQueriesService: UsersQueriesService, private router: Router, private toastrService: ToastrService) {
+  data;
+  start;
+  end;
+  totalElements;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy: String = 'createdOn';
+  sortOrder: String = 'desc';
+  searchData: String = ''; 
+  constructor(private service: UsersQueriesService, private router: Router, private toastrService: ToastrService) {
     this.getListOfSubscribedUser();
   }
 
-  expandMessage(message) {
-    message.expanded = !message.expanded;
-  }
-
   getListOfSubscribedUser() {
-    this.isLoading = true;
-    this.hasBlur = true;
-    this.usersQueriesService.subscribedUserList(1, 10, 'createdOn', 'desc').subscribe(success => {
-    this.isLoading = false;
-    this.hasBlur = false;
-    this.usersQueries = success.data.content;
-    this.listLength = this.usersQueries.length;
-    });
+this.service.subscribedUserList(
+      this.currentPage,
+      this.pageSize,
+      this.sortBy,
+      this.sortOrder).subscribe(success => {
+      this.data = success.data.content;
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    }, error => {
+      console.log(error);
+    })
   }
-}
 
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getListOfSubscribedUser();
+  }
+
+}
   // navigaeToReply()
   // {
   //   this.router.navigate(['/pages/reply']);
