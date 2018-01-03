@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastrService } from 'toastr-ng2';
 import { UsersQueriesService } from './usersQueries.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './usersQueries.html',
   providers: [UsersQueriesService],
 })
-export class UsersQueries implements OnInit {
+export class UsersQueries  {
 
   subscribedUserlist: any;
   isLoading: any;
@@ -18,9 +18,6 @@ export class UsersQueries implements OnInit {
    usersQueries: any;
 
   constructor(private usersQueriesService: UsersQueriesService, private router: Router, private toastrService: ToastrService) {
-    
-  }
-    ngOnInit() {
     this.getListOfSubscribedUser();
   }
 
