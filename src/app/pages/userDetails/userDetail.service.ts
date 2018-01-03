@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserDetailsService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUsersDetails(userId: Number) {
     return this.http.get('api/v1/admin/user/' + userId)
@@ -22,14 +22,26 @@ export class UserDetailsService {
       .map(res => res.json())
   }
 
-  getBankDetails(userId ) {
-    return this.http.get('api/v1/user/admin/bankdetails?userId=' + userId )
-    .map(res => res.json())
+  getBankDetails(userId) {
+    return this.http.get('api/v1/user/admin/bankdetails?userId=' + userId)
+      .map(res => res.json())
   }
 
-getKycByUserId(userId){
-  return this.http.get('api/v1/kyc/by/userid?userId=' + userId)
-  .map(res => res.json())
-}
+  getKycByUserId(userId) {
+    return this.http.get('api/v1/kyc/by/userid?userId=' + userId)
+      .map(res => res.json())
+  }
+
+  getOrderBookByUserId(currentPage, pageSize, userId) {
+    currentPage = currentPage - 1;
+    return this.http.get('api/v1/admin/orders/book?userId=' + userId + '&pageNumber=' + currentPage + '&pageSize=' + pageSize)
+      .map(res => res.json())
+  }
+
+  getTradeHistoryByUserId(currentPage, pageSize, userId) {
+    currentPage = currentPage - 1;
+    return this.http.get('api/v1/admin/trade/history?userId=' + userId + '&pageNumber=' + currentPage + '&pageSize=' + pageSize)
+      .map(res => res.json())
+  }
 
 }
