@@ -30,7 +30,7 @@ export const PAGES_MENU = [
         path: 'HistoricalOrderBook',
         data: {
           menu: {
-            title: 'Historical OrderBook',
+            title: 'Trade History',
             icon: 'fa fa-first-order',
             selected: false,
             expanded: false,
@@ -42,20 +42,8 @@ export const PAGES_MENU = [
         path: 'pendingKyc',
         data: {
           menu: {
-            title: 'Pending_KYC',
+            title: 'Pending KYC',
             icon: 'fa fa-balance-scale',
-            selected: false,
-            expanded: false,
-            order: 0,
-          },
-        },
-      },
-      {
-        path: 'addErc20',
-        data: {
-          menu: {
-            title: 'Add ERC 20',
-            icon: 'fa fa-plus-circle',
             selected: false,
             expanded: false,
             order: 0,
@@ -66,7 +54,7 @@ export const PAGES_MENU = [
         path: 'usersQueries',
         data: {
           menu: {
-            title: 'User Queries',
+            title: 'Newsletter Request',
             icon: 'fa fa-user',
             selected: false,
             expanded: false,
@@ -74,31 +62,36 @@ export const PAGES_MENU = [
           },
         },
       },
-      //  {
-      //   path: 'addNewErc20Token',
-      //   data: {
-      //     menu: {
-      //       title: 'Add New ERC 20',
-      //       icon: 'fa fa-plus-circle',
-      //       selected: false,
-      //       expanded: false,
-      //       order: 0
-      //     }
-      //   }
-      // },
       {
-        path: 'addPair',
+        path: ' ',
         data: {
           menu: {
-            title: 'Add Pair',
+            title: 'Currencies',
             icon: 'fa fa-cog ',
             selected: false,
             expanded: false,
             order: 0,
           },
         },
+        children: [
+          {
+            path: ['./addErc20'],
+            data: {
+              menu: {
+                title: 'New ERC20',
+              },
+            },
+          },
+           {
+            path: ['./addPair'],
+              data: {
+              menu: {
+                title: 'Add Pair',
+              },
+            },
+          },
+        ],
       },
-
       {
         path: ' ',
         data: {
@@ -127,6 +120,14 @@ export const PAGES_MENU = [
               },
             },
           },
+          {
+            path: ['./setValue'],
+            data: {
+              menu: {
+                title: '1 BLN to NGN',
+              },
+            },
+          }
         ],
       },
       {
@@ -146,18 +147,6 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Balance',
-            icon: 'fa fa-money',
-            selected: false,
-            expanded: false,
-            order: 0,
-          },
-        },
-      },
-      {
-        path: 'setValue',
-        data: {
-          menu: {
-            title: '1 BLN to NGN',
             icon: 'fa fa-money',
             selected: false,
             expanded: false,
