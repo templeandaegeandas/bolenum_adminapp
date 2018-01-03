@@ -36,21 +36,21 @@
          <!--<div class="panel-heading">User information</div>-->
          <table class="table table-striped">
             <thead>
-               <tr>
+               <!--<tr>
                   <th colspan="2">
                      <h6 class="text-center"> Filter By Name</h6>
                      <input class="form-control" [(ngModel)]="searchData" (ngModelChange)="getListOfSubscribedUser()" />
                   </th>
-               </tr>
+               </tr>-->
                <tr>
                   <th style="width: 5%"> Email  </th>
                   <th style="width: 10%">Created On </th>
                </tr>
             </thead>
             <tbody>
-               <tr *ngFor="let message of data | paginate: { messagePerPage: pageSize,
+               <tr *ngFor="let message of data | paginate: { itemsPerPage: pageSize,
                currentPage: currentPage,
-               totalItems: totalElements}" (click)="getListOfSubscribedUser(message)">
+               totalItems: totalElements}">
                <!--<td>
                   <button (click)="navigaeToReply()" class="btn btn-danger">Reply</button>
                   </td>-->

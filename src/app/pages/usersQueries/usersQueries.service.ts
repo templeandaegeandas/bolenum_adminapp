@@ -3,7 +3,6 @@ import 'rxjs/add/operator/map';
 import { HttpClient } from '../../app.client.interceptor';
 @Injectable()
 export class UsersQueriesService {
-// pageNumber: any;
 pageNumber: number;
 constructor(private http: HttpClient) { }
 
