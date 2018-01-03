@@ -32,10 +32,10 @@ export class UsersQueries implements OnInit {
     this.isLoading = true;
     this.hasBlur = true;
     this.usersQueriesService.subscribedUserList(1, 10, 'createdOn', 'desc').subscribe(success => {
-      this.isLoading = false;
-      this.hasBlur = false;
-      this.usersQueries = success.data.content;
-      this.listLength = this.usersQueries.length;
+    this.isLoading = false;
+    this.hasBlur = false;
+    this.usersQueries = success.data.content;
+    this.listLength = this.usersQueries.length;
     });
   }
 }

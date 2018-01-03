@@ -11,8 +11,6 @@ import { TableFilterPipe } from './table-filter.pipe';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { DataTableModule } from 'angular2-datatable';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -28,6 +26,6 @@ import { DataTableModule } from 'angular2-datatable';
     AddPairComponent,
     TableFilterPipe,
   ],
-  providers: []
+  providers: [],
 })
 export class AddPairModule {}
