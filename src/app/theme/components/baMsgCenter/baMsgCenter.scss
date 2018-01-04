@@ -63,6 +63,12 @@
         opacity: 0.0
       }
 
+      .seeAllNotification{
+        cursor: pointer;
+      }
+
+    
+
       &:hover {
         color: $danger;
         &.msg {
