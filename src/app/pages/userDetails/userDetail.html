@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12 UserDetail">
       <ba-card cardTitle="User Details">
-        <p-tabView>
+        <p-tabView (onChange)="onTabChange($event)">
           <p-tabPanel header="User Profile" style="padding:0px;">
             <div class="tab-inner">
               <div class="tab-inner1">
@@ -58,7 +58,7 @@
               <div class="tab-inner1">
                 <div class="row" *ngIf="kycListLength==0">
                   <div class="col-md-12">
-                  <p>  Kyc not uploaded yet!</p>
+                    <p> Kyc not uploaded yet!</p>
                   </div>
                 </div>
                 <div class="row">
@@ -88,10 +88,8 @@
                               </div>
                             </div>
                             <div class="col-md-6 actionBtn text-center">
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
-                                (click)="approve0Kyc()">Approve</button>
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
-                                (click)="addPopupOpen(document0Type)">DisApprove</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="approve0Kyc()">Approve</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document0Type)">DisApprove</button>
                             </div>
                           </div>
                         </div>
@@ -106,7 +104,7 @@
                             <div class="col-sm-10">
                               <div class="col-md-12" style="height: 300px;width: 300px;">
                                 <img *ngIf="!doc1Pdf" class="showImage" title="Click to open" [src]="document1" [imageZoom]="document1" [style.width.px]="327" [style.height.px]="300" />
-                                <img *ngIf="doc1Pdf" class="pdf-Open" title="Click to open" src="assets/images/pdf-icon.png"  (click)="openPdf1()" />
+                                <img *ngIf="doc1Pdf" class="pdf-Open" title="Click to open" src="assets/images/pdf-icon.png" (click)="openPdf1()" />
                               </div>
                             </div>
                           </div>
@@ -124,10 +122,8 @@
                               </div>
                             </div>
                             <div class="col-md-6 actionBtn text-center">
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
-                                (click)="approve1Kyc()">Approve</button>
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
-                                (click)="addPopupOpen(document1Type)">DisApprove</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="approve1Kyc()">Approve</button>
+                              <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button" (click)="addPopupOpen(document1Type)">DisApprove</button>
                             </div>
                           </div>
                         </div>
@@ -138,12 +134,111 @@
               </div>
             </div>
           </p-tabPanel>
-          <p-tabPanel header="Order Book">
+          <p-tabPanel header="Open Orders">
             <div class="tab-inner">
               <div class="tab-inner1">
                 <div class="row">
                   <div class="col-md-12 ">
-                    <div class="col-md-6">
+                    <div class="panel panel-default">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th style="width: 20%">Type</th>
+                            <th style="width: 20%">Price</th>
+                            <th style="width: 20%">Amount</th>
+                            <th style="width: 20%">Total Price</th>
+                            <th style="width: 20%">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let orders of orderBook | paginate: { itemsPerPage: pageSize,
+                                currentPage: currentPage,
+                                totalItems: totalElements }">
+                            <td><span *ngIf="orders.orderType=='BUY'" style=color:#2AD747>Buy</span>
+                            <span *ngIf="orders.orderType=='SELL'" style=color:#DB2828>Sell</span></td>
+                            <td>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{orders.price | number:'1.8-8'}} {{orders.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{orders.price | number:'1.8-8'}} {{orders.pair.toCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{orders.volume | number:'1.8-8'}} {{orders.pair.toCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{orders.volume | number:'1.8-8'}} {{orders.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{orders.price * orders.volume | number:'1.8-8'}} {{orders.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="orders.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{orders.price * orders.volume | number:'1.8-8'}} {{orders.pair.toCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>{{orders.createdOn | date: 'MMM d, y h:mm a'}}</td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="7">
+                              <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+                              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </p-tabPanel>
+          <p-tabPanel header="Trade History">
+            <div class="tab-inner">
+              <div class="tab-inner1">
+                <div class="row">
+                  <div class="col-md-12 ">
+                    <div class="panel panel-default">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th style="width: 20%">Type</th>
+                            <th style="width: 20%">Price</th>
+                            <th style="width: 20%">Amount</th>
+                            <th style="width: 20%">Total Price</th>
+                            <th style="width: 20%">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let tx of tradeHistory | paginate: { itemsPerPage: pageSize,
+                                currentPage: currentPage,
+                                totalItems: totalElements }">
+                            <td style=color:#2AD747>
+                              <span *ngIf="tx.buyer.userId==userId" style=color:#2AD747>Buy</span>
+                              <span *ngIf="tx.seller.userId==userId" style=color:#DB2828>Sell</span>
+                            </td>
+                            <td>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{tx.price | number:'1.8-8'}} {{tx.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{tx.price | number:'1.8-8'}} {{tx.pair.toCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{tx.volume | number:'1.8-8'}} {{tx.pair.toCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{tx.volume | number:'1.8-8'}} {{tx.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation=='NGN'">{{tx.price * tx.volume | number:'1.8-8'}} {{tx.pair.pairedCurrency[0].currencyAbbreviation}}</span>
+                              <span *ngIf="tx.pair.pairedCurrency[0].currencyAbbreviation!='NGN'">{{tx.price * tx.volume | number:'1.8-8'}} {{tx.pair.toCurrency[0].currencyAbbreviation}}</span>
+                            </td>
+                            <td>
+                              {{tx.createdOn | date: 'MMM d, y h:mm a'}}
+                            </td>
+                          </tr>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td colspan="7">
+                              <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+                              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+
+                    <!-- <div class="col-md-6">
                       <div class="col-sm-10">
                         <div class="tab-table">
                           <table class="table table-bordered table table-hover">
@@ -180,7 +275,7 @@
                           </table>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -191,7 +286,7 @@
               <div class="tab-inner1">
                 <div class="row" *ngIf="bankUserLength==0">
                   <div class="col-md-12">
-                  <p>  Bank details not found !</p>
+                    <p> Bank details not found !</p>
                   </div>
                 </div>
                 <div class="row">
@@ -216,11 +311,11 @@
                         <input class="form-control" id="inputLastName" type="text" [(ngModel)]="bankUser.accountNumber" disabled>
                         <!-- <input class="form-control" *ngIf="isEdit" id="inputLastName" placeholder="Last Name" type="text" > -->
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="inputEmailName">BVN Code</label>
-                        <input class="form-control" id="inputEmailName" type="text" [(ngModel)]="bankUser.ifscCode" disabled>
+                        <input class="form-control" id="inputEmailName" type="text" [(ngModel)]="bankUser.ifscCode" disabled> -->
                         <!-- <input class="form-control" *ngIf="isEdit" id="inputEmailName" placeholder="Email Address" type="text" > -->
-                      </div>
+                      <!-- </div> -->
                     </div>
                   </div>
                 </div>
@@ -245,8 +340,7 @@
         <form #disApproveKycForm="ngForm" (submit)=disApproveKyc(disApproveKycForm)>
           <div class="form-group">
             <label for="exampleTextarea">Enter Rejection Message</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel"
-              name="rejectionMessage" required></textarea>
+            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel" name="rejectionMessage" required></textarea>
             <span *ngIf="rejectionMessage.invalid && disApproveKycForm.submitted">
             <span class="text-danger" *ngIf="rejectionMessage.errors.required">Please enter rejection message</span>
             </span>

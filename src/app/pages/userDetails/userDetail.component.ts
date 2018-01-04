@@ -36,14 +36,19 @@ export class UserDetail implements OnInit {
   document0VerificationStatus: any;
   document1VerificationStatus: any
   docUrl: String;
-  // defaultPicture: String;
-  // picture: String = 'assets/img/theme/no-photo.png';
   kycDisapprove = new KycDisapproveEntity();
   kycListLength: any;
   doc0Pdf: boolean = false;
   doc1Pdf: boolean = false;
   document0Id: any;
   document1Id: any;
+  orderBook;
+  tradeHistory;
+  start;
+  end;
+  totalElements;
+  currentPage;
+  pageSize;
   @ViewChild('addPopup') public addPopup: ModalDirective;
 
   constructor(
@@ -52,19 +57,18 @@ export class UserDetail implements OnInit {
     private toastrService: ToastrService,
     private websocketService: WebsocketService,
     private appEventEmiterService: AppEventEmiterService) {
-      appEventEmiterService.currentMessage.subscribe(message => {
-        if (message == 'DOCUMENT_VERIFICATION') {
-          this.getUserDetailsById();
-        }
-      })
-     }
+    appEventEmiterService.currentMessage.subscribe(message => {
+      if (message == 'DOCUMENT_VERIFICATION') {
+        this.getUserDetailsById();
+      }
+    })
+  }
 
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.userId = +params['userId'];
     });
     this.getUserDetailsById();
-    this.getBankDetails();
   }
 
   getUserDetailsById() {
@@ -79,8 +83,6 @@ export class UserDetail implements OnInit {
     }, error => {
       console.log(error)
     });
-
-    this.getKycByUserID(this.userId);
   }
 
   approve0Kyc() {
@@ -133,8 +135,8 @@ export class UserDetail implements OnInit {
     this.userDetailsService.getBankDetails(this.userId).subscribe(successData => {
       let userBankData = successData.data;
       this.bankCustomerDetails = userBankData;
-       this.bankUserLength = userBankData.length;
-       console.log('bank details length >>>>>', this.bankUserLength);
+      this.bankUserLength = userBankData.length;
+      console.log('bank details length >>>>>', this.bankUserLength);
 
     }, errorData => {
     });
@@ -178,4 +180,50 @@ export class UserDetail implements OnInit {
   openPdf1() {
     window.open(this.document1, '_blank');
   }
+
+  getOrderBook() {
+    this.userDetailsService.getOrderBookByUserId(this.currentPage, this.pageSize, this.userId).subscribe(success => {
+      this.orderBook = success.data.content;
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    })
+  }
+
+  getTradeHistory() {
+    this.userDetailsService.getTradeHistoryByUserId(this.currentPage, this.pageSize, this.userId).subscribe(success => {
+      this.tradeHistory = success.data.content;
+      this.totalElements = success.data.totalElements;
+      this.start = (this.currentPage - 1) * this.pageSize + 1;
+      this.end = (this.currentPage - 1) * this.pageSize + success.data.numberOfElements;
+    })
+  }
+
+  onTabChange(event) {
+    if (event.index === 1) {
+      this.getKycByUserID(this.userId);
+    }
+    else if (event.index === 2) {
+      this.currentPage = 1;
+      this.pageSize = 10;
+      this.getOrderBook()
+    }
+    else if (event.index === 3) {
+      this.currentPage = 1;
+      this.pageSize = 10;
+      this.getTradeHistory();
+    }
+    else if (event.index === 4) {
+      this.getBankDetails();
+    }
+    else {
+      this.getUserDetailsById();
+    }
+  }
+
+  pageChanged($event) {
+    this.currentPage = $event;
+    this.getOrderBook();
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AddPairComponent } from './addPair.component';
 import { ModuleWithProviders } from '@angular/core';
@@ -10,8 +10,8 @@ export const routes: Routes = [
     component: AddPairComponent,
     children: [
       //{ path: 'treeview', component: TreeViewComponent }
-    ]
-  }
+    ],
+  },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);
