@@ -13,7 +13,7 @@ import { AvailableBalanceService } from './availableBalance.service'
 export class AvailableBalanceComponent {
   currencyData: any;
   setItemValue: any;
-  address: any;
+  walletAddress: string;
   balance: any;
   coinAbbreviation: any;
   toAddress: any;
@@ -41,9 +41,8 @@ export class AvailableBalanceComponent {
     this.availableBalanceService.getCoin(c.currencyType, data).subscribe(success => {
       let successData = success.data;
       if (successData.data != null) {
-        this.address = successData.data.address;
-        this.balance = successData.data.balance + " " + data;
-        this.coinAbbreviation = successData.data.coinAbbreviation;
+        this.walletAddress = successData.data.address;
+        this.balance = successData.data.balance;
       }
     }, errorData => {
       console.log(errorData)

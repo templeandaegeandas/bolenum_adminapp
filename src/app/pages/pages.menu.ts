@@ -120,14 +120,6 @@ export const PAGES_MENU = [
               },
             },
           },
-          {
-            path: ['./setValue'],
-            data: {
-              menu: {
-                title: '1 BLN to NGN',
-              },
-            },
-          }
         ],
       },
       {

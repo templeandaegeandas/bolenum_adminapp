@@ -15,7 +15,7 @@
 </div>
 <div class="row shift-up">
    <ba-card class="col-xlg-3 col-lg-12 col-md-12 col-sm-12 col-12" cardTitle="Open Order">
-       <div class="table-responsive"> 
+       <div class="table-responsive">
       <table class="table table-striped">
          <thead>
             <tr>
@@ -30,9 +30,9 @@
             </tr>
             <tr *ngFor="let list of latestOrders" class="table-content-font">
                <td>{{list.orderType}}</td>
-               <td>{{list.price}}</td>
-               <td>{{list.volume}}</td>
-               <td>{{list.totalVolume}}</td>
+               <td>{{list.price | number:'1.8-8'}}</td>
+               <td>{{list.volume | number:'1.8-8'}}</td>
+               <td>{{list.totalVolume | number:'1.8-8'}}</td>
                <td>{{list.pair.pairName}}</td>
                <td>{{list.createdOn |date}}</td>
                <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
@@ -43,7 +43,7 @@
       </table>
       </div>
    </ba-card>
-   
+
 </div>
 <!--<div class="row">
    <div class="col-sm-12 table-margin-top ">
