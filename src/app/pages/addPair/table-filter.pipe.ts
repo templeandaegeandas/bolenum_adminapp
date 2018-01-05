@@ -1,4 +1,4 @@
-import * as _ from 'lodash';
+
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,10 +6,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TableFilterPipe implements PipeTransform {
 
-    transform(array: any[], query: string): any {
-        if (query) {
-            return _.filter(array, row=>row.name.indexOf(query) > -1);
+    transform(value: any[], args: string): any {
+
+        if (!args[0]) {
+            
+            return value; 
+
         }
-        return array;
-    }
+     
+        return value.filter((item ) => {
+
+            return item.pairName.includes(args) || item.toCurrency[0].currencyName.includes(args) ;
+        });
+     }
 }
+
