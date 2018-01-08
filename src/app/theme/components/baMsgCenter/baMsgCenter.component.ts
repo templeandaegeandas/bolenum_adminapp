@@ -34,7 +34,7 @@ export class BaMsgCenter implements OnInit {
     }
     this.appEventEmiterService.currentMessage.subscribe(message => {
       this.jsonMessage = message;
-      if (message == "DOCUMENT_VERIFICATION" || message == "DISPUTE_NOTIFICATION" || message == ADMIN_NOTIFICATION) {
+      if (message == "DOCUMENT_VERIFICATION" || message == "DISPUTE_NOTIFICATION" || message == "ADMIN_NOTIFICATION") {
         this.getAllUserNotifications();
         this.getCountOfUnseeNotification();
       }
