@@ -1,21 +1,67 @@
-import {Component} from '@angular/core';
-
-import {BaMsgCenterService} from './baMsgCenter.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BaMsgCenterService } from './baMsgCenter.service';
+import { environment } from '../../../../environments/environment';
+import { AppEventEmiterService } from '../../../app.event.emmiter.service';
+import { WebsocketService } from '../../../pages/webSocket/web.socket.service';
 
 @Component({
   selector: 'ba-msg-center',
-  providers: [BaMsgCenterService],
   styleUrls: ['./baMsgCenter.scss'],
-  templateUrl: './baMsgCenter.html'
+  templateUrl: './baMsgCenter.html',
+  providers: [BaMsgCenterService, WebsocketService],
 })
 export class BaMsgCenter {
+  isLoading: any;
+  hasBlur: any;
+  listOfUserNotification: any;
+  listOfUserNotificationLength: any;
+  beforeLogin: boolean = true;
+  afterLogin: boolean = false;
+  jsonMessage: any;
+  countOfUnseeNotification: any;
+  arrayOfNotification: any;
 
-  public notifications:Array<Object>;
-  public messages:Array<Object>;
+  constructor(private baMsgCenterService: BaMsgCenterService, private websocketService: WebsocketService, private router: Router, private appEventEmiterService: AppEventEmiterService) {
+  }
 
-  constructor(private _baMsgCenterService:BaMsgCenterService) {
-    this.notifications = this._baMsgCenterService.getNotifications();
-    this.messages = this._baMsgCenterService.getMessages();
+  getAllUserNotifications() {
+    this.isLoading = true;
+    this.hasBlur = true;
+    this.baMsgCenterService.GetUserNotification(1, 5, "createdOn", "desc").subscribe(success => {
+      this.isLoading = false;
+      this.hasBlur = false;
+      this.listOfUserNotification = success.data.content;
+      this.listOfUserNotificationLength = this.listOfUserNotification.length;
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  isLogIn() {
+    if (localStorage.getItem("token") == null) {
+      return;
+    }
+    else {
+      this.beforeLogin = false;
+      this.afterLogin = true;
+    }
+  }
+
+  getCountOfUnseeNotification() {
+    this.baMsgCenterService.getTotalOfUnseeNotification().subscribe(success => {
+      this.isLoading = false;
+      this.hasBlur = false;
+      this.countOfUnseeNotification = success.data;
+    })
+  }
+
+  changeStatusOfUserNotification() {
+    this.arrayOfNotification = this.listOfUserNotification;
+    this.baMsgCenterService.changeReadStatusOfUserNotification(this.arrayOfNotification).subscribe(success => {
+      this.isLoading = false;
+      this.hasBlur = false;
+    })
   }
 
 }
