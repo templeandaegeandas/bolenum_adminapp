@@ -11,7 +11,8 @@ import { WebsocketService } from '../../../pages/webSocket/web.socket.service';
   templateUrl: './baMsgCenter.html',
   providers: [BaMsgCenterService, WebsocketService],
 })
-export class BaMsgCenter {
+
+export class BaMsgCenter implements OnInit {
   isLoading: any;
   hasBlur: any;
   listOfUserNotification: any;
@@ -22,7 +23,28 @@ export class BaMsgCenter {
   countOfUnseeNotification: any;
   arrayOfNotification: any;
 
-  constructor(private baMsgCenterService: BaMsgCenterService, private websocketService: WebsocketService, private router: Router, private appEventEmiterService: AppEventEmiterService) {
+  constructor(
+    private baMsgCenterService: BaMsgCenterService,
+    private websocketService: WebsocketService,
+    private router: Router,
+    private appEventEmiterService: AppEventEmiterService) {
+    this.isLogIn();
+    if (this.beforeLogin) {
+      websocketService.connectForNonLoggedInUser();
+    }
+    this.appEventEmiterService.currentMessage.subscribe(message => {
+      this.jsonMessage = message;
+      if (message == "DOCUMENT_VERIFICATION" || message == "DISPUTE_NOTIFICATION" || message == ADMIN_NOTIFICATION) {
+        this.getAllUserNotifications();
+        this.getCountOfUnseeNotification();
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.websocketService.connectForLoggedInUser(localStorage.getItem("userId"));
+    this.getAllUserNotifications();
+    this.getCountOfUnseeNotification();
   }
 
   getAllUserNotifications() {
@@ -33,16 +55,16 @@ export class BaMsgCenter {
       this.hasBlur = false;
       this.listOfUserNotification = success.data.content;
       this.listOfUserNotificationLength = this.listOfUserNotification.length;
+      this.changeStatusOfUserNotification();
     }, error => {
       console.log(error);
-    })
+    });
   }
 
   isLogIn() {
     if (localStorage.getItem("token") == null) {
       return;
-    }
-    else {
+    } else {
       this.beforeLogin = false;
       this.afterLogin = true;
     }
@@ -53,7 +75,7 @@ export class BaMsgCenter {
       this.isLoading = false;
       this.hasBlur = false;
       this.countOfUnseeNotification = success.data;
-    })
+    });
   }
 
   changeStatusOfUserNotification() {
@@ -61,7 +83,7 @@ export class BaMsgCenter {
     this.baMsgCenterService.changeReadStatusOfUserNotification(this.arrayOfNotification).subscribe(success => {
       this.isLoading = false;
       this.hasBlur = false;
-    })
+    });
   }
 
 }
