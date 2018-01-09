@@ -1,9 +1,10 @@
 <ul class="al-msg-center clearfix">
   <li class="dropdown">
     <a href class="dropdown-toggle" id="msg-dd1" data-toggle="dropdown" aria-expanded="false">
-      <i class="fa fa-bell-o"></i><span>{{ notifications.length }}</span>
+      <i class="fa fa-bell-o"></i><span>{{countOfUnseeNotification}}</span>
 
       <div class="notification-ring"></div>
+
     </a>
 
     <div class="top-dropdown-menu dropdown-menu" aria-labelledby="msg-dd1">
@@ -14,13 +15,22 @@
         <a href>Mark All as Read</a>
         <a href>Settings</a>
       </div>
-      <div class="msg-list">
+      <!-- <div class="msg-list">
         <a *ngFor="let msg of notifications" href class="clearfix">
           <div class="img-area"><img [ngClass]="{'photo-msg-item': !msg.image}"
                                      src="{{ ( msg.image ||  (msg.name | baProfilePicture)) }}"></div>
           <div class="msg-area">
             <div>{{ msg.text }}</div>
             <span>{{ msg.time }}</span>
+          </div>
+        </a>
+      </div> -->
+      <div class="msg-list" *ngFor="let list of listOfUserNotification">
+        <a href='/'>
+          <div class="msg-area border-notification">
+            <div class="notification-padding notification-text">
+            <p class="notification-text notify">  {{list.message}} </p>
+            </div>
           </div>
         </a>
       </div>

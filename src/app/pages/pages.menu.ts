@@ -86,7 +86,7 @@ export const PAGES_MENU = [
             path: ['./addPair'],
               data: {
               menu: {
-                title: 'Add Pair',
+                title: 'Market',
               },
             },
           },

@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { AddPairService } from './addPair.service';
 import { Router } from '@angular/router';
+import { Pipe , PipeTransform } from '@angular/core';
+import { TableFilterPipe } from './table-filter.pipe';
 
 @Component({
   selector: 'addPair',
   styleUrls: [('./addPair.scss')],
   templateUrl: './addPair.html',
-  providers: [AddPairService]
+  providers: [AddPairService],
+
 })
 export class AddPairComponent {
   data;

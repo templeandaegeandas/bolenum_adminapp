@@ -15,23 +15,33 @@ export class WebsocketService {
     stomp.configure({
       host: environment.socketUrl,
       debug: true,
-      queue: { 'init': false }
+      queue: { 'init': false },
     });
   }
+
+  connectForNonLoggedInUser() {
+    this.stomp.startConnect().then(() => {
+      this.stomp.done('init');
+      console.log('connected');
+
+      this.subscription = this.stomp.subscribe('/websocket/broker/listner/order', this.response);
+      this.subscription = this.stomp.subscribe('/websocket/broker/listner/market', this.response);
+    });
+  }
+
 
   connectForLoggedInUser(userId) {
     this.stomp.startConnect().then(() => {
       this.stomp.done('init');
 
-      //subscribe
       this.subscription = this.stomp.subscribe('/websocket/broker/listner/admin', this.response);
-    })
+    });
   }
 
   sendMessage(receiver, messageType) {
     this.stomp.send('/websocket/app/sender/admin', {
       receiver: receiver,
-      messageType: messageType
+      messageType: messageType,
     });
   }
 
