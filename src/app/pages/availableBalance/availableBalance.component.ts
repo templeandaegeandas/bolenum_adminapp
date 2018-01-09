@@ -11,6 +11,8 @@ import { AvailableBalanceService } from './availableBalance.service'
   providers: [AvailableBalanceService],
 })
 export class AvailableBalanceComponent {
+  isLoadTrue: boolean = true;
+  isLoading: boolean = false;
   currencyData: any;
   setItemValue: any;
   walletAddress: string;
@@ -37,8 +39,13 @@ export class AvailableBalanceComponent {
   }
 
   getBalance(data) {
+    this.isLoading = true;
+    this.isLoadTrue = false;
+
     let c = this.currencyData.find(x => x.currencyAbbreviation == data);
     this.availableBalanceService.getCoin(c.currencyType, data).subscribe(success => {
+      this.isLoading = false;
+      this.isLoadTrue = true;
       let successData = success.data;
       if (successData.data != null) {
         this.walletAddress = successData.data.address;
