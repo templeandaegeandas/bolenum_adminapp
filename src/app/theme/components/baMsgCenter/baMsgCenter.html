@@ -1,15 +1,11 @@
 <ul class="al-msg-center clearfix">
   <li class="dropdown">
-    <a href class="dropdown-toggle" id="msg-dd1" data-toggle="dropdown" aria-expanded="false">
-      <i class="fa fa-bell-o"></i><span>{{countOfUnseeNotification}}</span>
-
+    <a class="dropdown-toggle" id="msg-dd1" data-toggle="dropdown" (click)="changeStatusOfUserNotification()" aria-expanded="false">
+      <i class="fa fa-bell-o"></i><span *ngIf= "countOfUnseeNotification>0">{{countOfUnseeNotification}}</span>
       <div class="notification-ring"></div>
-
     </a>
-
     <div class="top-dropdown-menu dropdown-menu" aria-labelledby="msg-dd1">
       <i class="dropdown-arr"></i>
-
       <div class="header clearfix">
         <strong>Notifications</strong>
         <a href>Mark All as Read</a>
@@ -29,7 +25,7 @@
         <a href='/'>
           <div class="msg-area border-notification">
             <div class="notification-padding notification-text">
-            <p class="notification-text notify">  {{list.message}} </p>
+              <p class="notification-text notify"> {{list.message}} </p>
             </div>
           </div>
         </a>
