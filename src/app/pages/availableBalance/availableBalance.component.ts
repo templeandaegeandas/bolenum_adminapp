@@ -11,6 +11,8 @@ import { AvailableBalanceService } from './availableBalance.service'
   providers: [AvailableBalanceService],
 })
 export class AvailableBalanceComponent {
+  isLoadTrue: boolean = true;
+  isLoading: boolean = false;
   currencyData: any;
   setItemValue: any;
   walletAddress: string;
@@ -18,6 +20,7 @@ export class AvailableBalanceComponent {
   coinAbbreviation: any;
   toAddress: any;
   withdrawAmount: any;
+  isDisable: boolean = false;
   constructor(private availableBalanceService: AvailableBalanceService,
   private toastrService: ToastrService) {
     this.getCurrencyList();
@@ -37,8 +40,15 @@ export class AvailableBalanceComponent {
   }
 
   getBalance(data) {
+    this.isDisable = true;
+    this.isLoading = true;
+    this.isLoadTrue = false;
+
     let c = this.currencyData.find(x => x.currencyAbbreviation == data);
     this.availableBalanceService.getCoin(c.currencyType, data).subscribe(success => {
+      this.isLoading = false;
+      this.isLoadTrue = true;
+      this.isDisable = false;
       let successData = success.data;
       if (successData.data != null) {
         this.walletAddress = successData.data.address;

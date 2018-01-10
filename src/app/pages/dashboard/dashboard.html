@@ -33,7 +33,10 @@
                <td>{{list.price | number:'1.8-8'}}</td>
                <td>{{list.volume | number:'1.8-8'}}</td>
                <td>{{list.totalVolume | number:'1.8-8'}}</td>
-               <td>{{list.pair.pairName}}</td>
+               <td><span *ngIf="list.pairedCurrency.currencyAbbreviation=='NGN'">{{list.pairedCurrency.currencyAbbreviation}}/{{list.marketCurrency.currencyAbbreviation}}</span>
+                  <span *ngIf="list.pairedCurrency.currencyAbbreviation!='NGN'">
+                  {{list.marketCurrency.currencyAbbreviation}}/{{list.pairedCurrency.currencyAbbreviation}}</span>
+               </td>
                <td>{{list.createdOn |date}}</td>
                <td>{{list.createdOn | date:'HH:mm:ss'}}</td>
                <td>{{list.orderStandard}}</td>

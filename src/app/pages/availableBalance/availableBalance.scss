@@ -1,36 +1,39 @@
-.UserDetail .ui-tabview.ui-tabview-top>.ui-tabview-nav{
+.UserDetail .ui-tabview.ui-tabview-top>.ui-tabview-nav {
     padding: 0px;
 }
-.UserDetail .tab-inner{
+
+.UserDetail .tab-inner {
     padding: 12px 12px;
     border: 1px solid #ccc;
     margin: -14px -12px;
     background: #f6f7f9;
 }
-.UserDetail .ui-tabview .ui-tabview-panel{
-    padding:0px;
+
+.UserDetail .ui-tabview .ui-tabview-panel {
+    padding: 0px;
 }
- .ui-tabview-panel{
+
+.ui-tabview-panel {
     display: block;
     border: 1px solid #ccc;
     margin: 0px 2px;
 }
-.tab-inner1{
+
+.tab-inner1 {
     border: 1px solid #ccc;
     padding: 26px 10px;
     background: #fff;
-    
 }
 
-.balance-details-dropdown{
+.balance-details-dropdown {
     margin-bottom: 20px;
 }
 
-.margin-top{
+.margin-top {
     margin-top: 30px;
 }
 
-.marginButton{
+.marginButton {
     margin-top: 20px;
 }
 
@@ -38,56 +41,68 @@
     margin-top: 5px;
 }
 
-
-.button-property{
-          background: #f95372;
+.button-property {
+    background: #f95372;
     border-color: #f95372;
     color: #fff;
     cursor: pointer;
 }
 
-.input-pro{
+.input-pro {
     width: 234px;
     padding: 6px;
 }
 
-.drop-down{
-        width: 27%;
+.drop-down {
+    width: 27%;
     padding: 7px;
     outline: none;
 }
 
-.margin-dropdown-buttom{
+.margin-dropdown-buttom {
     margin-bottom: 5px;
 }
 
-
-.margin-form{
+.margin-form {
     margin-bottom: 10px;
 }
 
-.input-padding{
+.input-padding {
     width: 43%;
     padding: 7px;
     outline: none;
 }
 
-.padding-level{
+.padding-level {
     padding-top: 7px
-
 }
 
-.error-message-font{
+.error-message-font {
     color: red;
     margin-top: 5px;
-
 }
 
-.input-div-padding{
-        padding-left: 35px;
+.input-div-padding {
+    padding-left: 35px;
 }
 
-.total-balance{
+.total-balance {
     color: red;
 }
 
+.spiner-position {
+    position: absolute;
+    top: 172px;
+    left: 509px;
+}
+
+.loader {
+    border: 5px solid #f95372;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #e3d8d8;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    z-index: 8;
+}

@@ -226,4 +226,9 @@ export class UserDetail implements OnInit {
     this.getOrderBook();
   }
 
+  pageChangedTrade($event) {
+    this.currentPage = $event;
+    this.getTradeHistory();
+  }
+
 }
