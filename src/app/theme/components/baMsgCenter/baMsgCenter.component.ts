@@ -107,6 +107,7 @@ export class BaMsgCenter implements OnInit {
           this.isLoading = false;
           this.hasBlur = false;
           this.getCountOfUnseeNotification();
+          this.getAllUserNotifications();
           this.isSelected = true;
         });
     }
