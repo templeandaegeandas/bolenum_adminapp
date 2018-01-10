@@ -44,7 +44,6 @@
                   <th style="width: 10%">Price (1 Unit)</th>
                   <th style="width: 10%">Amount</th>
                   <th style="width: 20%">Total Price</th>
-                  <th style="width: 5%">Order Standard</th>
                   <th style="width: 20%">Created On</th>
                </tr>
             </thead>
@@ -52,16 +51,21 @@
                <tr *ngFor="let item of data | paginate: { itemsPerPage: pageSize,
                   currentPage: currentPage,
                   totalItems: totalElements }">
-                  <!-- <td>
-                     <button (click)="userDeatils(item.userId)" class="btn btn-danger">U-Detail</button>
-                     </td> -->
                   <td>{{item.buyer.firstName}} {{item.buyer.middleName}} {{item.buyer.lastName}}</td>
                   <td>{{item.seller.firstName}} {{item.seller.middleName}} {{item.seller.lastName}}</td>
-                  <td>{{item.price}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
-                  <td>{{item.volume}} {{item.pair.toCurrency[0].currencyAbbreviation}}</td>
-                  <td>{{item.price * item.volume}} {{item.pair.pairedCurrency[0].currencyAbbreviation}}</td>
-                  <td>{{item.orderStandard}}</td>
-                  <td>{{item.createdOn | date}}</td>
+                  <td>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation=='NGN'">{{item.price | number:'1.8-8'}} {{item.pairedCurrency.currencyAbbreviation}}</span>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation!='NGN'">{{item.price | number:'1.8-8'}} {{item.marketCurrency.currencyAbbreviation}}</span>
+                    </td>
+                    <td>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation=='NGN'">{{item.volume | number:'1.8-8'}} {{item.marketCurrency.currencyAbbreviation}}</span>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation!='NGN'">{{item.volume | number:'1.8-8'}} {{item.pairedCurrency.currencyAbbreviation}}</span>
+                    </td>
+                    <td>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation=='NGN'">{{item.price * item.volume | number:'1.8-8'}} {{item.pairedCurrency.currencyAbbreviation}}</span>
+                      <span *ngIf="item.pairedCurrency.currencyAbbreviation!='NGN'">{{item.price * item.volume | number:'1.8-8'}} {{item.marketCurrency.currencyAbbreviation}}</span>
+                    </td>
+                  <td>{{item.createdOn | date: 'MMM d, y h:mm a'}}</td>
                </tr>
             </tbody>
             <tfoot>
