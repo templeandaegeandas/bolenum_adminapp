@@ -21,6 +21,7 @@ export class AvailableBalanceComponent {
   toAddress: any;
   withdrawAmount: any;
   isDisable: boolean = false;
+   hasCopied: boolean = false;
   constructor(private availableBalanceService: AvailableBalanceService,
   private toastrService: ToastrService) {
     this.getCurrencyList();
@@ -77,23 +78,12 @@ export class AvailableBalanceComponent {
 
 
 
-  // public hasBTC:boolean = false;
-  // public hasETH:boolean = false;
-  //
-  //
-  //
-  //
-  //
-  //
-  // btcWithdraw(){
-  //   this.hasBTC = true;
-  //   this.hasETH = false;
-  // }
-  //
-  //
-  // ethWithdraw() {
-  //    this.hasBTC = false;
-  //   this.hasETH = true;
-  // }
+addressCopied(){
+  this.hasCopied = true;
+   setTimeout(() => {
+      this.hasCopied = false;
+    }, 1000);
+
+}
 
 }

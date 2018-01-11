@@ -6,6 +6,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { routing } from './availableBalance.routing';
 import { FormsModule } from '@angular/forms';
 import { QRCodeModule } from 'angular2-qrcode';
+import { ClipboardModule } from 'ngx-clipboard';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +15,7 @@ import { QRCodeModule } from 'angular2-qrcode';
     TabViewModule,
     FormsModule,
     QRCodeModule,
+    ClipboardModule,
 
   ],
   declarations: [
