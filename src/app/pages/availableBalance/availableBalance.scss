@@ -30,12 +30,13 @@
 }
 
 .qc-code-address{
-    width: 33%;
+    width: 36%;
     line-height: 36px;
-    border-radius: 1px;
+    border-radius: 4px;
     outline: 0;
     border: 0;
     padding-left: 12px;
+    background-color: #f0f3f4;
 }
 
 .copy-button{
@@ -45,12 +46,42 @@
     cursor: pointer;
     padding: 10px;
     color: #fff;
+    font-size: 13px;
+    border-radius: 7px;
 }
 
+.deposit-balance-one{
+       padding-left: 34px;
+}
+.deposit-balance-two{
+    padding-right: 128px;
+}
+
+.available-margin{
+    margin-top: 7px;
+}
+
+.available-balance-one{
+       padding-left: 33px;
+
+}
+.available-balance-two{
+        padding-right: 19px;
+}
+
+.available-balance-three{
+    padding-left: 23px;
+}
+   
 .margin-address{
-    margin-left: 55px;
+    margin-left: 35px;
 }
 
+.copied-text{
+    color: #DB2828;
+    font-size: 12px;
+    padding-right: 59px;
+}
 .copied{
         margin-left: 15px;
 }
@@ -69,8 +100,8 @@
 }
 
 .button-property {
-    background: #f95372;
-    border-color: #f95372;
+    background: #DB2828;
+    border-color: #DB2828;
     color: #fff;
     cursor: pointer;
 }
@@ -105,7 +136,7 @@
 }
 
 .error-message-font {
-    color: red;
+    color: #DB2828;
     margin-top: 5px;
 }
 
@@ -114,7 +145,7 @@
 }
 
 .total-balance {
-    color: red;
+    color: #DB2828;
 }
 
 .spiner-position {
@@ -124,7 +155,7 @@
 }
 
 .loader {
-    border: 5px solid #f95372;
+    border: 5px solid #DB2828;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
     border-top: 5px solid #e3d8d8;
