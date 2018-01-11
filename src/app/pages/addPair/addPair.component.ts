@@ -22,31 +22,15 @@ export class AddPairComponent {
   sortOrder:String = "desc";
   searchData: String = "";
 
-  // public pairData:any[] =[
-  //   {"pairName":"BTC","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  //  {"pairName":"BLN","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  //  {"pairName":"BTC","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  //  {"pairName":"BLN","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  //  {"pairName":"BTC","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  //  {"pairName":"BLN","to":"12/10/2012","from":"10/02/16","createdOn":"20/6/17"},
-  // ]
-
-  
-
+ 
   constructor(private addPairService: AddPairService, private router: Router) {
-
      this.getPairList();
   }
 
 
    getPairList() {
-    this.addPairService.getPairList(
-      this.currentPage,
-      this.pageSize,
-      this.sortBy,
-      this.sortOrder,
-    ).subscribe(success => {
-      this.data = success.data.content;
+    this.addPairService.getPairList().subscribe(success => {
+      this.data = success.data;
       console.log("data>>>>>>>>>>>>>>>>>", this.data);
       this.totalElements = success.data.totalElements;
       this.start = (this.currentPage - 1) * this.pageSize + 1;
@@ -56,23 +40,10 @@ export class AddPairComponent {
     })
   }
 
-  pairDetails(pairID){
-    console.log("pairid >>>>>>>>>>>>>>>>>>>>>>",pairID);
-    
-     this.router.navigate(['/pages/pairdetails/' + pairID ]);
-  }
-
   addNewPair(){
 
      this.router.navigate(['/pages/addnewpair/']);
 
   }
-
-  pageChanged($event) {
-    this.currentPage = $event;
-    this.getPairList();
-  }
-
- 
 
 }

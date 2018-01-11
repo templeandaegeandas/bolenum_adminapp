@@ -26,22 +26,10 @@ export class AddNewPair implements OnInit {
 
   pairedData = new pairEntityData();
 
-  // public setPair:any=[
-
-  //   {setPairValue:"BITCOIN"},
-  //   {setPairValue:"ETHEREUM"},
-  //   {setPairValue:"BOLENUM"},
-  // ]
-
   constructor(private router: Router, private addnewpairservice: AddNewPairService) { }
 
   ngOnInit() {
     this.showCurrencyList();
-
-    // this.setPairTo=,
-    // this.setPairFrom ="BOLENUM"
-    // this.setPairValue("BITCOIN");
-    // this.setPairFromValue("BOLENUM");
   }
 
   isClose() {
@@ -50,29 +38,12 @@ export class AddNewPair implements OnInit {
   }
 
   setToValue(setData) {
-
     console.log("setData >>>>>>", setData);
-
-
   }
 
-  // setPairFromValue(setFromData){
-
-  //   console.log("from >>>>>>>>",setFromData);
-
-  // }
-
-
   pairFormData(formData) {
-
     console.log("form data", this.setPairFrom, this.setPairTo);
-    let c = this.currencyDataList.find(x => x.currencyId == this.setPairTo);
-    let c1 = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
-    this.pairedData.toCurrency = c;
-    this.pairedData.pairedCurrency = c1;
-    console.log(this.pairedData);
-
-    this.addnewpairservice.pairFormData(this.pairedData).subscribe(successData => {
+    this.addnewpairservice.pairFormData(this.setPairTo, this.setPairFrom).subscribe(successData => {
 
       this.router.navigate(['/pages/addPair/']);
     }, errorData => {
