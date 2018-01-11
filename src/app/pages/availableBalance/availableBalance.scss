@@ -29,6 +29,33 @@
     margin-bottom: 20px;
 }
 
+.qc-code-address{
+    width: 33%;
+    line-height: 36px;
+    border-radius: 1px;
+    outline: 0;
+    border: 0;
+    padding-left: 12px;
+}
+
+.copy-button{
+    background-color: #00abff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+}
+
+.margin-address{
+    margin-left: 55px;
+}
+
+.copied{
+        margin-left: 15px;
+}
+
+
 .margin-top {
     margin-top: 30px;
 }

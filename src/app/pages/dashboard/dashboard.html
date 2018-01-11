@@ -19,14 +19,14 @@
       <table class="table table-striped">
          <thead>
             <tr>
-               <th style="width: 8%">Type</th>
-               <th style="width: 8%" >Price</th>
-               <th style="width: 10%" >Amount</th>
-               <th style="width: 10%" >Total</th>
-               <th >Pair</th>
-               <th >Date</th>
-               <th>Time</th>
-               <th style="width: 10%">Order Standard</th>
+               <th width='5'>Type</th>
+               <th width='100'>Price</th>
+               <th width='100'>Amount</th>
+               <th width='100'>Total</th>
+               <th width='5' >Pair</th>
+               <th width='100'>Date</th>
+               <th width='5' >Time</th>
+               <th width='135' >Order Standard</th>
             </tr>
             <tr *ngFor="let list of latestOrders" class="table-content-font">
                <td>{{list.orderType}}</td>

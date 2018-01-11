@@ -83,8 +83,11 @@
                     <div class="col-sm-12 text-center margin-form">
                       <span class="total-balance"> Available  Fee Balance :</span> <span>{{balance | number:'1.8-8'}} {{setItemValue}}</span>
                     </div>
-                    <div class="col-sm-4 text-right padding-level">
-                      Wallet Address :  <span>{{walletAddress}}</span>
+                    <div class="col-sm-12 text-center margin-form" >
+    <qr-code [value]='walletAddress' [size]="110"></qr-code>
+</div>
+                    <div class="col-sm-12 text-center margin-address">
+                      <input class="qc-code-address" type="text" name="wallet-address" ngModel={{walletAddress}} [disabled]="true"/><span class="copied" ><button class="copy-button">Copy</button></span>
                     </div>
                   </div>
                 </section>
