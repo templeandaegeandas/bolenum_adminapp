@@ -1,65 +1,64 @@
 <div class="widgets">
   <ba-card title="Add erc 20" baCardClass="with-scroll" class="data-table-container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div>
-          <button class="btn btn-danger pull-right" (click)="addNewToken()">Add New</button>
+  <div class="row">
+    <div class="col-sm-12">
+      <div>
+        <button class="btn btn-danger pull-right" (click)="addNewToken()">Add New</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="row">
+        <label class="col-sm-12 label-control">Sort by</label>
+      </div>
+      <div class="row">
+        <div class="offset-sm-1 col-sm-5">
+          <div class="row">
+            <select class="form-control input-sm box " [(ngModel)]="sortBy" (ngModelChange)="getTokenList()">
+              <option ngValue="currency.currencyName">Token Name</option>
+              <option ngValue="createdDate">createdOn</option>
+            </select>
+          </div>
+        </div>
+        <div class="offset-sm-1 col-sm-5">
+          <div class="row">
+            <select class="form-control input-sm box" [(ngModel)]="sortOrder" (ngModelChange)="getTokenList()">
+              <option ngValue="asc">Ascending</option>
+              <option ngValue="desc">Descending</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="row">
-          <label class="col-sm-12 label-control">Sort by</label>
-        </div>
-        <div class="row">
-          <div class="offset-sm-1 col-sm-5">
-            <div class="row">
-              <select class="form-control input-sm box " [(ngModel)]="sortBy" (ngModelChange)="getTokenList()">
-                            <option ngValue="currency.currencyName">Token Name</option>
-                            <option ngValue="createdDate">createdOn</option>
-                        </select>
-            </div>
-          </div>
-          <div class="offset-sm-1 col-sm-5">
-            <div class="row">
-              <select class="form-control input-sm box" [(ngModel)]="sortOrder" (ngModelChange)="getTokenList()">
-                            <option ngValue="asc">Ascending</option>
-                            <option ngValue="desc">Descending</option>
-                        </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th style="width: 20%">Token Name</th>
-            <th style="width: 20%">Symbol</th>
-            <th style="width: 40%">Contract Address</th>
-            <th style="width: 20%">Created On</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ercList of ercTokenLists">
-            <td>{{ercList.currency.currencyName}}</td>
-            <td>{{ercList.currency.currencyAbbreviation}}</td>
-            <td>{{ercList.contractAddress}}</td>
-            <td>{{ercList.createdDate | date}}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="7">
-              <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
-              <pagination-controls (pageChange)="pageChanged($event)" maxSize="9" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </ba-card>
+  </div>
+  <div class="panel panel-default">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="width: 20%">Token Name</th>
+          <th style="width: 20%">Symbol</th>
+          <th style="width: 40%">Contract Address</th>
+          <th style="width: 20%">Created On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ercList of ercTokenLists">
+          <td>{{ercList.currency.currencyName}}</td>
+          <td>{{ercList.currency.currencyAbbreviation}}</td>
+          <td>{{ercList.contractAddress}}</td>
+          <td>{{ercList.createdDate | date}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="7">
+          <div class="pull-right show-entry-txt">Showing {{start}} to {{end}} of {{totalElements}} entries</div>
+        <pagination-controls (pageChange)="pageChanged($event)" maxSize="7" directionLinks="true" autoHide="true" previousLabel="Previous" nextLabel="Next" screenReaderPaginationLabel="Vishal" screenReaderPageLabel="Kumar" screenReaderCurrentLabel="Rajput"></pagination-controls>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+</ba-card>
 </div>
