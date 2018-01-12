@@ -65,14 +65,15 @@
                 <section>
                   <div class="row">
                     <div class="col-sm-12 text-center margin-dropdown-buttom">
-                      <select class="drop-down" name="currencies" [(ngModel)]="setItemValue" (ngModelChange)="getBalance(setItemValue)">
+                      <select class="drop-down" name="currencies" [(ngModel)]="setItemValue" (ngModelChange)="getBalance(setItemValue)" [disabled]='isDisableTwo' >
                         <option *ngFor="let setCoin of currencyData" [value]="setCoin.currencyAbbreviation" class="option-box text-uppercase drop-down-font">{{setCoin.currencyName}} ({{setCoin.currencyAbbreviation}})</option>
                        </select>
                     </div>
                   </div>
+                  <div class="loader-two spiner-position-two" *ngIf="isLoadingOfqrCode"></div>
 
-                  <div class="row"> 
-                    <div class="col-sm-12 text-center margin-form available-balance-one available-margin">
+                  <div class="row">  
+                    <div class="col-sm-12 text-center margin-form available-balance-one available-margin" *ngIf="hasLoaderAddress">
                       <span class="total-balance"> Available Balance :</span> <span>{{balance | number:'1.8-8'}} {{setItemValue}}</span>
                     </div>
 

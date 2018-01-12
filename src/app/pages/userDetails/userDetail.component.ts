@@ -69,6 +69,7 @@ export class UserDetail implements OnInit {
       this.userId = +params['userId'];
     });
     this.getUserDetailsById();
+    this.getKycByUserID(this.userId);
   }
 
   getUserDetailsById() {
@@ -146,6 +147,8 @@ export class UserDetail implements OnInit {
     this.docUrl = environment.documentUrl;
     this.userDetailsService.getKycByUserId(userId).subscribe(success => {
       this.kycListLength = success.data.length;
+      console.log("kyc length",this.kycListLength);
+      
       if (this.kycListLength > 0) {
         let dot1 = success.data[0].document.lastIndexOf(".")
         let extension1 = (dot1 == -1) ? "" : success.data[0].document.substring(dot1 + 1);
