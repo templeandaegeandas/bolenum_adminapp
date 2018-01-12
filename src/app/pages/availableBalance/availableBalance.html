@@ -82,7 +82,7 @@
                     <div class="col-sm-12 text-center margin-address">
                       <input class="qc-code-address" type="text" name="wallet-address" ngModel={{walletAddress}} readonly #inputTarget title="{{walletAddress}}" />
                       <span
-                        class="copied" (click)="addressCopied();"><button class="copy-button" [class.btn-success]="isCopied2" title="click to copy address" type="button" [ngxClipboard]=" inputTarget">Copy</button></span>
+                        class="copied" (click)="addressCopied();"><button class="copy-button" title="click to copy address" type="button" [ngxClipboard]=" inputTarget">Copy</button></span>
                         <p class="copied-text" *ngIf="hasCopied">Address Copied</p>
                     </div>
                   </div>
