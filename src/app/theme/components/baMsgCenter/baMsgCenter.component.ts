@@ -21,7 +21,7 @@ export class BaMsgCenter implements OnInit {
   jsonMessage: any;
   countOfUnseeNotification: any;
   arrayOfNotification: any;
-  isSelected = false;
+  public subMenu = false;
 
   constructor(
     private baMsgCenterService: BaMsgCenterService,
@@ -30,7 +30,6 @@ export class BaMsgCenter implements OnInit {
     private appEventEmiterService: AppEventEmiterService
   ) {
     this.isLogIn();
-    this.isSelected = false;
     if (this.beforeLogin) {
       websocketService.connectForNonLoggedInUser();
     }
@@ -43,7 +42,6 @@ export class BaMsgCenter implements OnInit {
       ) {
         this.getAllUserNotifications();
         this.getCountOfUnseeNotification();
-        this.isSelected = false;
       }
     });
   }
@@ -52,14 +50,17 @@ export class BaMsgCenter implements OnInit {
     this.websocketService.connectForLoggedInUser(
       localStorage.getItem("userId")
     );
-    this.getAllUserNotifications();
     this.getCountOfUnseeNotification();
-    this.isSelected = false;
+  }
+
+  showDropdown() {
+    this.getAllUserNotifications();
   }
 
   getAllUserNotifications() {
     this.isLoading = true;
     this.hasBlur = true;
+    this.getCountOfUnseeNotification();
     this.baMsgCenterService
       .GetUserNotification(1, 5, "createdOn", "desc")
       .subscribe(
@@ -68,6 +69,7 @@ export class BaMsgCenter implements OnInit {
           this.hasBlur = false;
           this.listOfUserNotification = success.data.content;
           this.listOfUserNotificationLength = this.listOfUserNotification.length;
+          this.changeStatusOfUserNotification();
         },
         error => {
           console.log(error);
@@ -89,27 +91,26 @@ export class BaMsgCenter implements OnInit {
       this.isLoading = false;
       this.hasBlur = false;
       this.countOfUnseeNotification = success.data;
+      if (this.countOfUnseeNotification > 99) {
+        this.countOfUnseeNotification = "+" + 99;
+      }
     });
   }
 
   changeStatusOfUserNotification() {
-    if (!this.isSelected) {
-      let arrayOfNotification = [];
-      for (var i = 0; i < this.listOfUserNotification.length; i++) {
-        arrayOfNotification[i] = this.listOfUserNotification[i].id;
-      }
-      console.log(arrayOfNotification);
-
-      this.baMsgCenterService
-        .changeReadStatusOfUserNotification(arrayOfNotification)
-        .subscribe(success => {
-          console.log("hihihih");
-          this.isLoading = false;
-          this.hasBlur = false;
-          this.getCountOfUnseeNotification();
-          this.getAllUserNotifications();
-          this.isSelected = true;
-        });
+    let arrayOfNotification = [];
+    for (var i = 0; i < this.listOfUserNotification.length; i++) {
+      arrayOfNotification[i] = this.listOfUserNotification[i].id;
     }
+    console.log(arrayOfNotification);
+
+    this.baMsgCenterService
+      .changeReadStatusOfUserNotification(arrayOfNotification)
+      .subscribe(success => {
+        console.log("hihihih");
+        this.isLoading = false;
+        this.hasBlur = false;
+        this.getCountOfUnseeNotification();
+      });
   }
 }
