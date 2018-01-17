@@ -18,6 +18,8 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
 })
 
 export class UserDetail implements OnInit {
+  disApproveKycForm: any;
+  loading: boolean = false;
   bankUserLength: any;
   myid: any;
   id: any;
@@ -87,8 +89,10 @@ export class UserDetail implements OnInit {
   }
 
   approve0Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
@@ -97,8 +101,10 @@ export class UserDetail implements OnInit {
   }
 
   approve1Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
@@ -107,12 +113,15 @@ export class UserDetail implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
+    this.loading = true;
     if (disApproveKycForm.invalid) {
+      this.loading = false;
       return;
     }
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {

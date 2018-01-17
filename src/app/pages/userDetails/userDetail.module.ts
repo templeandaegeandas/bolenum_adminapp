@@ -8,6 +8,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { routing } from './userDetail.routing';
 import { ImageZoomModule } from 'angular2-image-zoom';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoadingModule } from 'ngx-loading';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ModalModule,
     FormsModule,
     ImageZoomModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    LoadingModule,
       ],
   declarations: [
     UserDetail,

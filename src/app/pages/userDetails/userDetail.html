@@ -286,10 +286,11 @@
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn  disaprove" data-dismiss="modal">Disapprove</button>
-        <button type="button" class="btn  cancelButton" data-dismiss="modal" (click)="addPopupClose()">Cancel</button>
+        <button type="reset" class="btn  cancelButton" data-dismiss="modal" (click)="addPopupClose()">Cancel</button>
       </div>
     </form>
   </div>
 </div>
 </div>
 </div>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
