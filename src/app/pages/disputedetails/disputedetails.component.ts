@@ -54,8 +54,8 @@ export class Disputedetails {
       this.sellerMobileNo = success.data.disputeRaisedAgainst.mobileNumber;
       this.sellerComment = success.data.commentByDisputeRaisedAgainst;
       this.orderId = success.data.orders.id;
-      this.pairName = success.data.orders.pair.pairName;
-      this.orderVolume = success.data.orders.volume;
+      this.pairName = success.data.orders.pairedCurrency.currencyAbbreviation+"/"+success.data.orders.marketCurrency.currencyAbbreviation;
+      this.orderVolume = success.data.orders.lockedVolume;
       this.orderPrice = success.data.orders.price;
       this.totalPrice = this.orderVolume * this.orderPrice;
       this.disputeStatus = success.data.disputeStatus;
