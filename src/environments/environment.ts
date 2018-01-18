@@ -7,5 +7,5 @@ export const environment = {
 	production: false,
 	documentUrl: "http://localhost:3050/static/documents/",
 	profilePicUrl: "http://localhost:3050/static/profile-images/",
-	socketUrl: "http://localhost:8080/websocket/bolenum/exchange"
+	socketUrl: "https://staging.bolenumexchange.com/websocket/bolenum/exchange"
 };

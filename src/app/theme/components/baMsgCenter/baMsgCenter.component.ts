@@ -40,7 +40,7 @@ export class BaMsgCenter implements OnInit {
         message == "DISPUTE_NOTIFICATION" ||
         message == "ADMIN_NOTIFICATION"
       ) {
-        this.getAllUserNotifications();
+        
         this.getCountOfUnseeNotification();
       }
     });
@@ -112,5 +112,13 @@ export class BaMsgCenter implements OnInit {
         this.hasBlur = false;
         this.getCountOfUnseeNotification();
       });
+  }
+
+  redirectToKYC(userId, notifictaionType) {
+    console.log("userId >>>>>>>>>>>>>>>>>>>>> =" + userId);
+    if (notifictaionType == "DOCUMENT_VERIFICATION") {
+      console.log("userId>>>>>>>>>>>>>>>>>>>> =" + userId);
+      this.router.navigate(["/pages/kycDetails/" + userId]);
+    }
   }
 }

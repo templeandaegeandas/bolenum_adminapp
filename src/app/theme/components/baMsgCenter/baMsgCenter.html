@@ -22,10 +22,10 @@
         </a>
       </div> -->
       <div class="msg-list" *ngFor="let list of listOfUserNotification">
-        <a href='/'>
+        <a href>
           <div class="msg-area border-notification">
             <div class="notification-padding notification-text">
-              <p class="notification-text notify"> {{list.message}} </p>
+              <p class="notification-text notify" (click)="redirectToKYC(list.sender.userId,list.notificationType)"> {{list.message}} </p>
             </div>
           </div>
         </a>
