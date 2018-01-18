@@ -24,6 +24,9 @@ export class AvailableBalanceComponent {
   tradeFee: any;
   deposit: any;
   transferFee: any;
+  isLoadingOfqrCode: boolean = false;
+  hasLoaderAddress: boolean = false;
+  isDisableTwo: boolean = false;
 
   constructor(
     private availableBalanceService: AvailableBalanceService,
@@ -51,6 +54,9 @@ export class AvailableBalanceComponent {
     this.isDisable = true;
     this.isLoading = true;
     this.isLoadTrue = false;
+    this.isLoadingOfqrCode = true;
+    this.hasLoaderAddress = false;
+    this.isDisableTwo = true;
 
     let c = this.currencyData.find(x => x.currencyAbbreviation == data);
     this.availableBalanceService.getCoin(c.currencyType, data).subscribe(
@@ -58,6 +64,9 @@ export class AvailableBalanceComponent {
         this.isLoading = false;
         this.isLoadTrue = true;
         this.isDisable = false;
+        this.isLoadingOfqrCode = false;
+        this.hasLoaderAddress = true;
+        this.isDisableTwo = false;
         let successData = success.data;
         if (successData.data != null) {
           this.walletAddress = successData.data.address;

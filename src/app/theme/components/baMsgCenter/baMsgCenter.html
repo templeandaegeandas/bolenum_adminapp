@@ -1,8 +1,8 @@
 <ul class="al-msg-center clearfix">
   <li class="dropdown">
-    <a class="dropdown-toggle bell backgroun-bell-color" (click)="showDropdown()" id="msg-dd1" data-toggle="dropdown" aria-expanded="false">
-      <i class="fa fa-bell-o"></i><span *ngIf= "countOfUnseeNotification>0">{{countOfUnseeNotification}}</span>
-      <div class="notification-ring"></div>
+    <a class="dropdown-toggle bell backgroun-bell-color notificationAll" (click)="showDropdown()" id="msg-dd1" data-toggle="dropdown" aria-expanded="false">
+      <i class="fa fa-bell-o bell-icon-pointer"></i><span *ngIf= "countOfUnseeNotification>0">{{countOfUnseeNotification}}</span>
+      <div class="notification-ring notificationAll"></div>
     </a>
     <div class="top-dropdown-menu dropdown-menu" aria-labelledby="msg-dd1">
       <i class="dropdown-arr"></i>
@@ -30,7 +30,7 @@
           </div>
         </a>
       </div>
-      <a class="">See all notifications</a>
+      <a><span class="notificationAll"  [routerLink]="['./notificationDetails']">See all notifications</span></a>
     </div>
   </li>
   <!--<li class="dropdown">
@@ -59,3 +59,4 @@
     </div>
   </li>-->
 </ul>
+

@@ -88,6 +88,7 @@
     "ng2-tree": "2.0.0-alpha.5",
     "ngx-bootstrap": "^1.9.3",
     "ngx-clipboard": "^9.0.1",
+    "ngx-loading": "^1.0.14",
     "ngx-pagination": "^3.0.1",
     "ngx-uploader": "2.2.5",
     "normalize.css": "6.0.0",

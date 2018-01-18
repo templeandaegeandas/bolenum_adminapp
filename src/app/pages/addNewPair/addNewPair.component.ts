@@ -44,12 +44,11 @@ export class AddNewPair implements OnInit {
   pairFormData(formData) {
     console.log("form data", this.setPairFrom, this.setPairTo);
     this.addnewpairservice.pairFormData(this.setPairTo, this.setPairFrom).subscribe(successData => {
-
       this.router.navigate(['/pages/addPair/']);
     }, errorData => {
       this.hasError = true;
-      let errorDATA = errorData.json();
-      this.errorMessageShow = errorDATA.message;
+      console.log(errorData)
+      this.errorMessageShow = errorData.json().message;
       setTimeout(()=>{    //<<<---    using ()=> syntax
       this.hasError = false;
  },3000);
@@ -69,52 +68,11 @@ export class AddNewPair implements OnInit {
 
   }
 
-  showTosymbol(setPairTo){
-    console.log("symbol>>>>>>>>>>>>>>",setPairTo);
-    this.showCurrencyList();
-       this.showAbberivition= this.currencyDataList.find(x => x.currencyId == this.setPairTo);
-      console.log("currency list abberiviation >>>",  this.showAbberivition);
-      // this.showAbberivition ==  this.showAbberivition.currencyAbbreviation;
-      console.log("abber>>>>>>>>>>>>>>>>>>>",this.showAbberivition.currencyAbbreviation);
-      this.toAbber = this.showAbberivition.currencyAbbreviation;
-        console.log("toabber>>>>>>>>",   this.toAbber);
-         this.fullPairName = this.toAbber + "/" + this.fromAbber; 
-         if(this.fromAbber){
-
-            this.fullPairName = this.toAbber + "/" + this.fromAbber; 
-
-         }
-          else{
-
-             this.fullPairName = this.toAbber ; 
-
-
-          }
-      
-      }
-
-      showFromsymbol(setPairFrom){
-        console.log("input data >>>>>",setPairFrom);
-        
-        this.fromAbbreviation = this.currencyDataList.find(x => x.currencyId == this.setPairFrom);
-        console.log("find data >>>>>>>>>>",   this.fromAbbreviation);
-        console.log("abberi>>>>>>>>",  this.fromAbbreviation.currencyAbbreviation);
-        this.fromAbber = this.fromAbbreviation.currencyAbbreviation;
-        // this.fullPairName = this.toAbber + "/" + this.fromAbber; 
-        
-         if(this.toAbber){
-
-            this.fullPairName = this.toAbber + "/" + this.fromAbber; 
-
-         }
-          else{
-
-             this.fullPairName = this.fromAbber ; 
-
-
-          }
-
-
+  showSymbol(){
+    if(this.setPairTo == 'Choose From Currency' || this.setPairFrom == 'Choose From Currency') {
+      return;
+    }
+    this.fullPairName = this.setPairFrom+"/"+this.setPairTo;
       }
 }
 

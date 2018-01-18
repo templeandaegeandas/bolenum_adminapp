@@ -14,7 +14,7 @@ export class AddNewPairService {
 	}
 
 	pairFormData(marketCurrencyId, pairedCurrencyId) {
-		return this.http.post('api/v1/admin/currency/pair?marketCurrencyId=' + marketCurrencyId + '&pairedCurrencyId=' + pairedCurrencyId, '')
+		return this.http.post('api/v1/admin/currency/pair?marketCurrencyAbbreviation=' + marketCurrencyId + '&pairedCurrencyAbbreviation=' + pairedCurrencyId, '')
 			.map(res => res.json())
 
 	}

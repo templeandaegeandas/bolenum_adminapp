@@ -122,6 +122,10 @@ export const routes: Routes = [
         loadChildren: './disputedetails/disputedetails.module#DisputedetailsModule',
       },
       {
+        path: 'notificationDetails',
+        loadChildren: './notificationDetails/notificationDetails.module#NotificationDetailsModule',
+      },
+      {
         path: 'adderdetails',
         loadChildren: './adderDetails/adderDetails.module#AdderDetailsModule',
       },

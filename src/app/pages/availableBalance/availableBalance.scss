@@ -151,10 +151,27 @@
 .spiner-position {
     position: absolute;
     top: 172px;
-    left: 509px;
+    left: 582px;
 }
 
 .loader {
+    border: 5px solid #DB2828;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    border-top: 5px solid #e3d8d8;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    z-index: 8;
+}
+
+.spiner-position-two {
+    position: absolute;
+    top: 172px;
+    left: 586px;
+}
+
+.loader-two {
     border: 5px solid #DB2828;
     -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;

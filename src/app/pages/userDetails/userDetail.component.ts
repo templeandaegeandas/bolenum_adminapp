@@ -18,6 +18,8 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
 })
 
 export class UserDetail implements OnInit {
+  disApproveKycForm: any;
+  loading: boolean = false;
   bankUserLength: any;
   myid: any;
   id: any;
@@ -69,6 +71,7 @@ export class UserDetail implements OnInit {
       this.userId = +params['userId'];
     });
     this.getUserDetailsById();
+    this.getKycByUserID(this.userId);
   }
 
   getUserDetailsById() {
@@ -86,8 +89,10 @@ export class UserDetail implements OnInit {
   }
 
   approve0Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
@@ -96,8 +101,10 @@ export class UserDetail implements OnInit {
   }
 
   approve1Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
@@ -106,12 +113,15 @@ export class UserDetail implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
+    this.loading = true;
     if (disApproveKycForm.invalid) {
+      this.loading = false;
       return;
     }
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
@@ -146,6 +156,8 @@ export class UserDetail implements OnInit {
     this.docUrl = environment.documentUrl;
     this.userDetailsService.getKycByUserId(userId).subscribe(success => {
       this.kycListLength = success.data.length;
+      console.log("kyc length",this.kycListLength);
+      
       if (this.kycListLength > 0) {
         let dot1 = success.data[0].document.lastIndexOf(".")
         let extension1 = (dot1 == -1) ? "" : success.data[0].document.substring(dot1 + 1);

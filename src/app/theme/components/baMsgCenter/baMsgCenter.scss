@@ -15,6 +15,10 @@
   }
 }
 
+a li .notificationBell{
+cursor: pointer !important;
+}
+
 .al-msg-center {
   float: right;
   padding: 0;
@@ -64,8 +68,10 @@
       }
 
       .seeAllNotification{
-        cursor: pointer;
+        cursor: pointer !important;
       }
+
+     
 
     
 
@@ -137,6 +143,16 @@
       }
     }
   }
+
+   .notificationAll{
+        cursor: pointer !important;
+      }
+
+      .notificationAll:hover{
+        text-decoration: underline;
+        color: #f95372;
+      }
+
   .msg-list {
     max-height: 296px;
     overflow: scroll;
@@ -267,4 +283,8 @@
       right: 75px;
     }
   }
+}
+
+fa-bell-o .bell-icon-pointer{
+  cursor: pointer;
 }
