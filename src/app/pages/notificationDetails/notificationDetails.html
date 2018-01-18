@@ -1,0 +1,47 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12 UserDetail">
+      <ba-card cardTitle="Notification Details">
+        <p-tabView>
+
+          <div class="tab-inner">
+            <div class="tab-inner1">
+              <!-- <div class="table-responsive">
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th width='5'>Type</th>
+               <th width='100'>Price</th>
+               <th width='100'>Amount</th>
+               <th width='100'>Total</th>
+               <th width='5' >Pair</th>
+               <th width='100'>Date</th>
+               <th width='5' >Time</th>
+               <th width='135' >Order Standard</th>
+            </tr>
+            <tr  class="table-content-font">
+               <td>55</td>
+               <td>85</td>
+               <td>897</td>
+               <td>644645</td>
+               <td>58566</td>
+               <td>653</td>
+               <td>123</td>
+               <td>4ojhfcgh582</td>
+            </tr>
+         </thead>
+         <tbody>
+      </table>
+      </div> -->
+              <div class="">
+                <ul>
+                  <li *ngFor='let notifyData of messagedata;'>{{notifyData.message}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </p-tabView>
+      </ba-card>
+    </div>
+  </div>
+</div>

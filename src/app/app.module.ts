@@ -13,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { StompService } from 'ng2-stomp-service';
 import { WebsocketService } from './pages/webSocket/web.socket.service';
 import { AppEventEmiterService } from './app.event.emmiter.service';
+import { RouterLink } from '@angular/router';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -61,6 +62,7 @@ export type StoreType = {
     PagesModule,
     NgxPaginationModule,
     routing,
+    RouterModule,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     APP_PROVIDERS,
