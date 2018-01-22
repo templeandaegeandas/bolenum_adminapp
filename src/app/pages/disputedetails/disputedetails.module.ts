@@ -6,6 +6,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { routing } from './disputedetails.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoadingModule } from 'ngx-loading';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +15,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     TabViewModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    LoadingModule,
   ],
   declarations: [
  Disputedetails,

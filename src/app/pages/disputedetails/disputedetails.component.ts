@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
 import { DisputeDetailsService } from './disputedetails.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,7 +13,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   templateUrl: './disputedetails.html',
   providers: [DisputeDetailsService]
 })
-export class Disputedetails {
+export class Disputedetails implements OnInit{
+  loading: boolean = false;
   disputeId: number;
   buyerEmail: any;
   buyerName: any;
@@ -34,6 +35,14 @@ export class Disputedetails {
   actionStatus: any;
   commentByAdmin: any;
   @ViewChild('addPopup') public addPopup: ModalDirective;
+
+  ngOnInit() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+
+  }
   constructor(private router: ActivatedRoute,
     private service: DisputeDetailsService,
     private toastrService: ToastrService) {

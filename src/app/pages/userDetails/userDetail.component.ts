@@ -92,11 +92,12 @@ export class UserDetail implements OnInit {
     this.loading = true;
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
-      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
+      this.loading = false;
     }, error => {
       console.log(error)
+      this.loading = false;
     })
   }
 
@@ -104,11 +105,12 @@ export class UserDetail implements OnInit {
     this.loading = true;
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
-      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
+        this.loading = false;
     }, error => {
-      console.log(error)
+      console.log(error);
+        this.loading = false;
     })
   }
 
