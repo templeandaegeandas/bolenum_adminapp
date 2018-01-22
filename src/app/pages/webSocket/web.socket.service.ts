@@ -53,5 +53,6 @@ export class WebsocketService {
 
   response = (data) => {
     this.appEventEmiterService.changeMessage(data);
+    this.appEventEmiterService.changeMessage('default message')
   }
 }
