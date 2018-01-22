@@ -6,9 +6,7 @@ import { WebsocketService } from '../webSocket/web.socket.service';
 export class PrivateRouteAuthGuard implements CanActivate {
 
     constructor(private router: Router, private websocketService: WebsocketService) {
-      if (localStorage.getItem('token')) {
-          this.websocketService.connectForLoggedInUser(1);
-      }
+      
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

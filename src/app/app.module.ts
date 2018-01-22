@@ -14,6 +14,7 @@ import { StompService } from 'ng2-stomp-service';
 import { WebsocketService } from './pages/webSocket/web.socket.service';
 import { AppEventEmiterService } from './app.event.emmiter.service';
 import { RouterLink } from '@angular/router';
+import { Http} from '@angular/http';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -31,7 +32,7 @@ import { PagesModule } from './pages/pages.module';
 const APP_PROVIDERS = [
   AppState,
   GlobalState,
-  HttpClient,
+  {provide: Http, useClass: HttpClient },
 ];
 
 export type StoreType = {
@@ -69,6 +70,7 @@ export type StoreType = {
     StompService,
     WebsocketService,
     AppEventEmiterService,
+    HttpClient
   ],
 })
 
