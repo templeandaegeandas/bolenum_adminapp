@@ -6,38 +6,34 @@
 
           <div class="tab-inner">
             <div class="tab-inner1">
-              <!-- <div class="table-responsive">
+              <div class="table-responsive">
       <table class="table table-striped">
          <thead>
             <tr>
-               <th width='5'>Type</th>
-               <th width='100'>Price</th>
-               <th width='100'>Amount</th>
-               <th width='100'>Total</th>
-               <th width='5' >Pair</th>
-               <th width='100'>Date</th>
-               <th width='5' >Time</th>
-               <th width='135' >Order Standard</th>
+               <th>Sender Name</th>
+               <th>Email</th>
+               <th>Receiver</th>
+               <th>Message</th>
+               <th>Date</th>
+              
             </tr>
-            <tr  class="table-content-font">
-               <td>55</td>
-               <td>85</td>
-               <td>897</td>
-               <td>644645</td>
-               <td>58566</td>
-               <td>653</td>
-               <td>123</td>
-               <td>4ojhfcgh582</td>
-            </tr>
-         </thead>
-         <tbody>
+            </thead>
+            <tbody>
+            <tr  class="table-content-font" *ngFor='let notifyData of messagedata;'>
+               <td>{{notifyData.sender.fullName}}</td>
+               <td>{{notifyData.sender.emailId}}</td>
+               <td>{{notifyData.receiver.firstName}}</td>
+               <td>{{notifyData.message}}</td>
+               <td>{{notifyData.createdOn | date }}</td>
+             </tr>
+            </tbody>
       </table>
-      </div> -->
-              <div class="">
+      </div>
+              <!-- <div class="">
                 <ul>
                   <li *ngFor='let notifyData of messagedata;'>{{notifyData.message}}</li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </p-tabView>
