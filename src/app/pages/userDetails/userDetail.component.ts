@@ -61,7 +61,7 @@ export class UserDetail implements OnInit {
     private appEventEmiterService: AppEventEmiterService) {
     appEventEmiterService.currentMessage.subscribe(message => {
       if (message == 'DOCUMENT_VERIFICATION') {
-        this.getUserDetailsById();
+        this.getKycByUserID(this.userId);
       }
     })
   }
