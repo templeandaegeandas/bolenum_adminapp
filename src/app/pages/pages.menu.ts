@@ -145,7 +145,20 @@ export const PAGES_MENU = [
             order: 0,
           },
         },
-      }
+      },
+      {
+        path: 'notificationDetails',
+        data: {
+          menu: {
+            title: 'Notification',
+            icon: 'fa fa-money',
+            selected: false,
+            expanded: false,
+            order: 0,
+            class:'display-none'
+          },
+        },
+      },
     ],
   },
 ];

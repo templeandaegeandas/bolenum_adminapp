@@ -7,6 +7,7 @@ import { TabViewModule } from 'primeng/primeng';
 import { routing } from './kycDetails.routing';
 import { ImageZoomModule } from 'angular2-image-zoom';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoadingModule } from 'ngx-loading';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,7 +16,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     TabViewModule,
     FormsModule,
     ImageZoomModule,
-    ModalModule
+    ModalModule,
+    LoadingModule
   ],
   declarations: [
  KycDetails,

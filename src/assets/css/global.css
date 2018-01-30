@@ -7,3 +7,10 @@ button.btn.btn-danger:hover, button.btn.btn-danger:focus, button.btn.btn-danger.
       vertical-align: middle;   
        color: black  !important;
        cursor:pointer;}
+
+
+ .display-none
+ {
+       display: none!important;
+ }
+ 

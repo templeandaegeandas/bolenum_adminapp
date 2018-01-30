@@ -37,10 +37,10 @@
                                 <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
                               </div>
                             </div>
-                            <div class="col-md-6 actionBtn text-right">
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
+                            <div class="col-md-10 actionBtn text-center">
+                              <button class="btn btn-primary btn-with-iconss button-margin" *ngIf="!document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
                                 (click)="approve0Kyc()">Approve</button>
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
+                              <button class="btn btn-primary btn-with-iconss disapprove-kyc" *ngIf="document0VerificationStatus || document0Status=='SUBMITTED'" type="button"
                                 (click)="addPopupOpen(document0Type)">DisApprove</button>
                             </div>
                           </div>
@@ -73,10 +73,10 @@
                                 <!-- <input class="form-control" *ngIf="isEdit" id="inputMobileName" placeholder="Mobile Name" type="text" > -->
                               </div>
                             </div>
-                            <div class="col-md-6 actionBtn text-right">
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
+                            <div class="col-md-10 actionBtn text-center">
+                              <button class="btn btn-primary btn-with-iconss button-margin" *ngIf="!document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
                                 (click)="approve1Kyc()">Approve</button>
-                              <button class="btn btn-primary btn-with-iconss" *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
+                              <button class="btn btn-primary btn-with-iconss disapprove-kyc " *ngIf="document1VerificationStatus || document1Status=='SUBMITTED'" type="button"
                                 (click)="addPopupOpen(document1Type)">DisApprove</button>
                             </div>
                           </div>
@@ -103,7 +103,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #disApproveKycForm="ngForm" (submit)=disApproveKyc(disApproveKycForm)>
+        <form #disApproveKycForm="ngForm" (submit)="disApproveKyc(disApproveKycForm); disApproveKycForm.resetForm();">
           <div class="form-group">
             <label for="exampleTextarea">Enter Rejection Message</label>
             <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel"
@@ -113,11 +113,12 @@
             </span>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-default" data-dismiss="modal">Disapprove</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="addPopupClose()">Cancel</button>
+            <button type="submit" class="btn  disapprove-kyc" data-dismiss="modal">Disapprove</button>
+            <button type="button" class="btn  cancel-kyc" data-dismiss="modal" (click)="addPopupClose()">Cancel</button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<ngx-loading [show]="loading" [config]="{backdropBackgroundColour: 'rgba(128,128,128,0.8)', backdropBorderRadius: '10px',fullScreenBackdrop: true}"></ngx-loading>

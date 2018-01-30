@@ -16,6 +16,7 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
   providers: [UserDetailsService, WebsocketService]
 })
 export class KycDetails implements OnInit {
+  loading: any = false;
   userId: Number;
   document0: any;
   document1: any;
@@ -87,36 +88,49 @@ export class KycDetails implements OnInit {
   }
 
   approve0Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document0Id).subscribe(success => {
       this.ngOnInit();
+      setTimeout(()=>{
+        this.loading = false;
+      },2000);
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
       console.log(error)
+      this.loading = false;
     })
   }
 
   approve1Kyc() {
+    this.loading = true;
     this.userDetailsService.approveKyc(this.document1Id).subscribe(success => {
       this.ngOnInit();
+      setTimeout(()=>{
+        this.loading = false;
+      },2000);
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
-      console.log(error)
+      console.log(error);
+      this.loading = false;
     })
   }
 
   disApproveKyc(disApproveKycForm) {
+    this.loading = true;
     if (disApproveKycForm.invalid) {
       return;
     }
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
       this.addPopupClose();
       this.ngOnInit();
+      this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
     }, error => {
       this.toastrService.success('Kyc not disapproved! Try again!', 'Success!');
+      this.loading = false;
     })
   }
 
