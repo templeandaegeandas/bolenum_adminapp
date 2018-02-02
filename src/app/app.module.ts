@@ -22,6 +22,7 @@ import { routing } from './app.routing';
 
 // App is our top level component
 import { App } from './app.component';
+import {BaMenuItem} from './theme/components/baMenu/components/baMenuItem/baMenuItem.component'
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
@@ -32,6 +33,7 @@ import { PagesModule } from './pages/pages.module';
 const APP_PROVIDERS = [
   AppState,
   GlobalState,
+  BaMenuItem,
   {provide: Http, useClass: HttpClient },
 ];
 
