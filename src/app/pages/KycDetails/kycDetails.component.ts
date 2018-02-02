@@ -120,6 +120,7 @@ export class KycDetails implements OnInit {
   disApproveKyc(disApproveKycForm) {
     this.loading = true;
     if (disApproveKycForm.invalid) {
+      this.loading = false;
       return;
     }
     this.userDetailsService.disApproveKyc(this.kycDisapprove).subscribe(success => {
@@ -128,6 +129,7 @@ export class KycDetails implements OnInit {
       this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
+      disApproveKycForm.resetForm();
     }, error => {
       this.toastrService.success('Kyc not disapproved! Try again!', 'Success!');
       this.loading = false;
