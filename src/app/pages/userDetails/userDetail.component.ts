@@ -18,6 +18,7 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
 })
 
 export class UserDetail implements OnInit {
+  kycForm: any;
   disApproveKycForm: any;
   loading: boolean = false;
   bankUserLength: any;
@@ -120,6 +121,7 @@ export class UserDetail implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
+    this.kycForm = disApproveKycForm;
     this.loading = true;
     if (disApproveKycForm.invalid) {
       this.loading = false;
@@ -147,6 +149,7 @@ export class UserDetail implements OnInit {
   }
 
   addPopupClose() {
+    this.kycForm.resetForm();
     this.addPopup.hide();
   }
 

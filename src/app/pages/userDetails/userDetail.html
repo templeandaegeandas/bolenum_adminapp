@@ -281,7 +281,7 @@
         <label for="exampleTextarea">Enter Rejection Message</label>
         <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel" name="rejectionMessage" required></textarea>
         <span *ngIf="rejectionMessage.invalid && disApproveKycForm.submitted">
-          <span class="text-danger" *ngIf="rejectionMessage.errors.required">Please enter rejection message</span>
+          <p class="text-danger" *ngIf="rejectionMessage.errors.required">Please enter rejection message</p>
         </span>
       </div>
       <div class="modal-footer">

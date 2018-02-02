@@ -16,6 +16,7 @@ import { AppEventEmiterService } from '../../app.event.emmiter.service';
   providers: [UserDetailsService, WebsocketService]
 })
 export class KycDetails implements OnInit {
+  kycConfirmForm: any;
   loading: any = false;
   userId: Number;
   document0: any;
@@ -118,6 +119,7 @@ export class KycDetails implements OnInit {
   }
 
   disApproveKyc(disApproveKycForm) {
+    this.kycConfirmForm = disApproveKycForm;
     this.loading = true;
     if (disApproveKycForm.invalid) {
       this.loading = false;
@@ -146,6 +148,7 @@ export class KycDetails implements OnInit {
   }
   addPopupClose() {
     this.addPopup.hide();
+    this.kycConfirmForm.resetForm();
   }
   openPdf0() {
     window.open(this.document0, '_blank');
