@@ -131,6 +131,7 @@ export class UserDetail implements OnInit {
       this.loading = false;
       this.toastrService.success(success.message, 'Success!');
       this.websocketService.sendMessage(this.userId, 'DOCUMENT_VERIFICATION');
+      disApproveKycForm.resetForm();
     }, error => {
       this.toastrService.error('Kyc not disapproved! Try again!', 'Success!');
     })

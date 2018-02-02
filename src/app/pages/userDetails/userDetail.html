@@ -276,7 +276,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form #disApproveKycForm="ngForm" (submit)="disApproveKyc(disApproveKycForm); disApproveKycForm.resetForm();">
+    <form #disApproveKycForm="ngForm" (submit)="disApproveKyc(disApproveKycForm);">
       <div class="form-group">
         <label for="exampleTextarea">Enter Rejection Message</label>
         <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel" name="rejectionMessage" required></textarea>

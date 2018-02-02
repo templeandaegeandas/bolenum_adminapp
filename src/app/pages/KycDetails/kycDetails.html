@@ -103,12 +103,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <form #disApproveKycForm="ngForm" (submit)="disApproveKyc(disApproveKycForm); disApproveKycForm.resetForm();">
+        <form #disApproveKycForm="ngForm" (submit)="disApproveKyc(disApproveKycForm);">
           <div class="form-group">
             <label for="exampleTextarea">Enter Rejection Message</label>
             <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="kycDisapprove.rejectionMessage" #rejectionMessage="ngModel"
               name="rejectionMessage" required></textarea>
-            <span *ngIf="rejectionMessage.invalid && disApproveKycForm.submitted">
+            <span *ngIf="rejectionMessage.invalid && rejectionMessage.touched && disApproveKycForm.submitted">
             <span class="text-danger" *ngIf="rejectionMessage.errors.required">Please enter rejection message</span>
             </span>
           </div>
