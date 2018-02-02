@@ -302,10 +302,17 @@ fa-bell-o .bell-icon-pointer{
 
 }
 .msg-font{
-  font-size: 12px;
+  font-size: 11px;
 }
 
-.msg-hover:hover{
-  background-color: lightgray;
+.msg-font:hover{
+  color: #f95372;
+
+}
+.notificatio-heading{
+  text-align: center !important;
+  color: #f95372;
+  text-decoration: underline;
+  text-decoration-color: #f95372;
 
 }

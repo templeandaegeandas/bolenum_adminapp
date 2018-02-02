@@ -6,8 +6,8 @@
     </a>
     <div class="top-dropdown-menu dropdown-menu" aria-labelledby="msg-dd1">
       <i class="dropdown-arr"></i>
-      <div class="header clearfix">
-        <strong>Notifications</strong>
+      <div class="header clearfix notificatio-heading">
+        Notifications
         <!-- <a href>Mark All as Read</a>
         <a href>Settings</a> -->
       </div>
@@ -21,7 +21,7 @@
           </div>
         </a>
       </div> -->
-      <div class="msg-list" *ngFor="let list of listOfUserNotification msg-hover">
+      <div class="msg-list" *ngFor="let list of listOfUserNotification">
           <div class="msg-area border-notification msg-padding notification-top">
             <div class="notification-padding notification-text">
               <p class="notification-text notify msg-font" (click)="redirectToKYC(list.sender.userId,list.notificationType)"> {{list.message}} </p>
