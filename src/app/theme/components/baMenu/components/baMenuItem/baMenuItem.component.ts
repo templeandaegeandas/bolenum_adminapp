@@ -18,7 +18,7 @@ export class BaMenuItem {
   }
 
   public onToggleSubMenu($event, item):boolean {
-    $event.item = item;
+    $event.item= item;
     this.toggleSubMenu.emit($event);
     return false;
   }

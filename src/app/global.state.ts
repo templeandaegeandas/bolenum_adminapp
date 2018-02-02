@@ -27,6 +27,7 @@ export class GlobalState {
   }
 
   subscribe(event: string, callback: Function) {
+    console.log("get subscribe");
     let subscribers = this._subscriptions.get(event) || [];
     subscribers.push(callback);
 
