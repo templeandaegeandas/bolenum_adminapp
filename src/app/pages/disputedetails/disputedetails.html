@@ -129,7 +129,7 @@
       <div class="modal-body">
         <form #changeStatusForm="ngForm" (submit)=changeStatus(changeStatusForm)>
           <div class="form-group">
-            <label for="exampleTextarea">Enter Messagesdssdsdsd</label>
+            <label for="exampleTextarea">Enter Message</label>
             <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="commentByAdmin" #message="ngModel" name="message"
               required></textarea>
             <span *ngIf="message.invalid && changeStatusForm.submitted">
